@@ -14,9 +14,10 @@ export default function ScrollAndTitle() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    const section = experiences.find((e) => e.path === pathname);
-    document.title =
-      section && section.path !== '/' ? `${section.label} · ${SITE}` : SITE;
+    const section =
+      experiences.find((e) => e.path === pathname) ??
+      (pathname === '/credits' ? { label: 'Acknowledgements' } : null);
+    document.title = section ? `${section.label} · ${SITE}` : SITE;
 
     if (hash) {
       const el = document.getElementById(hash.slice(1));

@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
+/** The six main experiences. Acknowledgements lives in the footer to
+ *  keep navigation calm; the home cover sits behind the wordmark. */
 export const experiences = [
-  { path: '/', label: 'The Story' },
-  { path: '/seasons', label: 'Six Seasons' },
-  { path: '/circuit', label: 'The Circuit' },
-  { path: '/archive', label: 'Photo Archive' },
+  { path: '/story', label: 'The Dundrod Story' },
+  { path: '/circuit', label: 'Explore the Circuit' },
+  { path: '/seasons', label: 'Six Racing Seasons' },
   { path: '/drivers', label: 'Drivers & Teams' },
-  { path: '/films', label: 'Film Archive' },
+  { path: '/archive', label: 'The Archive' },
   { path: '/today', label: 'Dundrod Today' },
-  { path: '/credits', label: 'Acknowledgements' },
 ];
 
 function NavList() {

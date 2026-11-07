@@ -523,3 +523,318 @@ img { max-width: 100%; height: auto; display: block; }
   text-decoration: none;
 }
 .footer-nav a:hover { color: var(--gold); }
+
+/* ---------- Stage 2: cinematic cover ---------- */
+
+.cover {
+  position: relative;
+  min-height: calc(100svh - 3.4rem);
+  display: grid;
+  align-content: end;
+  overflow: hidden;
+}
+
+.cover-photos { position: absolute; inset: 0; }
+.cover-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.8) contrast(1.03);
+}
+.cover-photos::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--midnight) 6%,
+    rgba(17, 26, 27, 0.6) 45%,
+    rgba(17, 26, 27, 0.3) 100%
+  );
+}
+
+@media (max-width: 48rem) {
+  .cover-photo { object-position: 68% center; }
+}
+
+/* Slow-motion crossfade between the two large plates, with a gentle
+   drift. Under reduced motion only the first photograph shows, still. */
+@media (prefers-reduced-motion: no-preference) {
+  .cover-photo { animation: cover-drift 24s ease-in-out infinite alternate; }
+  .cover-photo-1 { animation-name: cover-drift, cover-fade-a; animation-duration: 24s, 24s; animation-iteration-count: infinite, infinite; }
+  .cover-photo-2 { animation-name: cover-drift, cover-fade-b; animation-duration: 24s, 24s; animation-iteration-count: infinite, infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover-photo-2 { opacity: 0; }
+}
+@keyframes cover-drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+@keyframes cover-fade-a {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes cover-fade-b {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.cover-inner {
+  position: relative;
+  max-width: var(--page-max);
+  width: 100%;
+  margin-inline: auto;
+  padding: clamp(6rem, 18vh, 10rem) var(--page-pad) var(--space-4);
+}
+
+.cover-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 640;
+  font-size: var(--step-2);
+  color: var(--ivory);
+  margin: 0 0 var(--space-3);
+  line-height: 1;
+}
+.cover-mark span {
+  display: block;
+  font-style: normal;
+  font-weight: 430;
+  font-size: 0.42em;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.5em;
+}
+
+.cover h1 {
+  color: var(--ivory);
+  font-style: italic;
+  font-weight: 650;
+  max-width: 15ch;
+  margin-bottom: var(--space-3);
+}
+
+.cover-subtitle {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--text-on-dark);
+  max-width: 42ch;
+}
+
+.cover-distinction {
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+  max-width: 56ch;
+}
+
+.cover-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.cover-caption {
+  position: relative;
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+  margin: 0 auto;
+  max-width: var(--page-max);
+  width: 100%;
+  padding: 0 var(--page-pad) var(--space-2);
+}
+
+/* One orchestrated entrance on the cover; nothing else animates in. */
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: enter-up 700ms ease forwards;
+  }
+  .enter-1 { animation-delay: 80ms; }
+  .enter-2 { animation-delay: 220ms; }
+  .enter-3 { animation-delay: 380ms; }
+  .enter-4 { animation-delay: 520ms; }
+  .enter-5 { animation-delay: 660ms; }
+}
+@keyframes enter-up {
+  to { opacity: 1; transform: none; }
+}
+
+.cta.cta-ghost {
+  background: transparent;
+  color: var(--ivory);
+  border-color: color-mix(in srgb, var(--gold) 60%, transparent);
+}
+.cta.cta-ghost:hover, .cta.cta-ghost:focus-visible {
+  background: var(--gold);
+  color: var(--midnight);
+  border-color: var(--gold);
+}
+
+/* ---------- Stage 2: design-system pieces ---------- */
+
+.date-label {
+  display: inline-block;
+  font-family: var(--font-text);
+  font-size: var(--step--1);
+  color: var(--gold);
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  white-space: nowrap;
+}
+.paper .date-label { color: var(--copper); border-color: color-mix(in srgb, var(--copper) 55%, transparent); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: var(--space-3);
+  margin-block: var(--space-3);
+}
+
+.race-card, .driver-card {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3);
+}
+.race-card header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.race-card h4, .driver-card h3 { margin-bottom: var(--space-2); }
+.race-card ul { margin: 0; padding-left: 1.1rem; }
+.race-card li + li { margin-top: var(--space-2); }
+.race-championship { color: var(--gold); font-size: var(--step--1); margin-bottom: var(--space-2); }
+.race-note, .race-not-held { color: var(--text-on-dark-soft); font-size: var(--step--1); }
+.race-not-held { margin: 0; }
+.driver-home { color: var(--gold); font-size: var(--step--1); margin-bottom: var(--space-2); }
+.driver-card p:last-child { margin-bottom: 0; }
+
+/* ---------- Stage 2: story chapters ---------- */
+
+.story-page .chapter {
+  margin-block: var(--space-5);
+  border-radius: var(--radius-panel);
+}
+.story-page .chapter.paper { padding: var(--space-5) var(--page-pad); }
+.story-page .chapter-dark {
+  border: 1px solid var(--glass-border);
+  background: color-mix(in srgb, var(--midnight) 55%, transparent);
+  padding: var(--space-5) var(--page-pad);
+}
+.chapter-kicker {
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+}
+.paper .chapter-kicker { color: var(--copper); }
+
+/* ---------- Stage 2: archive tabs & viewer ---------- */
+
+.archive-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-block: var(--space-3);
+  border-bottom: var(--rule-gold);
+}
+.archive-tab {
+  font: inherit;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-on-dark-soft);
+  padding: 0.4rem 0.2rem;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+.archive-tab:hover { color: var(--text-on-dark); }
+.archive-tab[aria-selected='true'] {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.viewer-list { list-style: none; margin: 0; padding: 0; }
+.plate-button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+
+.photo-viewer {
+  border: none;
+  background: color-mix(in srgb, var(--midnight) 96%, transparent);
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--space-3);
+  display: none;
+}
+.photo-viewer[open] { display: grid; place-items: center; }
+.photo-viewer::backdrop { background: rgba(9, 43, 36, 0.85); }
+.photo-viewer figure {
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  max-width: min(94vw, 70rem);
+}
+.photo-viewer img {
+  max-width: 100%;
+  max-height: 72dvh;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--glass-border);
+}
+.photo-viewer figcaption {
+  color: var(--text-on-dark-soft);
+  font-size: var(--step--1);
+  max-width: var(--measure);
+  text-align: center;
+}
+.viewer-controls { display: flex; gap: var(--space-2); }
+
+.unavailable {
+  border: 1px dashed color-mix(in srgb, var(--gold) 40%, transparent);
+  border-radius: var(--radius-panel);
+  padding: var(--space-4) var(--space-3);
+  max-width: var(--measure);
+}
+.unavailable h4 { margin-bottom: var(--space-2); }
+.unavailable p { margin: 0; color: var(--text-on-dark-soft); }
+
+/* Loading state for images/panels still arriving */
+.loading-panel {
+  min-height: 10rem;
+  border-radius: var(--radius-panel);
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--deep-green) 55%, transparent) 40%,
+    color-mix(in srgb, var(--deep-green) 75%, transparent) 50%,
+    color-mix(in srgb, var(--deep-green) 55%, transparent) 60%);
+  background-size: 300% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .loading-panel { animation: shimmer 1.6s linear infinite; }
+}
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}

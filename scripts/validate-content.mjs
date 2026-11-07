@@ -25,6 +25,7 @@ const sources = content('sources');
 const films = content('films');
 const acknowledgements = content('acknowledgements');
 const thenAndNow = content('then-and-now');
+const story = content('story');
 
 const errors = [];
 const ids = (list) => new Set(list.map((x) => x.id));
@@ -74,6 +75,13 @@ for (const a of acknowledgements)
   if (a.portraitPhotoId) refCheck(a.id, a.portraitPhotoId, photoIds, 'photo');
 
 for (const t of thenAndNow) refCheck(t.id, t.locationId, locationIds, 'location');
+
+for (const ch of story) {
+  for (const ref of ch.sourceRefs ?? []) refCheck(ch.id, ref, sourceIds, 'source');
+  for (const pid of ch.photoIds ?? []) refCheck(ch.id, pid, photoIds, 'photo');
+  check(['paper', 'dark'].includes(ch.tone), `${ch.id}: bad tone`);
+  check(ch.paragraphs?.length > 0, `${ch.id}: empty chapter`);
+}
 
 // Photos ↔ disk, both directions. Serving uses register-ID asset names
 // (web-safe: no '#', spaces or accents); filePath stays as the

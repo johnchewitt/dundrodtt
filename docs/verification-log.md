@@ -2,6 +2,34 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 2 — Cinematic foundation & visual identity — 2026-11-07
+**Passed:** full-screen cinematic cover (DUNDROD / THE FORGOTTEN RACING
+YEARS wordmark, headline, subtitle, distinction line, "Explore the
+Story" + ghost CTA) with slow crossfade/drift between the two large 1955
+PNGs — static under reduced motion — and one orchestrated staggered
+entrance; navigation restructured to the six main experiences (The
+Dundrod Story, Explore the Circuit, Six Racing Seasons, Drivers & Teams,
+The Archive, Dundrod Today) with Acknowledgements in the footer and the
+old /films route redirecting into The Archive's Film section; The
+Dundrod Story page rendered entirely from src/content/story.json (seven
+chapters: Ards, circuit creation, 1949 scheme, UAC, 1950 return,
+1951–54 rise, 1955 end — fatalities handled in-story with restraint, no
+standalone remembrance); design-system components added (DateLabel,
+RaceResultCard, DriverCard, Unavailable, full-screen PhotoViewer with
+Esc/arrow keys, glass cards, loading shimmer, archive tabs); Archive
+gains Photography/Film subcategories with the special 1950 presentation
+opening the full-screen viewer; Seasons refactored onto RaceResultCard;
+Drivers onto card grid; lazy plates reserve layout via aspect-ratio
+(collapse-before-load fixed). Gates: validator green (story chapter refs
+included); tsc clean; oxlint clean; Vitest 13/13; Playwright 10/10
+(cover + distinction + story CTA, six-experience nav + footer credits,
+story chapter links, 1952 facts, viewer open/Esc, film unavailable
+state, anchors, titles, mobile menu, /films redirect); production build;
+visual review at 1280/390 of cover, story, drivers.
+**Unverified / outstanding:** as Stage 1 (owner supplies + the four
+hedged photo records + hero PNG baked icon). UAC chapter deliberately
+short until the club history PDF arrives.
+
 ## Stage 1 QA pass — 2026-11-07
 **Problems found and fixed:** year roundels navigated to `/seasons#y19xx`
 without scrolling (anchor target 1,880 px below fold) — fixed with a
