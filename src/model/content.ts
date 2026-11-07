@@ -113,6 +113,12 @@ export interface CircuitLocation {
   incidentIds?: string[];
   photoIds?: string[];
   mapFeatureId?: string;
+  /**
+   * Confidence: the historic name is verified from period sources;
+   * 'pending' means its map position awaits the owner's verified
+   * circuit layer — never an invented pin.
+   */
+  geometryStatus: 'pending' | 'verified';
   sourceRefs: string[];
 }
 

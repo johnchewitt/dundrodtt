@@ -1,15 +1,130 @@
 [
-  { "id": "loc-cochranstown", "name": "Cochranstown", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-irelands-corner", "name": "Ireland's Corner", "sourceRefs": ["R11", "R14"] },
-  { "id": "loc-quarterland", "name": "Quarterland", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-budore", "name": "Budore", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-jordans-cross", "name": "Jordan's Cross", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-wheelers-corner", "name": "Wheeler's Corner", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-1950s-hairpin", "name": "The 1950s hairpin", "story": "The tighter 1950s hairpin belongs to the 1950–55 layout. The later Lindsay Hairpin name belongs to the altered post-1965 course.", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-the-quarry", "name": "The Quarry", "sourceRefs": ["R11", "R14"] },
-  { "id": "loc-rushyhill", "name": "Rushyhill", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-leathemstown-corner", "name": "Leathemstown Corner", "sourceRefs": ["R13", "R14"] },
-  { "id": "loc-leathemstown-bridge", "name": "Leathemstown Bridge", "story": "The old Leathemstown Bridge was part of the period route. In 1965 the bridge section was bypassed, shortening the circuit; the later layout should not be substituted for the 1950s course.", "sourceRefs": ["R06", "R13", "R14"] },
-  { "id": "loc-deers-leap", "name": "Deer's Leap", "story": "On the second lap of the 1955 Tourist Trophy, a multi-car crash here killed Jim Mayers and William Smith.", "incidentIds": ["inc-1955-deers-leap"], "sourceRefs": ["R11", "R14"] },
-  { "id": "loc-tornagrough", "name": "Tornagrough", "story": "Richard Mainwaring died here when his Elva crashed during the 1955 Tourist Trophy.", "incidentIds": ["inc-1955-tornagrough"], "sourceRefs": ["R11", "R14"] }
+  {
+    "id": "loc-cochranstown",
+    "name": "Cochranstown",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-irelands-corner",
+    "name": "Ireland's Corner",
+    "sourceRefs": [
+      "R11",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-quarterland",
+    "name": "Quarterland",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-budore",
+    "name": "Budore",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-jordans-cross",
+    "name": "Jordan's Cross",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-wheelers-corner",
+    "name": "Wheeler's Corner",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-1950s-hairpin",
+    "name": "The 1950s hairpin",
+    "story": "The tighter 1950s hairpin belongs to the 1950–55 layout. The later Lindsay Hairpin name belongs to the altered post-1965 course.",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-the-quarry",
+    "name": "The Quarry",
+    "sourceRefs": [
+      "R11",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-rushyhill",
+    "name": "Rushyhill",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-leathemstown-corner",
+    "name": "Leathemstown Corner",
+    "sourceRefs": [
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-leathemstown-bridge",
+    "name": "Leathemstown Bridge",
+    "story": "The old Leathemstown Bridge was part of the period route. In 1965 the bridge section was bypassed, shortening the circuit; the later layout should not be substituted for the 1950s course.",
+    "sourceRefs": [
+      "R06",
+      "R13",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-deers-leap",
+    "name": "Deer's Leap",
+    "story": "On the second lap of the 1955 Tourist Trophy, a multi-car crash here killed Jim Mayers and William Smith.",
+    "incidentIds": [
+      "inc-1955-deers-leap"
+    ],
+    "sourceRefs": [
+      "R11",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  },
+  {
+    "id": "loc-tornagrough",
+    "name": "Tornagrough",
+    "story": "Richard Mainwaring died here when his Elva crashed during the 1955 Tourist Trophy.",
+    "incidentIds": [
+      "inc-1955-tornagrough"
+    ],
+    "sourceRefs": [
+      "R11",
+      "R14"
+    ],
+    "geometryStatus": "pending"
+  }
 ]

@@ -1,9 +1,10 @@
 import CircuitMapSeam from '../components/map/CircuitMapSeam';
-import { locations } from '../model/content';
+import LandmarkCatalogue from '../components/circuit/LandmarkCatalogue';
+import LocationPanel from '../components/circuit/LocationPanel';
 
 export default function Circuit() {
   return (
-    <div className="page">
+    <div className="page circuit-page">
       <h1>Explore the Circuit</h1>
       <p className="standfirst">
         7 miles 732 yards of closed public roads, run clockwise through the
@@ -11,25 +12,15 @@ export default function Circuit() {
       </p>
       <p>
         The course crossed rolling ground with fast approaches, gradients,
-        crests, dips, changing cambers and blind sections. The same landscape
-        that made the circuit memorable left little room to recover from a
-        mistake.
+        crests, dips, changing cambers and blind sections. The same
+        landscape that made the circuit memorable left little room to
+        recover from a mistake. Select a place to read its story.
       </p>
-      <CircuitMapSeam />
-      <h3>Named places of the 1950s course</h3>
-      <ul>
-        {locations.map((l) => (
-          <li key={l.id}>
-            {l.name}
-            {l.story ? <span className="muted"> — {l.story}</span> : null}
-          </li>
-        ))}
-      </ul>
-      <p className="coming">
-        Interactive landmark exploration, photographs by location and the
-        cinematic guided lap arrive with the circuit build stage, consuming
-        the owner&apos;s ArcGIS FeatureLayer when supplied.
-      </p>
+      <div className="explorer-stage">
+        <CircuitMapSeam />
+        <LandmarkCatalogue />
+        <LocationPanel />
+      </div>
     </div>
   );
 }

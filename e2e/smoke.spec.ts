@@ -183,3 +183,39 @@ test('story chapter rail marks the current chapter', async ({ page }) => {
     )
     .toMatch(/The last flag/);
 });
+
+test('circuit page: catalogue selection opens the location story', async ({
+  page,
+}) => {
+  await page.goto('#/circuit');
+  await page.getByRole('button', { name: "Deer's Leap" }).click();
+  const panel = page.getByRole('complementary', { name: /Deer's Leap/ });
+  await expect(panel).toBeVisible();
+  await expect(panel.getByText(/killed Jim Mayers and William Smith/)).toBeVisible();
+  await expect(panel.getByText(/never guessed/)).toBeVisible();
+  await expect(panel.getByText(/arrives with the verified circuit layer/)).toBeVisible();
+  await panel.getByRole('link', { name: '1955' }).click();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () => document.getElementById('y1955')?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 300;
+    })
+    .toBe(true);
+});
+
+test('circuit page: no map configured means honest states, no ArcGIS load', async ({
+  page,
+}) => {
+  const arcgisRequests: string[] = [];
+  page.on('request', (r) => {
+    if (r.url().includes('chunks/') && /Map|arcgis|View/i.test(r.url()))
+      arcgisRequests.push(r.url());
+  });
+  await page.goto('#/circuit');
+  await expect(page.getByText(/Schematic, not to scale/)).toBeVisible();
+  await page.getByRole('button', { name: 'Take a Lap of Dundrod' }).click();
+  await expect(page.getByText(/waits for the accurate circuit map/)).toBeVisible();
+  expect(arcgisRequests).toEqual([]);
+});

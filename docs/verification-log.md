@@ -2,6 +2,42 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 3 — Interactive circuit explorer — 2026-11-07
+**Passed:** the circuit experience is built end-to-end around the
+owner's still-awaited FeatureLayer (owner confirmed: not ready yet,
+will be shared publicly, no API key). Selection model is
+backend-independent: the 13-location landmark catalogue (period names,
+chips) drives a floating glass story panel with verified stories,
+restrained incident records (Deer's Leap, Tornagrough), documented-year
+links into the seasons, honest no-verified-photographs and
+geometry-pending states, and source references — all working today
+without the map. ArcGIS Maps SDK installed (@arcgis/map-components +
+core + calcite 5.2.1, satisfies ^5.1); the explorer module
+(ArcGisExplorer) is lazy-loaded ONLY when `routeLayerUrl` is set:
+dark/satellite keyless basemaps, illuminated gold route (glow + line
+renderers), labelled landmark layer, hitTest click → locId → panel,
+catalogue selection → camera goTo, load-error state, and the guided
+"Take a Lap" built on a pure, fully unit-tested LapEngine
+(play/pause/skip/restart/exit, dwell sequencing, reduced-motion instant
+jumps, no racing-speed simulation). Layer schema contract documented in
+docs/architecture.md (locId/name/seq). Gates: validator; tsc; oxlint;
+Vitest 17/17 (4 new LapEngine tests); Playwright 16/16 (2 new: Deer's
+Leap panel + sensitive text + year link; honest no-map states with
+zero ArcGIS chunks requested); build — ArcGIS fully code-split, main
+bundle ~349 KB raw.
+**Not executed (honestly):** live map rendering, geometry/coordinate
+verification, landmark positions, camera behaviour on real geometry,
+2D/3D transitions, FeatureLayer query performance, Then & Now against
+satellite imagery — all require the owner's verified circuit layer;
+the schematic fallback and honest states cover every surface
+meanwhile. 3D scene option and Then & Now swipe are scoped to light up
+after the layer lands (both need real geometry to be anything but
+pretence).
+**Uncertainty documented:** all 13 locations carry
+`geometryStatus: "pending"`; no photo↔location links exist because the
+catalogue records no verified photographic locations — none invented,
+no "Show on Circuit" actions shown without coordinates.
+
 ## Stage 2 QA pass — 2026-11-07
 **Problems found and fixed:** Archive tabs ignored arrow keys (ARIA tabs
 pattern incomplete) — roving tabindex + ArrowLeft/Right activation

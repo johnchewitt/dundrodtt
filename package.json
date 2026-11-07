@@ -13,6 +13,9 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@arcgis/core": "^5.2.1",
+    "@arcgis/map-components": "^5.2.1",
+    "@esri/calcite-components": "^5.2.1",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource/archivo": "^5.3.0",
     "react": "^19.3.1",
