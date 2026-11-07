@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ack-armstrong",
+    "visibility": "visible",
+    "name": "Neville Armstrong",
+    "message": "Neville Armstrong kindly contributed photographs of Dundrod from the 1950s. Neville is pictured here with his wife Beverley.",
+    "portraitPhotoId": "DU-ACK-01"
+  },
+  {
+    "id": "ack-1950-contributor",
+    "visibility": "hidden",
+    "name": null,
+    "message": "A second contributor supplied previously unseen photographs from the 1950 races. We are grateful for their generosity.",
+    "portraitPhotoId": null
+  }
+]

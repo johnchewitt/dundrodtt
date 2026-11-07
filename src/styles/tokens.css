@@ -1,0 +1,56 @@
+/* DUNDROD — The Forgotten Racing Years · design tokens
+   Premium motorsport heritage: dark exhibition walls in racing green and
+   midnight charcoal, reading surfaces of warm ivory paper, antique gold
+   and copper only where the eye should go. Photographs lead. */
+
+:root {
+  /* Master palette (from the project brief) */
+  --racing-green: #092b24;
+  --midnight: #111a1b;
+  --deep-green: #123b31;
+  --gold: #cba76c;
+  --copper: #a46d4a;
+  --ivory: #f2ebdd;
+
+  /* Derived surfaces */
+  --ivory-deep: #e7dcc6;
+  --ink: #221f1a;            /* text on ivory */
+  --ink-soft: #57503f;       /* secondary text on ivory */
+  --text-on-dark: #ece4d2;
+  --text-on-dark-soft: color-mix(in srgb, var(--text-on-dark) 72%, transparent);
+  --glass: color-mix(in srgb, var(--deep-green) 58%, transparent);
+  --glass-border: color-mix(in srgb, var(--gold) 32%, transparent);
+
+  /* Type */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-text: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+  --step--1: clamp(0.82rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3.1rem);
+  --step-4: clamp(2.5rem, 1.7rem + 4vw, 5rem);
+
+  /* Rhythm */
+  --space-1: 0.375rem;
+  --space-2: 0.75rem;
+  --space-3: 1.25rem;
+  --space-4: 2rem;
+  --space-5: 3.25rem;
+  --space-6: 5.5rem;
+
+  --measure: 66ch;
+  --page-max: 74rem;
+  --page-pad: clamp(1rem, 4vw, 2.5rem);
+
+  --rule-gold: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  --radius: 3px;
+  --radius-panel: 10px;
+
+  /* Film grain (restrained): SVG turbulence, overlaid at low opacity */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.5'/%3E%3C/svg%3E");
+
+  /* Topographic contour motif for paper surfaces */
+  --contours: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='560' viewBox='0 0 560 560'%3E%3Cg fill='none' stroke='%23123b31' stroke-opacity='0.05' stroke-width='1'%3E%3Cpath d='M-20 120c90-40 180 30 270-10s180-70 330-20'/%3E%3Cpath d='M-20 170c100-45 190 25 280-15s190-65 320-15'/%3E%3Cpath d='M-20 225c110-50 200 20 290-20s200-60 310-10'/%3E%3Cpath d='M-20 420c80 35 190-25 300 10s180 45 280 5'/%3E%3Cpath d='M-20 470c90 30 200-30 310 5s170 40 270 10'/%3E%3Ccircle cx='430' cy='105' r='34'/%3E%3Ccircle cx='430' cy='105' r='58'/%3E%3Ccircle cx='118' cy='392' r='26'/%3E%3Ccircle cx='118' cy='392' r='48'/%3E%3C/g%3E%3C/svg%3E");
+}

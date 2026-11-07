@@ -1,0 +1,44 @@
+[
+  {
+    "id": "y1950",
+    "year": 1950,
+    "summary": "The Dundrod circuit opened for racing with the Ulster Trophy meeting on 12 August. Peter Whitehead won the Ulster Trophy in a Ferrari 125, and the meeting also included a handicap contest won by Anthony Powys-Lybbe in an Alfa Romeo P3. The RAC Tourist Trophy followed on 16 September, five weeks later: twenty-year-old Stirling Moss took it in Tommy Wisdom's Jaguar XK120 on the eve of his twenty-first birthday, winning both on the road and on handicap in difficult weather. It was his first Tourist Trophy victory and the moment that brought him to wider notice.",
+    "storyCue": "The circuit opens; the TT returns five weeks later.",
+    "sourceRefs": ["R03", "R05", "R17", "R18", "R19"]
+  },
+  {
+    "id": "y1951",
+    "year": 1951,
+    "summary": "Giuseppe Farina, the reigning Formula One World Champion, won the June Ulster Trophy in an Alfa Romeo 159 and set a lap record of 4 minutes 44 seconds. Queen Elizabeth and Princess Margaret attended the Ulster Trophy. In September, Moss won the TT again for Jaguar in a C-Type; the C-Types finished first and second, with another in fourth. Eric Winterbottom died in a first-lap crash, a reminder that severe accidents were already part of the circuit's history.",
+    "storyCue": "Queen Elizabeth and Princess Margaret attend the Ulster Trophy.",
+    "sourceRefs": ["R06", "R07"]
+  },
+  {
+    "id": "y1952",
+    "year": 1952,
+    "summary": "The Ulster Trophy ran on 7 June. Piero Taruffi won in the Vandervell-entered Ferrari 375, with Mike Hawthorn second in a Cooper-Bristol. Stirling Moss and Juan Manuel Fangio appeared in the experimental V16 BRM, but neither finished. The RAC TT was cancelled after a weak entry and limited public support — but there was car racing at Dundrod in 1952: the Ulster Trophy did take place.",
+    "storyCue": "The TT was cancelled, but the Ulster Trophy ran.",
+    "sourceRefs": ["R08", "R13", "R20"]
+  },
+  {
+    "id": "y1953",
+    "year": 1953,
+    "summary": "The May Ulster Trophy was a Formula Two event won by Mike Hawthorn in a Ferrari 500. In September, the RAC TT became a round of the World Sportscar Championship: Peter Collins and Pat Griffith won for Aston Martin in a DB3S after a long, difficult race in fog. The Ulster Grand Prix motorcycle races also moved from Clady to Dundrod in 1953, giving the same rural circuit two different racing histories.",
+    "storyCue": "The TT joins the World Sportscar Championship; the motorcycle UGP moves to Dundrod.",
+    "sourceRefs": ["R06", "R13", "R21"]
+  },
+  {
+    "id": "y1954",
+    "year": 1954,
+    "summary": "There was no Ulster Trophy at Dundrod in 1954, but the RAC TT continued as a World Sportscar Championship race — one race with two result systems. The scratch and championship result went to Mike Hawthorn and Maurice Trintignant in a Ferrari 750 Monza; under the handicap classification, the Tourist Trophy was awarded to Gérard Laureau and Paul Armagnac in a small DB-Panhard. The apparent contradiction is a consequence of the two classifications, not a different event.",
+    "storyCue": "One race, two result systems.",
+    "sourceRefs": ["R09", "R10", "R01", "R06"]
+  },
+  {
+    "id": "y1955",
+    "year": 1955,
+    "summary": "The May Ulster Trophy and September RAC TT were separate meetings. In May, the Ulster Trophy was awarded to the fastest finisher in a mixed sports-car and single-seater handicap: Desmond Titterington in an Ecurie Ecosse Jaguar D-Type. Bill Smith in a Jaguar C-Type won the handicap Champion Trophy. The September TT was the Golden Jubilee running of the RAC event over 84 laps. Mercedes-Benz 300 SLRs, Ferraris, Maseratis, Aston Martins, Porsches and a single factory Jaguar D-Type shared by Mike Hawthorn and local driver Desmond Titterington made the entry; the Jaguar challenged the Mercedes team and briefly held the advantage before mechanical failure late in the race. Stirling Moss and John Fitch won in a 300 SLR, completing 84 laps in 7 hours 3 minutes 11 seconds at an average 88.32 mph. On the second lap, a multi-car crash at Deer's Leap killed Jim Mayers and William Smith; Richard Mainwaring died later when his Elva crashed at Tornagrough. Three deaths made this the final car race at Dundrod.",
+    "storyCue": "The final Dundrod car TT ends the chapter.",
+    "sourceRefs": ["R06", "R10", "R11", "R15", "R16", "R22"]
+  }
+]

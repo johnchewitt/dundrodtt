@@ -1,0 +1,17 @@
+[
+  { "id": "c-ferrari-125", "name": "Ferrari 125", "context": "Peter Whitehead's 1950 Ulster Trophy winner.", "sourceRefs": ["R18"] },
+  { "id": "c-alfa-romeo-p3", "name": "Alfa Romeo P3", "context": "Anthony Powys-Lybbe's mount for the 1950 handicap contest.", "sourceRefs": ["R19"] },
+  { "id": "c-jaguar-xk120", "name": "Jaguar XK120", "context": "Tommy Wisdom's car, in which Moss won the 1950 TT.", "sourceRefs": ["R05", "R17"] },
+  { "id": "c-alfa-romeo-159", "name": "Alfa Romeo 159", "context": "Farina's 1951 Ulster Trophy winner, with a 4:44 lap record.", "sourceRefs": ["R06", "R07"] },
+  { "id": "c-jaguar-c-type", "name": "Jaguar C-Type", "context": "Moss's 1951 TT winner; C-Types finished first, second and fourth. A C-Type also won the 1955 handicap Champion Trophy.", "sourceRefs": ["R07", "R22"] },
+  { "id": "c-ferrari-375", "name": "Ferrari 375", "context": "The Vandervell-entered car of Taruffi's 1952 Ulster Trophy win.", "sourceRefs": ["R08"] },
+  { "id": "c-cooper-bristol", "name": "Cooper-Bristol", "context": "Mike Hawthorn's car, second in the 1952 Ulster Trophy.", "sourceRefs": ["R08"] },
+  { "id": "c-brm-v16", "name": "BRM V16", "context": "The experimental V16 of Moss and Fangio's notable but unsuccessful 1952 Ulster Trophy appearance.", "sourceRefs": ["R13"] },
+  { "id": "c-ferrari-500", "name": "Ferrari 500", "context": "Hawthorn's winning Formula Two car in the 1953 Ulster Trophy.", "sourceRefs": ["R21"] },
+  { "id": "c-aston-martin-db3s", "name": "Aston Martin DB3S", "context": "Collins and Griffith's 1953 TT winner; a recurring British works entry.", "sourceRefs": ["R06", "R21"] },
+  { "id": "c-ferrari-750-monza", "name": "Ferrari 750 Monza", "context": "Hawthorn and Trintignant's 1954 TT scratch-result winner.", "sourceRefs": ["R09"] },
+  { "id": "c-db-panhard", "name": "DB-Panhard", "context": "The small car of Laureau and Armagnac's 1954 handicap Tourist Trophy classification.", "sourceRefs": ["R10"] },
+  { "id": "c-jaguar-d-type", "name": "Jaguar D-Type", "context": "Titterington's Ecurie Ecosse mount in the May 1955 Ulster Trophy; the works car he shared with Hawthorn set the 1955 TT lap record at 4:42.", "sourceRefs": ["R10", "R16"] },
+  { "id": "c-mercedes-300-slr", "name": "Mercedes-Benz 300 SLR", "context": "Moss and Fitch's 1955 victory and the final Dundrod car TT.", "sourceRefs": ["R10", "R15"] },
+  { "id": "c-elva", "name": "Elva", "context": "Richard Mainwaring's car in the 1955 TT.", "sourceRefs": ["R11"] }
+]
