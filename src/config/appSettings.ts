@@ -13,9 +13,14 @@
  */
 
 export interface ArcgisSettings {
-  /** FeatureLayer URL for the 1950–55 route polyline. Null = not yet supplied. */
+  /**
+   * Route polyline for the 1950–55 course. Either a hosted FeatureLayer
+   * URL, or a GeoJSON file — remote URL or a repo-relative path such as
+   * "circuit/route.geojson" (place the file in public/circuit/).
+   * Null = not yet supplied.
+   */
   routeLayerUrl: string | null;
-  /** FeatureLayer URL for landmark points. Null = not yet supplied. */
+  /** Landmark points (same options; fields locId, name, seq). */
   landmarksLayerUrl: string | null;
   portalUrl: string;
   apiKey: string | null;

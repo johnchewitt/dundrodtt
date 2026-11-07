@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
 import type MapView from '@arcgis/core/views/MapView';
 import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
 import SimpleLineSymbol from '@arcgis/core/symbols/SimpleLineSymbol';
@@ -17,11 +18,33 @@ const GOLD_GLOW = [203, 167, 108, 0.28];
 const GREEN_DEEP = [9, 43, 36, 1];
 const IVORY = [242, 235, 221, 1];
 
+/** Either hosted FeatureLayers or repo-local GeoJSON files work; the
+ *  two classes share the query/render surface the explorer uses. */
+type CircuitLayer = FeatureLayer | GeoJSONLayer;
+
+function makeLayer(
+  url: string,
+  options: {
+    renderer: SimpleRenderer;
+    labelingInfo?: LabelClass[];
+    outFields?: string[];
+  },
+): CircuitLayer {
+  const isGeojson = /\.(geo)?json($|\?)/i.test(url);
+  // GeoJSON is WGS84 by spec; the SDK reprojects. A relative path serves
+  // from the app's own origin (e.g. public/circuit/route.geojson).
+  const resolved =
+    isGeojson && !/^https?:/i.test(url) ? import.meta.env.BASE_URL + url : url;
+  return isGeojson
+    ? new GeoJSONLayer({ url: resolved, ...options })
+    : new FeatureLayer({ url: resolved, ...options });
+}
+
 /** Minimal surface of the <arcgis-map> custom element we rely on. */
 interface ArcgisMapElement extends HTMLElement {
   basemap: string;
   view: MapView;
-  map: { addMany(layers: FeatureLayer[]): void } | null;
+  map: { addMany(layers: CircuitLayer[]): void } | null;
 }
 
 function routeRenderers() {
@@ -68,7 +91,7 @@ function landmarkLabels() {
 export default function ArcGisExplorer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<MapView | null>(null);
-  const landmarksRef = useRef<FeatureLayer | null>(null);
+  const landmarksRef = useRef<CircuitLayer | null>(null);
   const engineRef = useRef<LapEngine | null>(null);
   const [satellite, setSatellite] = useState(false);
   const [loadError, setLoadError] = useState(false);
@@ -94,10 +117,9 @@ export default function ArcGisExplorer() {
     container.appendChild(el);
 
     const { glow, line } = routeRenderers();
-    const routeGlow = new FeatureLayer({ url: routeLayerUrl, renderer: glow });
-    const route = new FeatureLayer({ url: routeLayerUrl, renderer: line });
-    const landmarks = new FeatureLayer({
-      url: landmarksLayerUrl ?? routeLayerUrl,
+    const routeGlow = makeLayer(routeLayerUrl, { renderer: glow });
+    const route = makeLayer(routeLayerUrl, { renderer: line });
+    const landmarks = makeLayer(landmarksLayerUrl ?? routeLayerUrl, {
       renderer: landmarkRenderer(),
       labelingInfo: [landmarkLabels()],
       outFields: ['locId', 'name', 'seq'],

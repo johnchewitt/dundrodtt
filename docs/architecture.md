@@ -55,6 +55,13 @@ scripts/                    // content validator, asset pipeline
     `seq` (integer — clockwise order for the guided lap; features
     without `seq` are skipped by the lap but still selectable).
   - Any Web Mercator / WGS84 service works; the SDK reprojects.
+  - **GeoJSON alternative**: either URL may instead point at a `.geojson`
+    file — remote, or committed to the repo and referenced relatively
+    (e.g. `circuit/route.geojson` under `public/circuit/`). GeoJSON is
+    WGS84 by spec (reprojected automatically) and one geometry type per
+    file, so route and landmarks are two files; same `locId`/`name`/`seq`
+    fields on the points. Repo-hosted GeoJSON keeps the circuit
+    versioned with the app and needs no ArcGIS Online hosting.
   Both set in `src/config/appSettings.ts`. `VITE_ARCGIS_API_KEY`
   (uncommitted `.env`) remains supported for modern basemap styles;
   the default basemaps used (`dark-gray-vector`, `hybrid`) are keyless.
