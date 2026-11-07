@@ -141,3 +141,45 @@ test('old films route redirects into the archive', async ({ page }) => {
   await page.goto('#/films');
   await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
 });
+
+test('home lobby cards reach every experience', async ({ page }) => {
+  await page.goto('');
+  const lobby = page.getByRole('region', { name: 'Explore the exhibition' });
+  await expect(lobby.getByRole('link')).toHaveCount(6);
+  await lobby.getByRole('link', { name: /Six Racing Seasons/ }).click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Six Racing Seasons' }),
+  ).toBeVisible();
+});
+
+test('archive tabs follow the ARIA keyboard pattern', async ({ page }) => {
+  await page.goto('#/archive');
+  await page.getByRole('tab', { name: 'Photography' }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: 'Film' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(page.getByRole('tab', { name: 'Film' })).toBeFocused();
+  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+});
+
+test('viewer shows a position counter', async ({ page }) => {
+  await page.goto('#/archive');
+  await page.locator('.plate-button').first().click();
+  await expect(page.locator('.viewer-count')).toHaveText(/1 of \d+/);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText(/2 of \d+/);
+  await page.keyboard.press('Escape');
+});
+
+test('story chapter rail marks the current chapter', async ({ page }) => {
+  await page.goto('#/story#ch-end');
+  await expect
+    .poll(() =>
+      page
+        .locator('.season-rail a[aria-current="true"]')
+        .getAttribute('aria-label'),
+    )
+    .toMatch(/The last flag/);
+});

@@ -538,6 +538,9 @@ img { max-width: 100%; height: auto; display: block; }
 .cover-photo {
   position: absolute;
   inset: 0;
+  display: block;
+}
+.cover-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -557,8 +560,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 48rem) {
-  .cover-photo { object-position: 68% center; }
+  .cover-photo img { object-position: 68% center; }
 }
+
 
 /* Slow-motion crossfade between the two large plates, with a gentle
    drift. Under reduced motion only the first photograph shows, still. */
@@ -672,6 +676,38 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--gold);
   color: var(--midnight);
   border-color: var(--gold);
+}
+
+/* Museum lobby under the cover */
+.lobby-inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--space-5) var(--page-pad);
+}
+.lobby-card {
+  display: block;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3);
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.lobby-card:hover, .lobby-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  color: inherit;
+}
+.lobby-card h2 {
+  font-size: var(--step-1);
+  margin-bottom: var(--space-1);
+  color: var(--gold);
+}
+.lobby-card p {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
 }
 
 /* ---------- Stage 2: design-system pieces ---------- */
@@ -837,4 +873,14 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes shimmer {
   from { background-position: 100% 0; }
   to { background-position: 0 0; }
+}
+
+/* Short screens (landscape phones): tighten the cover so the actions
+   stay in the first view. Declared last so it wins the cascade. */
+@media (max-height: 540px) {
+  .cover-inner { padding-top: 3.5rem; padding-bottom: var(--space-3); }
+  .cover-mark { font-size: var(--step-1); margin-bottom: var(--space-2); }
+  .cover h1 { font-size: var(--step-2); margin-bottom: var(--space-2); max-width: none; }
+  .cover-subtitle { font-size: var(--step-0); max-width: 60ch; }
+  .cover-distinction, .cover-caption { display: none; }
 }

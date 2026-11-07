@@ -23,7 +23,18 @@ export default function Archive() {
         the Dundrod racing years.
       </p>
 
-      <div className="archive-tabs" role="tablist" aria-label="Archive sections">
+      <div
+        className="archive-tabs"
+        role="tablist"
+        aria-label="Archive sections"
+        onKeyDown={(e) => {
+          // ARIA tabs pattern: arrow keys move and activate.
+          if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+          const next: Section = section === 'photography' ? 'film' : 'photography';
+          setParams(next === 'photography' ? {} : { section: next });
+          document.getElementById(`tab-${next}`)?.focus();
+        }}
+      >
         {(
           [
             ['photography', 'Photography'],
@@ -37,6 +48,7 @@ export default function Archive() {
             id={`tab-${key}`}
             aria-selected={section === key}
             aria-controls={`panel-${key}`}
+            tabIndex={section === key ? 0 : -1}
             className="archive-tab"
             onClick={() => setParams(key === 'photography' ? {} : { section: key })}
           >

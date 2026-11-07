@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PhotoPlate from '../components/PhotoPlate';
+import SectionRail from '../components/ui/SectionRail';
 import { photoById, storyChapters, type StoryChapter } from '../model/content';
 
 /**
@@ -43,6 +44,15 @@ export default function Story() {
         How international motor racing came back to Northern Ireland — and
         why six seasons on a country-road circuit still matter.
       </p>
+      <SectionRail
+        ariaLabel="Jump to a chapter"
+        routePath="/story"
+        items={storyChapters.map((ch, i) => ({
+          id: ch.id,
+          label: String(i + 1),
+          ariaLabel: `Chapter ${i + 1}: ${ch.title}`,
+        }))}
+      />
       {storyChapters.map((ch) => (
         <Chapter key={ch.id} chapter={ch} />
       ))}

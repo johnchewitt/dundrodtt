@@ -40,6 +40,15 @@ export default function PhotoViewer({
     return () => window.removeEventListener('keydown', onKey);
   }, [index, photos.length, onNavigate]);
 
+  // Preload neighbours so arrowing through the archive feels instant.
+  useEffect(() => {
+    if (index === null) return;
+    for (const n of [index - 1, index + 1]) {
+      const neighbour = photos[n];
+      if (neighbour) new Image().src = photoUrl(neighbour);
+    }
+  }, [index, photos]);
+
   return (
     <dialog
       ref={ref}
@@ -56,6 +65,10 @@ export default function PhotoViewer({
           <figcaption>
             <span className="plate-id">{photo.id}</span>
             {photo.caption}
+            <span className="viewer-count" aria-live="polite">
+              {' '}
+              · {index! + 1} of {photos.length}
+            </span>
           </figcaption>
           <div className="viewer-controls">
             <button
