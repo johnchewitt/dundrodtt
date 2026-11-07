@@ -217,7 +217,14 @@ img { max-width: 100%; height: auto; display: block; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   filter: saturate(0.82) contrast(1.02);
+}
+
+/* Keep the car — right of centre in the 1955 finish photograph — in the
+   frame when narrow screens crop the wide plate. */
+@media (max-width: 48rem) {
+  .hero-photo img { object-position: 68% center; }
 }
 .hero-photo::after {
   content: '';
@@ -312,12 +319,26 @@ img { max-width: 100%; height: auto; display: block; }
 
 .plate { margin: var(--space-4) 0; }
 .plate .plate-mount {
-  background: linear-gradient(160deg, var(--deep-green), var(--racing-green));
+  background:
+    var(--contours),
+    linear-gradient(160deg, var(--deep-green), var(--racing-green));
   border: 1px solid var(--glass-border);
   padding: clamp(0.6rem, 2vw, 1.1rem);
   border-radius: var(--radius);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
-.plate img { width: 100%; background: var(--midnight); border-radius: 1px; }
+.plate .plate-mount:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+.plate img {
+  width: 100%;
+  background: var(--midnight);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.plate img[data-loaded] { opacity: 1; }
 .plate figcaption {
   font-size: var(--step--1);
   color: var(--text-on-dark-soft);
@@ -331,8 +352,15 @@ img { max-width: 100%; height: auto; display: block; }
   margin-right: 0.6em;
 }
 .hero-caption .plate-id { color: var(--gold); }
-.plate.plate-contained .plate-mount { display: inline-block; }
+/* Contained plates: the small archive scans sit centred on a full-width
+   exhibition matte at native-ish size — staged, never stretched. */
+.plate.plate-contained .plate-mount {
+  display: flex;
+  justify-content: center;
+  padding-block: clamp(1rem, 3vw, 1.8rem);
+}
 .plate.plate-contained img { width: auto; max-width: min(100%, 640px); }
+.plate.plate-contained figcaption { text-align: center; margin-inline: auto; }
 
 /* ---------- Experience fronts ---------- */
 
@@ -352,6 +380,71 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: var(--measure);
 }
 .paper .coming { color: var(--ink-soft); }
+
+.cta {
+  display: inline-block;
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: var(--step-0);
+  color: var(--midnight);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 0.7rem 1.4rem;
+  text-decoration: none;
+  margin: var(--space-3) 0 0;
+  transition: background 140ms ease, transform 140ms ease;
+}
+.cta:hover, .cta:focus-visible {
+  background: var(--ivory);
+  color: var(--midnight);
+  transform: translateY(-1px);
+}
+
+.season-rail {
+  position: sticky;
+  top: 3.4rem; /* below the compact mobile masthead */
+  z-index: 40;
+  background: color-mix(in srgb, var(--midnight) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-block: 1px solid var(--glass-border);
+  margin: var(--space-3) calc(-1 * var(--page-pad));
+}
+.season-rail ul {
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2) var(--page-pad);
+  overflow-x: auto;
+}
+.season-rail a {
+  display: grid;
+  place-items: center;
+  min-width: 3.1rem;
+  height: 3.1rem;
+  border: 1.5px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 560;
+  color: var(--text-on-dark);
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+.season-rail a:hover { border-color: var(--gold); }
+.season-rail a[aria-current='true'] {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--midnight);
+}
+
+@media (min-width: 60rem) {
+  /* below the masthead + nav rail */
+  .season-rail { top: 5.6rem; }
+}
+
+/* Anchored sections clear the sticky chrome when jumped to. */
+.page section[id] { scroll-margin-top: 7.5rem; }
 
 .year-roundels {
   display: flex;
@@ -417,3 +510,16 @@ img { max-width: 100%; height: auto; display: block; }
   gap: var(--space-2);
 }
 .site-footer p { margin: 0; }
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.3rem;
+  list-style: none;
+  margin: 0 0 var(--space-2);
+  padding: 0;
+}
+.footer-nav a {
+  color: var(--text-on-dark-soft);
+  text-decoration: none;
+}
+.footer-nav a:hover { color: var(--gold); }

@@ -13,13 +13,21 @@ export default function Story() {
     <>
       <section className="hero">
         <div className="hero-photo" aria-hidden="true">
-          <img src={photoUrl(hero)} alt="" loading="eager" />
+          <img
+            src={photoUrl(hero)}
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
         <div className="hero-inner">
           <p className="hero-kicker">Dundrod · County Antrim · 1950–1955</p>
           <h1>{siteSettings.headline}</h1>
           <p className="hero-subtitle">{siteSettings.subtitle}</p>
           <p className="hero-distinction">{siteSettings.headlineDistinction}</p>
+          <Link className="cta" to="/seasons">
+            Begin the story
+          </Link>
           <ul className="year-roundels" aria-label="Seasons">
             {years.map((y) => (
               <li key={y.id}>

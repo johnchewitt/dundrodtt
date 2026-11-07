@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SeasonRail from '../components/SeasonRail';
 import {
   carById,
   incidents,
@@ -41,7 +42,15 @@ function RaceRecord({ race }: { race: Race }) {
                 .map((id) => personById.get(id)?.name)
                 .join(' and ')}
               {c.carId ? `, ${carById.get(c.carId)?.name}` : ''}
-              {c.teamId ? ` (${teamById.get(c.teamId)?.name})` : ''}
+              {(() => {
+                // Skip the entrant when the car name already carries it
+                // ("Aston Martin DB3S (Aston Martin)" reads doubled).
+                const team = c.teamId ? teamById.get(c.teamId)?.name : null;
+                const car = c.carId ? carById.get(c.carId)?.name : '';
+                return team && !car?.includes(team.replace(' (works)', ''))
+                  ? ` (${team})`
+                  : '';
+              })()}
               {c.note ? ` — ${c.note}` : ''}
             </li>
           ))}
@@ -55,6 +64,7 @@ export default function Seasons() {
   return (
     <div className="page">
       <h1>Six Racing Seasons</h1>
+      <SeasonRail />
       <p className="standfirst">
         1950 to 1955, year by year. The Ulster Trophy and the RAC Tourist
         Trophy were different events, and this timeline keeps them distinct.

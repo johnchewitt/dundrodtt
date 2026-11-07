@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { acknowledgements } from '../model/content';
+import { experiences } from './SiteHeader';
 
 export default function SiteFooter() {
   const credit = acknowledgements.find(
@@ -7,6 +9,15 @@ export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="site-footer-inner">
+        <nav aria-label="Experiences (footer)">
+          <ul className="footer-nav">
+            {experiences.map((e) => (
+              <li key={e.path}>
+                <Link to={e.path}>{e.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         {credit && (
           <p>
             Neville Armstrong kindly contributed photographs of Dundrod from

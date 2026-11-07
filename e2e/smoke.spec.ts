@@ -53,3 +53,37 @@ test('archive photographs load real images', async ({ page }) => {
     )
     .toBe(true);
 });
+
+test('year roundels scroll to the season anchor', async ({ page }) => {
+  await page.goto('');
+  await page.getByRole('link', { name: '1952', exact: true }).click();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () => document.getElementById('y1952')?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 300;
+    })
+    .toBe(true);
+});
+
+test('document titles change per experience', async ({ page }) => {
+  await page.goto('#/archive');
+  await expect(page).toHaveTitle(/Photo Archive · Dundrod/);
+  await page.goto('');
+  await expect(page).toHaveTitle(/^Dundrod — The Forgotten Racing Years$/);
+});
+
+test('mobile menu opens, navigates and closes', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('');
+  await page.getByRole('button', { name: 'Menu' }).click();
+  await page
+    .getByRole('dialog')
+    .getByRole('link', { name: 'The Circuit' })
+    .click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
+  ).toBeVisible();
+  await expect(page.getByRole('dialog')).toBeHidden();
+});

@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import SiteHeader from './components/SiteHeader';
+import ScrollAndTitle from './components/ScrollAndTitle';
 import SiteFooter from './components/SiteFooter';
 import Story from './pages/Story';
 import Seasons from './pages/Seasons';
@@ -16,6 +17,7 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
+      <ScrollAndTitle />
       <SiteHeader />
       <main id="main">
         <Routes>
