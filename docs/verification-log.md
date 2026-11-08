@@ -2,6 +2,23 @@
 
 Each stage records what passed and what remains unverified.
 
+## Merge & first deployment — 2026-11-08
+**Passed:** PRs #1–#3 merged to main (stage branches left in place — the
+environment's safety rules block branch deletion; owner can tidy).
+GitHub Pages deployment added (.github/workflows/deploy.yml: npm ci,
+build with type-check + content validator, Vitest, upload + deploy);
+owner enabled Pages (Source: GitHub Actions); live at
+https://johnchewitt.github.io/dundrodtt/. Two live-only defects found
+and fixed by verifying in a real browser: (1) repo-relative GeoJSON
+paths resolved against the SDK's CDN-origin workers — made absolute;
+(2) even absolute, concurrent worker fetches proved flaky (one of three
+loaded) — the app now fetches GeoJSON on the main thread and hands each
+layer its own blob URL. Verified live: cover with crossfade, circuit
+explorer with illuminated route and all 13 labelled landmarks on the
+dark basemap, map-click → camera flight → floating Tornagrough story
+panel with restrained incident text, Then & Now section and provisional
+note. Camera-opening extent via queryExtent fallback.
+
 ## Stage 3 completion — landmarks, lap, map modes — 2026-11-08
 **Passed:** 13 provisional landmark points generated — every point
 snapped onto the verified route polyline, positioned from the 1954
