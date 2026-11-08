@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
-import type MapView from '@arcgis/core/views/MapView';
 import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
 import SimpleLineSymbol from '@arcgis/core/symbols/SimpleLineSymbol';
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol';
 import LabelClass from '@arcgis/core/layers/support/LabelClass';
 import '@arcgis/map-components/components/arcgis-map';
+import '@arcgis/map-components/components/arcgis-scene';
 import { arcgisSettings } from '../../config/appSettings';
 import { useUiStore } from '../../store/uiStore';
 import { LapEngine, type LapStop } from './lapEngine';
@@ -21,6 +21,23 @@ const IVORY = [242, 235, 221, 1];
 /** Either hosted FeatureLayers or repo-local GeoJSON files work; the
  *  two classes share the query/render surface the explorer uses. */
 type CircuitLayer = FeatureLayer | GeoJSONLayer;
+
+/** The camera/query surface shared by MapView and SceneView. */
+interface ViewLike {
+  goTo(target: unknown, options?: unknown): Promise<unknown>;
+  on(name: string, handler: (event: never) => void): unknown;
+  hitTest(
+    event: unknown,
+    options?: { include: unknown[] },
+  ): Promise<{ results: Array<{ type: string; graphic?: { attributes?: Record<string, unknown> } }> }>;
+}
+
+/** Minimal surface of the <arcgis-map>/<arcgis-scene> custom elements. */
+interface ArcgisViewElement extends HTMLElement {
+  basemap: string;
+  view: ViewLike;
+  map: { addMany(layers: CircuitLayer[]): void } | null;
+}
 
 function makeLayer(
   url: string,
@@ -40,121 +57,128 @@ function makeLayer(
     : new FeatureLayer({ url: resolved, ...options });
 }
 
-/** Minimal surface of the <arcgis-map> custom element we rely on. */
-interface ArcgisMapElement extends HTMLElement {
-  basemap: string;
-  view: MapView;
-  map: { addMany(layers: CircuitLayer[]): void } | null;
-}
-
-function routeRenderers() {
-  const glow = new SimpleRenderer({
-    symbol: new SimpleLineSymbol({ color: GOLD_GLOW, width: 10, cap: 'round' }),
-  });
-  const line = new SimpleRenderer({
-    symbol: new SimpleLineSymbol({ color: GOLD, width: 3.2, cap: 'round' }),
-  });
-  return { glow, line };
-}
-
-function landmarkRenderer() {
-  return new SimpleRenderer({
-    symbol: new SimpleMarkerSymbol({
-      size: 11,
-      color: GREEN_DEEP,
-      outline: { color: GOLD, width: 1.6 },
+function buildLayers() {
+  const { routeLayerUrl, landmarksLayerUrl } = arcgisSettings;
+  if (!routeLayerUrl) return null;
+  const routeGlow = makeLayer(routeLayerUrl, {
+    renderer: new SimpleRenderer({
+      symbol: new SimpleLineSymbol({ color: GOLD_GLOW, width: 10, cap: 'round' }),
     }),
   });
+  const route = makeLayer(routeLayerUrl, {
+    renderer: new SimpleRenderer({
+      symbol: new SimpleLineSymbol({ color: GOLD, width: 3.2, cap: 'round' }),
+    }),
+  });
+  // Landmarks only when their layer exists — never derived from the
+  // route line, never invented.
+  const landmarks = landmarksLayerUrl
+    ? makeLayer(landmarksLayerUrl, {
+        renderer: new SimpleRenderer({
+          symbol: new SimpleMarkerSymbol({
+            size: 11,
+            color: GREEN_DEEP,
+            outline: { color: GOLD, width: 1.6 },
+          }),
+        }),
+        labelingInfo: [
+          new LabelClass({
+            labelExpressionInfo: { expression: '$feature.name' },
+            labelPlacement: 'above-center',
+            symbol: {
+              type: 'text',
+              color: IVORY,
+              haloColor: GREEN_DEEP,
+              haloSize: 1.4,
+              font: { family: 'Avenir Next LT Pro', size: 10, style: 'italic' },
+            },
+          }),
+        ],
+        outFields: ['locId', 'name', 'seq'],
+      })
+    : null;
+  return { routeGlow, route, landmarks };
 }
 
-function landmarkLabels() {
-  return new LabelClass({
-    labelExpressionInfo: { expression: '$feature.name' },
-    labelPlacement: 'above-center',
-    symbol: {
-      type: 'text',
-      color: IVORY,
-      haloColor: GREEN_DEEP,
-      haloSize: 1.4,
-      font: { family: 'Avenir Next LT Pro', size: 10, style: 'italic' },
-    },
-  });
-}
+const reduceMotion = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
- * The interactive circuit map, created only when the owner's verified
- * FeatureLayer is configured. Geography lives entirely in the supplied
- * service: the camera opens on the route layer's own extent and every
- * marker comes from the layer — nothing is invented here. Landmark
- * features join editorial content through their `locId` field.
+ * The interactive circuit explorer. Geography lives entirely in the
+ * supplied layers: the camera opens on the route's own extent and every
+ * marker comes from the landmarks layer — nothing is invented here.
+ * Landmark features join editorial content through their `locId` field.
+ * mapMode: dark exhibition map, satellite (Then & Now), or 3D terrain.
  */
 export default function ArcGisExplorer() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const viewRef = useRef<MapView | null>(null);
+  const viewRef = useRef<ViewLike | null>(null);
+  const elRef = useRef<ArcgisViewElement | null>(null);
   const landmarksRef = useRef<CircuitLayer | null>(null);
   const engineRef = useRef<LapEngine | null>(null);
-  const [satellite, setSatellite] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [lap, setLap] = useState<LapControlsState>({
     state: 'idle',
     stopIndex: 0,
     total: 0,
   });
+  const mapMode = useUiStore((s) => s.mapMode);
+  const setMapMode = useUiStore((s) => s.setMapMode);
   const selectedLocationId = useUiStore((s) => s.selectedLocationId);
   const selectLocation = useUiStore((s) => s.selectLocation);
+  const is3D = mapMode === '3d';
 
-  // Build the map element once.
+  // Build (or rebuild, on 2D/3D switch) the view element.
   useEffect(() => {
     const container = containerRef.current;
-    const { routeLayerUrl, landmarksLayerUrl } = arcgisSettings;
-    if (!container || !routeLayerUrl) return;
+    const layers = buildLayers();
+    if (!container || !layers) return;
 
-    const el = document.createElement('arcgis-map') as ArcgisMapElement;
-    // Legacy basemap ids work without an API key; the layer is public.
-    el.basemap = 'dark-gray-vector';
+    const el = document.createElement(
+      is3D ? 'arcgis-scene' : 'arcgis-map',
+    ) as ArcgisViewElement;
+    // Legacy basemap ids work without an API key; the layers are local.
+    el.basemap =
+      useUiStore.getState().mapMode === 'satellite' ? 'hybrid' : 'dark-gray-vector';
+    if (is3D) el.setAttribute('ground', 'world-elevation');
     el.style.width = '100%';
     el.style.height = '100%';
     container.appendChild(el);
-
-    const { glow, line } = routeRenderers();
-    const routeGlow = makeLayer(routeLayerUrl, { renderer: glow });
-    const route = makeLayer(routeLayerUrl, { renderer: line });
-    // Landmarks only when their layer exists — never derived from the
-    // route line, never invented.
-    const landmarks = landmarksLayerUrl
-      ? makeLayer(landmarksLayerUrl, {
-          renderer: landmarkRenderer(),
-          labelingInfo: [landmarkLabels()],
-          outFields: ['locId', 'name', 'seq'],
-        })
-      : null;
-    landmarksRef.current = landmarks;
+    elRef.current = el;
+    landmarksRef.current = layers.landmarks;
 
     const onReady = async () => {
       const view = el.view;
       viewRef.current = view;
       el.map?.addMany(
-        landmarks ? [routeGlow, route, landmarks] : [routeGlow, route],
+        layers.landmarks
+          ? [layers.routeGlow, layers.route, layers.landmarks]
+          : [layers.routeGlow, layers.route],
       );
       try {
-        await route.when();
-        if (route.fullExtent) {
-          await view.goTo(route.fullExtent.expand(1.25), { animate: false });
+        await layers.route.when();
+        if (layers.route.fullExtent) {
+          await view.goTo(layers.route.fullExtent.expand(1.25), {
+            animate: false,
+          });
         }
       } catch {
         setLoadError(true);
         return;
       }
+      const landmarks = layers.landmarks;
       if (!landmarks) return;
-      view.on('click', async (event) => {
-        const hit = await view.hitTest(event, { include: [landmarks] });
-        const graphic = hit.results.find((r) => r.type === 'graphic');
-        const locId =
-          graphic && 'graphic' in graphic
-            ? (graphic.graphic.attributes?.locId as string | undefined)
-            : undefined;
-        if (locId) selectLocation(locId);
-      });
+      (view as unknown as { on(n: string, h: (e: unknown) => void): void }).on(
+        'click',
+        async (event) => {
+          const hit = await view.hitTest(event, { include: [landmarks] });
+          const graphic = hit.results.find((r) => r.type === 'graphic');
+          const locId = graphic?.graphic?.attributes?.locId as
+            | string
+            | undefined;
+          if (locId) selectLocation(locId);
+        },
+      );
     };
     el.addEventListener('arcgisViewReadyChange', onReady);
     const onError = () => setLoadError(true);
@@ -166,9 +190,16 @@ export default function ArcGisExplorer() {
       el.removeEventListener('arcgisError', onError);
       el.remove();
       viewRef.current = null;
+      elRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [is3D]);
+
+  // Basemap follows mapMode without rebuilding the view.
+  useEffect(() => {
+    const el = elRef.current;
+    if (el) el.basemap = mapMode === 'satellite' ? 'hybrid' : 'dark-gray-vector';
+  }, [mapMode]);
 
   // Catalogue/panel selection → camera.
   useEffect(() => {
@@ -183,24 +214,13 @@ export default function ArcGisExplorer() {
       });
       const feature = result.features[0];
       if (feature?.geometry) {
-        const reduce = window.matchMedia(
-          '(prefers-reduced-motion: reduce)',
-        ).matches;
         await view.goTo(
           { target: feature.geometry, scale: 18000 },
-          { animate: !reduce, duration: 1400 },
+          { animate: !reduceMotion(), duration: 1400 },
         );
       }
     })();
   }, [selectedLocationId]);
-
-  // Basemap toggle (legacy ids: keyless).
-  useEffect(() => {
-    const el = containerRef.current?.querySelector('arcgis-map') as
-      | ArcgisMapElement
-      | null;
-    if (el) el.basemap = satellite ? 'hybrid' : 'dark-gray-vector';
-  }, [satellite]);
 
   const startLap = async () => {
     const landmarks = landmarksRef.current;
@@ -218,7 +238,6 @@ export default function ArcGisExplorer() {
       }))
       .filter((s) => s.locId && Number.isFinite(s.seq));
     if (stops.length === 0) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     engineRef.current?.exit();
     engineRef.current = new LapEngine(
       stops,
@@ -251,7 +270,7 @@ export default function ArcGisExplorer() {
             total: engineRef.current?.total ?? l.total,
           })),
       },
-      { reduceMotion: reduce },
+      { reduceMotion: reduceMotion() },
     );
     engineRef.current.play();
   };
@@ -262,8 +281,8 @@ export default function ArcGisExplorer() {
         <div className="map-fallback" role="status">
           <h3>The circuit map could not load</h3>
           <p>
-            The configured circuit layer did not respond. The named places
-            and their stories below still work; try again shortly.
+            The circuit layers did not respond. The named places and their
+            stories below still work; try again shortly.
           </p>
         </div>
       </div>
@@ -274,14 +293,25 @@ export default function ArcGisExplorer() {
     <div className="explorer">
       <div className="explorer-map" ref={containerRef} />
       <div className="explorer-toolbar">
-        <button
-          type="button"
-          className="menu-button"
-          aria-pressed={satellite}
-          onClick={() => setSatellite((v) => !v)}
-        >
-          {satellite ? 'Dark map' : 'Satellite'}
-        </button>
+        <div role="group" aria-label="Map view" className="map-mode-group">
+          {(
+            [
+              ['dark', 'Dark map'],
+              ['satellite', 'Satellite'],
+              ['3d', '3D terrain'],
+            ] as const
+          ).map(([mode, label]) => (
+            <button
+              key={mode}
+              type="button"
+              className="menu-button"
+              aria-pressed={mapMode === mode}
+              onClick={() => setMapMode(mode)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
         <TakeALap
           controls={lap}
           onPlay={() =>

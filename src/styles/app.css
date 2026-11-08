@@ -975,3 +975,19 @@ img { max-width: 100%; height: auto; display: block; }
     margin-top: 0;
   }
 }
+
+/* Stage 3 live map */
+.map-mode-group { display: flex; gap: var(--space-1); }
+.map-mode-group .menu-button[aria-pressed='true'] {
+  background: var(--gold);
+  color: var(--midnight);
+  border-color: var(--gold);
+}
+.explorer-map { height: min(78vh, 52rem); }
+.then-now {
+  border-top: var(--rule-gold);
+  padding-top: var(--space-2);
+  margin-top: var(--space-3);
+}
+.then-now h4 { margin-bottom: var(--space-1); }
+.then-now p { margin-bottom: var(--space-2); }

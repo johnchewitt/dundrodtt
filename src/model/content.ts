@@ -114,11 +114,13 @@ export interface CircuitLocation {
   photoIds?: string[];
   mapFeatureId?: string;
   /**
-   * Confidence: the historic name is verified from period sources;
-   * 'pending' means its map position awaits the owner's verified
-   * circuit layer — never an invented pin.
+   * Confidence: the historic name is verified from period sources.
+   * 'pending' — no map position yet (never an invented pin);
+   * 'provisional' — placed on the verified route from period/owner maps
+   * and route geometry, awaiting survey-grade confirmation;
+   * 'verified' — confirmed against authoritative mapping.
    */
-  geometryStatus: 'pending' | 'verified';
+  geometryStatus: 'pending' | 'provisional' | 'verified';
   sourceRefs: string[];
 }
 

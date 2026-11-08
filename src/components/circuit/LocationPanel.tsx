@@ -18,6 +18,7 @@ import { useUiStore } from '../../store/uiStore';
 export default function LocationPanel() {
   const selected = useUiStore((s) => s.selectedLocationId);
   const selectLocation = useUiStore((s) => s.selectLocation);
+  const setMapMode = useUiStore((s) => s.setMapMode);
   const location = selected ? locationById.get(selected) : null;
   if (!location) return null;
 
@@ -82,10 +83,26 @@ export default function LocationPanel() {
         </p>
       )}
 
-      {location.geometryStatus === 'pending' && (
+      <div className="then-now">
+        <h4>Then &amp; Now</h4>
+        <p className="muted">
+          No approved modern photograph of this place yet — the comparison
+          view grows as present-day photography is added.
+        </p>
+        <button
+          type="button"
+          className="menu-button"
+          onClick={() => setMapMode('satellite')}
+        >
+          See this place from above today
+        </button>
+      </div>
+
+      {location.geometryStatus !== 'verified' && (
         <p className="location-pending">
-          The historic name is verified from period sources; its marker on
-          the interactive map arrives with the verified landmark points.
+          {location.geometryStatus === 'provisional'
+            ? 'The historic name is verified from period sources; the map marker is provisional — placed on the verified route from the period and owner maps, pending survey-grade confirmation.'
+            : 'The historic name is verified from period sources; its marker on the interactive map arrives with the verified landmark points.'}
         </p>
       )}
 

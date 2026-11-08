@@ -2,6 +2,31 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 3 completion — landmarks, lap, map modes — 2026-11-08
+**Passed:** 13 provisional landmark points generated — every point
+snapped onto the verified route polyline, positioned from the 1954
+programme map order, the owner's corner map and the route's own
+geometric features (the B101/B38 junction, the angled stream-crossing
+kink at Leathemstown Bridge, the digitised hairpin tip); period names,
+clockwise seq 1–13; provenance appended to data/circuit/PROVENANCE.md.
+landmarksLayerUrl configured: markers with period-style labels,
+map-click → story panel, catalogue → camera goTo, and "Take a Lap of
+Dundrod" (full play/pause/skip/restart/exit on the tested LapEngine)
+are all live. Map modes: dark / satellite / 3D terrain scene
+(arcgis-scene, world elevation), store-driven; the location panel gains
+a Then & Now section (honest no-modern-photo state + "see this place
+from above today" satellite action). geometryStatus 'provisional'
+introduced and labelled in the panel. Gates: validator (now checks
+landmarks locIds, unique seq, Dundrod-area coordinates); tsc; oxlint;
+Vitest 18/18; Playwright 15/15; production build.
+**Unverified / outstanding (honestly):** live rendering of basemap,
+markers, camera flights, 2D/3D transitions and lap motion needs an
+open network (this environment blocks the ArcGIS CDN — the e2e asserts
+the explorer-or-honest-error contract instead); landmark positions are
+provisional pending survey-grade confirmation; Then & Now photo
+comparisons await approved modern photography; no photo↔location links
+exist yet so no "Show on Circuit" actions are shown (none invented).
+
 ## Stage 3 circuit wiring — 2026-11-08
 **Passed:** the owner's circuit trace (supplied as EPSG:29902 GeoJSON +
 modern UGP corner map) was verified — closed loop, clockwise, correct

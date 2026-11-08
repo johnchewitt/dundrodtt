@@ -193,7 +193,7 @@ test('circuit page: catalogue selection opens the location story', async ({
   await expect(panel).toBeVisible();
   await expect(panel.getByText(/killed Jim Mayers and William Smith/)).toBeVisible();
   await expect(panel.getByText(/never guessed/)).toBeVisible();
-  await expect(panel.getByText(/arrives with the verified landmark points/)).toBeVisible();
+  await expect(panel.getByText(/marker is provisional/)).toBeVisible();
   await panel.getByRole('link', { name: '1955' }).click();
   await expect
     .poll(async () => {
@@ -205,14 +205,14 @@ test('circuit page: catalogue selection opens the location story', async ({
     .toBe(true);
 });
 
-test('circuit page: route configured, landmark-dependent features honest', async ({
+test('circuit page: explorer live with provisional landmarks', async ({
   page,
 }) => {
   await page.goto('#/circuit');
   await expect(
     page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
   ).toBeVisible();
-  // The explorer attempts to load (or reports failure); never a dead panel.
+  // The explorer loads, or reports failure honestly; never a dead panel.
   await expect
     .poll(async () =>
       page.evaluate(
@@ -223,9 +223,18 @@ test('circuit page: route configured, landmark-dependent features honest', async
       ),
     )
     .toBe(true);
-  // The guided lap explains that it waits for landmark points.
-  await page.getByRole('button', { name: 'Take a Lap of Dundrod' }).click();
-  await expect(
-    page.getByText(/waits for their verified positions|waits for the accurate circuit map/),
-  ).toBeVisible();
+  // When the SDK can reach its assets the toolbar renders; in a
+  // network-restricted environment the labelled error state shows.
+  const explorer = await page
+    .waitForSelector('.explorer-toolbar', { timeout: 15000 })
+    .catch(() => null);
+  if (explorer) {
+    await expect(page.getByRole('button', { name: 'Satellite' })).toBeVisible();
+    await expect(page.getByRole('button', { name: '3D terrain' })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: /Take a Lap of Dundrod|Lap again/ }),
+    ).toBeVisible();
+  } else {
+    await expect(page.getByText(/could not load/)).toBeVisible();
+  }
 });

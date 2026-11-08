@@ -6,7 +6,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-irelands-corner",
@@ -15,7 +15,7 @@
       "R11",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-quarterland",
@@ -24,7 +24,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-budore",
@@ -33,7 +33,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-jordans-cross",
@@ -42,7 +42,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-wheelers-corner",
@@ -51,7 +51,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-1950s-hairpin",
@@ -61,7 +61,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-the-quarry",
@@ -70,7 +70,7 @@
       "R11",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-rushyhill",
@@ -79,7 +79,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-leathemstown-corner",
@@ -88,7 +88,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-leathemstown-bridge",
@@ -99,7 +99,7 @@
       "R13",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-deers-leap",
@@ -112,7 +112,7 @@
       "R11",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   },
   {
     "id": "loc-tornagrough",
@@ -125,6 +125,6 @@
       "R11",
       "R14"
     ],
-    "geometryStatus": "pending"
+    "geometryStatus": "provisional"
   }
 ]

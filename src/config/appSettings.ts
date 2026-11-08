@@ -30,10 +30,10 @@ export const arcgisSettings: ArcgisSettings = {
   // The 1950–55 route, corrected at the hairpin and owner-approved
   // 2026-11-08; provenance in data/circuit/PROVENANCE.md.
   routeLayerUrl: 'circuit/route.geojson',
-  // Landmark points (locId/name/seq) not yet supplied — selection
-  // storytelling runs from the catalogue; the map adds markers, camera
-  // moves and the guided lap once these exist.
-  landmarksLayerUrl: null,
+  // Provisional landmark points: placed on the verified route from the
+  // 1954 programme map order, the owner's corner map and the route's
+  // own geometry; period names. See landmarks.geojson properties note.
+  landmarksLayerUrl: 'circuit/landmarks.geojson',
   portalUrl: 'https://www.arcgis.com',
   apiKey: import.meta.env.VITE_ARCGIS_API_KEY ?? null,
 };

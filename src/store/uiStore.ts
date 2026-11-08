@@ -8,17 +8,23 @@ interface UiState {
   selectedYearId: string | null;
   selectedLocationId: string | null;
   archiveFilters: { year: number | null; event: string | null };
+  /** Circuit map presentation: dark exhibition basemap, modern
+   *  satellite imagery (Then & Now), or the 3D terrain scene. */
+  mapMode: 'dark' | 'satellite' | '3d';
   selectYear: (id: string | null) => void;
   selectLocation: (id: string | null) => void;
   setArchiveFilters: (f: Partial<UiState['archiveFilters']>) => void;
+  setMapMode: (m: UiState['mapMode']) => void;
 }
 
 export const useUiStore = create<UiState>((set) => ({
   selectedYearId: null,
   selectedLocationId: null,
   archiveFilters: { year: null, event: null },
+  mapMode: 'dark',
   selectYear: (id) => set({ selectedYearId: id }),
   selectLocation: (id) => set({ selectedLocationId: id }),
   setArchiveFilters: (f) =>
     set((s) => ({ archiveFilters: { ...s.archiveFilters, ...f } })),
+  setMapMode: (m) => set({ mapMode: m }),
 }));
