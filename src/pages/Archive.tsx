@@ -131,7 +131,6 @@ export default function Archive() {
       type="button"
       className="plate-button"
       onClick={() => openPhoto(indexOf(p.id))}
-      aria-label={`View full screen: ${p.imageTitle ?? p.id}`}
     >
       <PhotoPlate photo={p} contained />
     </button>
@@ -256,7 +255,7 @@ export default function Archive() {
 
           {filtering ? (
             <>
-              <h2>
+              <h2 aria-live="polite">
                 {filtered.length}{' '}
                 {filtered.length === 1 ? 'photograph' : 'photographs'}
                 {year !== null ? ` from ${year}` : ''}
@@ -323,7 +322,6 @@ export default function Archive() {
                         type="button"
                         className="plate-button"
                         onClick={() => openPhoto(indexOf(p.id))}
-                        aria-label={`View full screen: ${p.imageTitle ?? p.id}`}
                       >
                         <PhotoPlate photo={p} contained loading={i < 2 ? 'eager' : 'lazy'} />
                       </button>

@@ -3,6 +3,7 @@ import SiteHeader from './components/SiteHeader';
 import ScrollAndTitle from './components/ScrollAndTitle';
 import SiteFooter from './components/SiteFooter';
 import Home from './pages/Home';
+import Discover from './pages/Discover';
 import Story from './pages/Story';
 import Seasons from './pages/Seasons';
 import Circuit from './pages/Circuit';
@@ -23,6 +24,7 @@ export default function App() {
       <main id="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/discover" element={<Discover />} />
           <Route path="/story" element={<Story />} />
           <Route path="/seasons" element={<Seasons />} />
           <Route path="/circuit" element={<Circuit />} />

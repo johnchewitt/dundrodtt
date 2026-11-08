@@ -32,6 +32,12 @@ export default function SiteFooter() {
           drivers — though never a championship Grand Prix. Historical copy is
           drawn from the project&apos;s supplied source material.
         </p>
+        <p className="footer-rights">
+          Photographs © their contributors, shown by kind permission;
+          period films remain with their archives and are linked, never
+          rehosted. Map data © Esri and its data providers (attribution on
+          the map). Please contact the project before reusing any material.
+        </p>
       </div>
     </footer>
   );

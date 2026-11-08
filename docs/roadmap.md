@@ -12,7 +12,7 @@ spine ✅ · cinematic home/story ✅ · circuit explorer with provisional
 1950s geometry, landmarks and guided lap ✅ (owner's Stage 3 prompt) ·
 six-seasons interactive timeline ✅ (owner's Stage 4 prompt, 2026-11-08) ·
 photographic & film archive ✅ (owner's Stage 6 prompt, 2026-11-08: masonry gallery, full faceted filters, Lost Photographs of 1950, Behind the Photographs, linked film collection, thumbnails) · drivers & teams: profile
-cards + deep-link anchors shipped, full profiles to come · Dundrod Today and final QA: not started.
+cards + deep-link anchors shipped, full profiles to come · Dundrod Today ✅ and the final experience/verification stage ✅ (owner's Stage 7 prompt, 2026-11-08: Discover Dundrod guided tour, Today explorer, accessibility suite, publication prep — deployment awaiting owner authorisation).
 
 ## Stage 1 — Foundation, identity and content spine
 Scaffold (React+TS+Vite, GitHub Pages-ready base/routing), design system

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "tour-1-return",
+    "kicker": "I · The return",
+    "title": "Racing comes back to Ulster",
+    "photoId": "DU-1950-01",
+    "parts": [
+      { "kind": "story", "id": "ch-before", "index": 2 },
+      { "kind": "editorial", "text": "Fourteen years after Ards fell silent, the Tourist Trophy came home to Northern Ireland." }
+    ],
+    "link": { "to": "/story", "label": "Read the full story" }
+  },
+  {
+    "id": "tour-2-circuit",
+    "kicker": "II · The circuit",
+    "title": "Seven miles of country road",
+    "photoId": "DU-1950-07",
+    "parts": [
+      { "kind": "story", "id": "ch-creation", "index": 0 }
+    ],
+    "link": { "to": "/circuit", "label": "Explore the circuit" }
+  },
+  {
+    "id": "tour-3-1950",
+    "kicker": "III · 1950",
+    "title": "The first meeting",
+    "photoId": "DU-1950-05",
+    "parts": [
+      { "kind": "year", "id": "y1950" }
+    ],
+    "link": { "to": "/seasons#y1950", "label": "The 1950 season" }
+  },
+  {
+    "id": "tour-4-moss",
+    "kicker": "IV · Moss",
+    "title": "The rise of Stirling Moss",
+    "photoId": "DU-1951-08",
+    "parts": [
+      { "kind": "person", "id": "p-stirling-moss" }
+    ],
+    "link": { "to": "/drivers/p-stirling-moss", "label": "Moss's Dundrod record" }
+  },
+  {
+    "id": "tour-5-champions",
+    "kicker": "V · The champions",
+    "title": "The world arrives",
+    "photoId": "DU-1952-08",
+    "parts": [
+      { "kind": "year", "id": "y1951" },
+      { "kind": "year", "id": "y1952" }
+    ],
+    "link": { "to": "/drivers", "label": "Drivers & Teams" }
+  },
+  {
+    "id": "tour-6-championship",
+    "kicker": "VI · The championship",
+    "title": "World Sportscar Championship years",
+    "photoId": "DU-1953-04",
+    "parts": [
+      { "kind": "year", "id": "y1953" },
+      { "kind": "year", "id": "y1954" }
+    ],
+    "link": { "to": "/seasons#y1953", "label": "The championship seasons" }
+  },
+  {
+    "id": "tour-7-1955",
+    "kicker": "VII · 1955",
+    "title": "The final season",
+    "photoId": "DU-1955-05",
+    "parts": [
+      { "kind": "year", "id": "y1955" }
+    ],
+    "link": { "to": "/seasons#y1955", "label": "The final chapter" }
+  },
+  {
+    "id": "tour-8-today",
+    "kicker": "VIII · Today",
+    "title": "The roads remain",
+    "photoId": null,
+    "mapFigure": true,
+    "parts": [
+      { "kind": "editorial", "text": "The course survives almost whole in the working countryside northwest of Belfast — ordinary public roads again, past the same banks and crests the drivers knew. The photographs and films in this archive exist because people kept them; the circuit exists because the landscape kept it." }
+    ],
+    "link": { "to": "/today", "label": "Dundrod Today" }
+  }
+]

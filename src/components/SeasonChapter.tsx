@@ -76,7 +76,6 @@ export default function SeasonChapter({
             type="button"
             className="chapter-hero"
             onClick={() => onOpenPhoto(heroIndex)}
-            aria-label={`Open photograph ${hero.id} in the viewer`}
           >
             <PhotoPlate photo={hero} contained full loading={chapterNumber === 1 ? 'eager' : 'lazy'} />
           </button>
@@ -129,7 +128,7 @@ export default function SeasonChapter({
                 <button
                   type="button"
                   onClick={() => onOpenPhoto(idx)}
-                  aria-label={`Open ${p.altText ?? p.id} in the viewer`}
+                  aria-label={`${p.id} — open in the full-screen viewer`}
                 >
                   <img
                     src={photoThumbUrl(p)}
