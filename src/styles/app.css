@@ -1612,3 +1612,85 @@ a.driver-card:focus-visible {
 }
 .chip-clear { border-style: dashed; color: var(--text-on-dark-soft); }
 .chip-clear:hover { color: var(--midnight); }
+
+/* ---------- Stage 7: Discover Dundrod + Today ---------- */
+
+.discover-head h1 { margin-bottom: var(--space-1); }
+
+.discover-stage {
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+  margin: var(--space-4) 0;
+  animation: viewer-fade 320ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .discover-stage { animation: none; }
+}
+@media (min-width: 56rem) {
+  .discover-stage { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-5); }
+}
+.discover-stage h2 { font-size: var(--step-3); margin-top: 0; }
+.discover-more { margin-top: var(--space-2); }
+.discover-stage .plate { margin: 0; }
+.discover-stage .plate-mount img { width: 100%; }
+
+.discover-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  padding-top: var(--space-3);
+}
+.discover-exit { margin-left: auto; text-decoration: none; display: inline-block; }
+.discover-controls .menu-button[aria-pressed='true'] {
+  background: var(--gold);
+  color: var(--midnight);
+  border-color: var(--gold);
+}
+
+.discover-dots {
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+}
+.discover-dots button {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 140ms ease, transform 140ms ease;
+}
+.discover-dots button:hover { transform: scale(1.2); }
+.discover-dots button[data-active] { background: var(--gold); }
+.discover-dots button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.road-respect {
+  border-left: 2px solid color-mix(in srgb, var(--copper) 70%, transparent);
+  padding-left: var(--space-3);
+  color: var(--text-on-dark-soft);
+  max-width: var(--measure);
+}
+.changed-list { list-style: none; margin: var(--space-3) 0; padding: 0; max-width: var(--measure); }
+.changed-list li { margin-bottom: var(--space-3); }
+.today-page section { margin-top: var(--space-5); }
+
+/* QA7: global focus + toolbar integrity note + footer cite */
+.chip:focus-visible,
+.menu-button:focus-visible,
+.archive-tab:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.toolbar-note {
+  flex-basis: 100%;
+  font-size: 0.75rem;
+  color: var(--text-on-dark-soft);
+}
+.footer-rights { font-size: 0.78rem; color: var(--text-on-dark-soft); max-width: var(--measure); }

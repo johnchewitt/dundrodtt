@@ -346,6 +346,10 @@ export default function ArcGisExplorer() {
             </button>
           ))}
         </div>
+        <span className="toolbar-note">
+          Landmark markers are provisional — placed on the verified route
+          from the period maps, pending survey-grade confirmation.
+        </span>
         <TakeALap
           controls={lap}
           onPlay={() =>

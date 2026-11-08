@@ -16,7 +16,13 @@ export default function ScrollAndTitle() {
   useEffect(() => {
     const section =
       experiences.find((e) => e.path === pathname) ??
-      (pathname === '/credits' ? { label: 'Acknowledgements' } : null);
+      (pathname === '/credits'
+        ? { label: 'Acknowledgements' }
+        : pathname === '/discover'
+          ? { label: 'Discover Dundrod' }
+          : pathname.startsWith('/drivers/')
+            ? null // the profile page sets its own title
+            : null);
     document.title = section ? `${section.label} · ${SITE}` : SITE;
 
     if (hash) {

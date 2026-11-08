@@ -105,7 +105,6 @@ export default function DriverProfile() {
                 onClick={() =>
                   setViewerIndex(Math.max(0, photos.indexOf(portrait)))
                 }
-                aria-label={`Open photograph ${portrait.id} in the viewer`}
               >
                 <figure className="plate plate-contained">
                   <div className="plate-mount">
@@ -215,7 +214,7 @@ export default function DriverProfile() {
                 <button
                   type="button"
                   onClick={() => setViewerIndex(idx)}
-                  aria-label={`Open ${p.altText ?? p.id} in the viewer`}
+                  aria-label={`${p.id} — open in the full-screen viewer`}
                 >
                   <img
                     src={photoThumbUrl(p)}

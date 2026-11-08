@@ -9,6 +9,13 @@ import { useUiStore } from '../store/uiStore';
 export default function Circuit() {
   const [params] = useSearchParams();
   const selectLocation = useUiStore((s) => s.selectLocation);
+  const setMapMode = useUiStore((s) => s.setMapMode);
+
+  // This page's signature view is the dark exhibition map (Dundrod
+  // Today opens the same stage on satellite).
+  useEffect(() => {
+    setMapMode('dark');
+  }, [setMapMode]);
 
   // Season chapters deep-link documented places: /circuit?loc=<id>
   // opens that place's story panel on arrival.

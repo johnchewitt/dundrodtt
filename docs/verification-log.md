@@ -2,6 +2,39 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 7 — Final experience, verification & publication prep — 2026-11-08
+**Passed:** DISCOVER DUNDROD guided visit (eight scenes from the return
+of racing to the roads today; every historical sentence resolved at
+render time from the canonical story/year/person records — tour.json
+stores references, not retyped copy; Next/Previous/Pause/Play/Restart/
+Exit, clickable progress dots, keyboard control, auto-advance that
+starts paused under prefers-reduced-motion; Home now leads with the
+tour). Dundrod Today built as the present-day explorer: the verified
+geography on satellite imagery (each map page now opens in its
+signature view), the lap walk, a sourced "What changed, and when"
+record (Leathemstown Bridge, the 1965 hairpin), the heritage note
+(UGP from 1953, the Joey Dunlop grandstand), a public-roads respect
+notice, and honest Then & Now states. Refinement sweep: footer rights
+notice; provisional-markers note on the map toolbar; live region on
+archive filter counts (aria-live, after role="status" was caught
+destroying heading semantics); global focus-visible for chips, tabs
+and buttons; social preview card generated from DU-1950-05 with Open
+Graph/Twitter metadata; README rewritten for publication; final-report
+and permission-register current. Accessibility: axe-core added to the
+e2e suite — 12 routes scanned, 100+ label-content-name mismatches
+found in gallery/strip buttons and fixed (buttons now named by their
+visible content or labels containing it); all 12 scans clean at
+serious+critical. Gates: tsc (forced) · oxlint · validator · 31/31
+Vitest · 61/61 Playwright (incl. 12 axe + 4 new feature tests) ·
+production build · route audit zero-defect. Consolidated historical
+audit green (see docs/final-report.md §3).
+**Not done, by instruction:** no deployment — publication awaits the
+owner's authorisation.
+**Unverified / outstanding:** the open items consolidated in
+docs/final-report.md §6; repository is already public (it hosts the
+live site) — reviewed in §4 with one awareness flag (internal review
+notes are readable in the public catalogue JSON).
+
 ## Third deployment — Stage 6 archive live — 2026-11-08
 **Passed:** PR #6 (Stage 6 photographic & film archive + owner-approved
 1955 Pathé newsreel + QA) merged to main; GitHub Pages workflow run

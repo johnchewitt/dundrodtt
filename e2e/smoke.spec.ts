@@ -593,3 +593,60 @@ test('clear-all-filters resets the archive in one step', async ({ page }) => {
     page.getByRole('heading', { name: 'The Lost Photographs of 1950' }),
   ).toBeVisible();
 });
+
+/* ---------- Stage 7: Discover Dundrod + Dundrod Today ---------- */
+
+test('discover dundrod walks all eight scenes with full controls', async ({
+  page,
+}) => {
+  await page.goto('#/discover');
+  await expect(page).toHaveTitle(/Discover Dundrod/);
+  await expect(page.getByRole('heading', { name: 'Racing comes back to Ulster' })).toBeVisible();
+  await expect(page.locator('.discover-dots button')).toHaveCount(8);
+  // controls
+  await page.getByRole('button', { name: 'Pause' }).click();
+  await expect(page.getByRole('button', { name: 'Play' })).toBeVisible();
+  await page.getByRole('button', { name: 'Next →' }).click();
+  await expect(page.getByRole('heading', { name: 'Seven miles of country road' })).toBeVisible();
+  // jump to the last scene by dot
+  await page.getByRole('button', { name: /Scene 8/ }).click();
+  await expect(page.getByRole('heading', { name: 'The roads remain' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Next →' })).toBeDisabled();
+  await page.getByRole('button', { name: 'Restart' }).click();
+  await expect(page.getByRole('heading', { name: 'Racing comes back to Ulster' })).toBeVisible();
+  await page.getByRole('link', { name: 'Exit tour' }).click();
+  await expect(page.locator('.cover')).toBeVisible();
+});
+
+test('tour copy comes from the canonical records', async ({ page }) => {
+  await page.goto('#/discover');
+  // scene 1 ends with the Ards chapter's own closing paragraph
+  await expect(page.getByText(/not a Dundrod event/)).toBeVisible();
+});
+
+test('dundrod today opens on satellite with the respect note and changes', async ({
+  page,
+}) => {
+  await page.goto('#/today');
+  await expect(page.getByText(/drive gently/)).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'What changed, and when' }),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Leathemstown Bridge' })).toBeVisible();
+  // satellite is this page's signature view when the live map loads
+  const satellite = page.getByRole('button', { name: 'Satellite' });
+  if (await satellite.isVisible().catch(() => false)) {
+    await expect(satellite).toHaveAttribute('aria-pressed', 'true');
+  }
+  // deep link opens the place panel here too
+  await page.goto('#/today?loc=loc-1950s-hairpin');
+  await expect(
+    page.locator('.location-panel').getByText(/1950s hairpin/).first(),
+  ).toBeVisible();
+});
+
+test('home leads with the guided tour', async ({ page }) => {
+  await page.goto('#/');
+  await page.getByRole('link', { name: 'Discover Dundrod' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Discover Dundrod' })).toBeVisible();
+});

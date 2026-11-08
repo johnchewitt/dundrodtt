@@ -51,7 +51,10 @@ function Cover() {
           seven miles of closed country road above Belfast.
         </p>
         <div className="cover-actions enter enter-5">
-          <Link className="cta" to="/story">
+          <Link className="cta" to="/discover">
+            Discover Dundrod
+          </Link>
+          <Link className="cta cta-ghost" to="/story">
             Explore the Story
           </Link>
           <Link className="cta cta-ghost" to="/seasons">
