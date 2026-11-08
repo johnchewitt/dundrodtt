@@ -201,7 +201,11 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-dialog nav a[aria-current='page'] { color: var(--gold); }
 
 @media (min-width: 60rem) {
-  .menu-button { display: none; }
+  /* Only the masthead's mobile Menu toggle (and the drawer it opens)
+     disappears on wide screens — toolbars and viewers keep their
+     buttons, which share the .menu-button styling. */
+  .masthead .menu-button,
+  .nav-dialog .menu-button { display: none; }
   .nav-rail { display: block; }
 }
 
@@ -991,3 +995,361 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .then-now h4 { margin-bottom: var(--space-1); }
 .then-now p { margin-bottom: var(--space-2); }
+
+/* ---------- Stage 4: Six Racing Seasons timeline ---------- */
+
+.season-timeline {
+  position: sticky;
+  top: 3.4rem;
+  z-index: 40;
+  background: color-mix(in srgb, var(--midnight) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-block: 1px solid var(--glass-border);
+  margin: var(--space-3) calc(-1 * var(--page-pad));
+}
+.season-timeline ol {
+  position: relative;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2) var(--page-pad);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+/* the track line running through every station's meeting dots */
+.season-timeline ol::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--space-2) + 0.72rem);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--gold) 45%, transparent) 8%,
+    color-mix(in srgb, var(--gold) 45%, transparent) 92%,
+    transparent
+  );
+}
+.season-timeline li { flex: 1 0 auto; min-width: 7.5rem; }
+.season-timeline a {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  padding: 0 var(--space-2);
+  text-decoration: none;
+  color: var(--text-on-dark);
+}
+.tl-meetings {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  height: 1.45rem;
+}
+.tl-dot {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  transition: transform 140ms ease;
+}
+.tl-dot[data-held] { background: var(--gold); }
+.tl-year {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.1;
+  transition: color 140ms ease;
+}
+.tl-cue {
+  font-size: 0.72rem;
+  color: var(--text-on-dark-soft);
+  max-width: 11rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.season-timeline a:hover .tl-year,
+.season-timeline a:focus-visible .tl-year { color: var(--gold); }
+.season-timeline a:hover .tl-dot { transform: scale(1.15); }
+.season-timeline li[data-active] .tl-year { color: var(--gold); }
+.season-timeline li[data-active] .tl-cue { color: var(--gold); }
+.season-timeline li[data-active] a::after {
+  content: '';
+  position: absolute;
+  inset: auto 15% -0.55rem;
+  height: 2px;
+  background: var(--gold);
+}
+@media (min-width: 60rem) {
+  .season-timeline { top: 5.6rem; }
+}
+
+/* ---------- Stage 4: season chapters ---------- */
+
+.seasons-page .chapter {
+  padding-block: var(--space-5) var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  margin-top: var(--space-4);
+}
+.seasons-page .chapter:first-of-type { border-top: 0; }
+
+.chapter-opener {
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+}
+@media (min-width: 56rem) {
+  .chapter-opener { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-5); }
+  .chapter-opener-wide { grid-template-columns: 1fr; }
+  .chapter-opener-wide .chapter-hero { max-width: none; }
+}
+
+.chapter-kicker {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+.chapter-numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--copper);
+  font-size: var(--step-1);
+}
+.chapter-yearmark {
+  font-family: var(--font-display);
+  font-weight: 640;
+  font-size: var(--step-3);
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 38%, transparent);
+  letter-spacing: 0.04em;
+}
+.chapter-text h2 { margin-top: 0; }
+.chapter-standfirst {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-1);
+  color: var(--gold);
+  max-width: 34ch;
+}
+.chapter-summary { max-width: var(--measure); }
+
+.chapter-hero {
+  all: unset;
+  cursor: zoom-in;
+  display: block;
+  max-width: 100%;
+}
+.chapter-hero:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.chapter-hero .plate { margin: 0; }
+.chapter-hero:hover .plate-mount img { filter: brightness(1.06); }
+
+.chapter-subhead {
+  font-size: var(--step-1);
+  margin-top: var(--space-4);
+}
+
+.chapter-events {
+  border-left: 2px solid color-mix(in srgb, var(--gold) 50%, transparent);
+  padding-left: var(--space-3);
+  max-width: var(--measure);
+}
+.chapter-events p { color: var(--text-on-dark-soft); margin-bottom: var(--space-1); }
+
+.photo-strip {
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: var(--space-1) 0 var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.photo-strip li { flex: 0 0 auto; }
+.photo-strip button {
+  all: unset;
+  cursor: zoom-in;
+  display: grid;
+  gap: 0.3rem;
+  justify-items: start;
+}
+.photo-strip button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.photo-strip img {
+  height: 8.5rem;
+  width: auto;
+  display: block;
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  filter: sepia(0.14) contrast(1.02);
+  transition: filter 140ms ease, border-color 140ms ease;
+}
+.photo-strip button:hover img {
+  filter: sepia(0) contrast(1.04) brightness(1.05);
+  border-color: var(--gold);
+}
+.strip-id { font-size: 0.68rem; color: var(--text-on-dark-soft); letter-spacing: 0.06em; }
+
+.chapter-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.chip {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  border-radius: 999px;
+  font-size: var(--step--1);
+  color: var(--text-on-dark);
+  text-decoration: none;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+.chip:hover, .chip:focus-visible {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--midnight);
+}
+.chip-place { border-style: dashed; }
+.chip-archive { color: var(--gold); }
+.chip-archive:hover { color: var(--midnight); }
+
+/* photograph viewer: people links */
+.viewer-people {
+  display: block;
+  margin-top: var(--space-1);
+}
+.viewer-people a {
+  color: var(--gold);
+  margin-right: var(--space-2);
+  text-decoration-color: color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.viewer-people a:hover { text-decoration-color: var(--gold); }
+
+/* driver profile cards clear sticky chrome when deep-linked */
+.driver-card[id] { scroll-margin-top: 7.5rem; }
+
+/* Chapter anchors clear the masthead plus the sticky timeline strip. */
+.seasons-page .chapter[id] { scroll-margin-top: 9.5rem; }
+@media (min-width: 60rem) {
+  .seasons-page .chapter[id] { scroll-margin-top: 11.5rem; }
+}
+
+/* ---------- Refinements: archive gallery grid ---------- */
+
+.gallery-grid {
+  list-style: none;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 40rem) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 64rem) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.gallery-grid .plate { margin: 0; }
+.gallery-grid .plate-mount img { width: 100%; }
+/* the rare 1950 photographs keep a roomier two-across presentation */
+@media (min-width: 64rem) {
+  .gallery-special { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Refinements: driver profile photographs ---------- */
+
+.driver-photo {
+  position: relative;
+  margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-2);
+  overflow: hidden;
+}
+.driver-photo img {
+  display: block;
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  filter: sepia(0.12) contrast(1.02);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.driver-card:hover .driver-photo img { filter: sepia(0) contrast(1.03) brightness(1.04); }
+.driver-photo-id {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.4rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+  background: color-mix(in srgb, var(--midnight) 72%, transparent);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+/* ---------- Refinements: film links, figure credits, race extras ---------- */
+
+.film-links { list-style: none; margin: 0 0 var(--space-4); padding: 0; }
+.film-links li { margin-bottom: var(--space-2); }
+.film-links a { color: var(--gold); }
+
+.figure-credit { color: var(--text-on-dark-soft); font-size: 0.78rem; }
+.story-page .paper .figure-credit { color: var(--ink-soft); }
+
+.race-extra {
+  border-top: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  padding-top: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+}
+
+.period-map { margin-top: var(--space-5); }
+.period-map p { max-width: var(--measure); }
+.driver-photo { border-radius: var(--radius-panel) var(--radius-panel) 0 0; }
+.period-map .plate-mount img,
+.story-figure .plate-mount img { width: 100%; }
+
+/* ---------- QA pass: filters, viewer meta, lap walk ---------- */
+
+.archive-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-2);
+}
+.archive-filters .chip { cursor: pointer; background: none; font: inherit; }
+.archive-filters .chip[aria-pressed='true'] {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--midnight);
+}
+.filter-label {
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+  margin-right: 0.1rem;
+}
+.filter-label + .filter-label,
+.chip + .filter-label { margin-left: var(--space-3); }
+
+.viewer-meta {
+  text-align: center;
+  color: var(--gold);
+  font-size: var(--step--1);
+  margin: var(--space-1) 0 0;
+}
+
+.lap-walk {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  border-top: var(--rule-gold);
+  padding-top: var(--space-2);
+  margin-top: var(--space-3);
+}
+.lap-walk .menu-button { font-size: var(--step--1); }

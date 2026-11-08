@@ -8,7 +8,12 @@ record carries `sourceRefs: string[]` pointing into the source catalogue
 ## Entities
 
 **Year** (`years.json`) — `y1950`…`y1955`
-•id ·•year ·•summary ·•sourceRefs · storyCue · photoIds[]
+•id ·•year ·•summary ·•sourceRefs · storyCue · photoIds[] ·
+•chapterTitle (Stage 4 chapter heading) ·•heroPhotoId (validated: must
+resolve to an archive photo catalogued in that year)
+
+**Person** also carries optional `photoId` — a curated archive
+photograph for the profile card (validated).
 
 **Race** (`races.json`) — `race-1950-ut`, `race-1953-tt`, …
 •id ·•yearId ·•event (`ulster-trophy` | `rac-tt`) ·•status (`held` |

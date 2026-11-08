@@ -65,6 +65,7 @@ export default function RaceResultCard({ race }: { race: Race }) {
           {race.laps} laps · {race.time}
         </p>
       ) : null}
+      {race.notes && <p className="race-extra">{race.notes}</p>}
     </article>
   );
 }

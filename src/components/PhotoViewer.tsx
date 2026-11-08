@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { photoUrl, type Photo } from '../model/content';
+import { Link } from 'react-router-dom';
+import { personById, photoUrl, type Photo } from '../model/content';
 
 interface PhotoViewerProps {
   photos: Photo[];
@@ -60,8 +61,21 @@ export default function PhotoViewer({
       }}
     >
       {photo && (
-        <figure>
+        <figure
+          onTouchStart={(e) => {
+            (ref.current as unknown as { _sx?: number })!._sx =
+              e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            const sx = (ref.current as unknown as { _sx?: number })?._sx;
+            if (sx === undefined || index === null) return;
+            const dx = e.changedTouches[0].clientX - sx;
+            if (dx < -40 && index < photos.length - 1) onNavigate(index + 1);
+            if (dx > 40 && index > 0) onNavigate(index - 1);
+          }}
+        >
           <img src={photoUrl(photo)} alt={photo.altText ?? ''} />
+          {photo.event && <p className="viewer-meta">{photo.event}</p>}
           <figcaption>
             <span className="plate-id">{photo.id}</span>
             {photo.caption}
@@ -69,6 +83,22 @@ export default function PhotoViewer({
               {' '}
               · {index! + 1} of {photos.length}
             </span>
+            {photo.personIds.length > 0 && (
+              <span className="viewer-people">
+                {photo.personIds.map((pid) => {
+                  const person = personById.get(pid);
+                  return person ? (
+                    <Link
+                      key={pid}
+                      to={`/drivers#${pid}`}
+                      onClick={() => ref.current?.close()}
+                    >
+                      {person.name}
+                    </Link>
+                  ) : null;
+                })}
+              </span>
+            )}
           </figcaption>
           <div className="viewer-controls">
             <button

@@ -7,6 +7,7 @@ import {
   photoById,
   yearById,
 } from '../../model/content';
+import { lapNeighbours } from '../../model/lapOrder';
 import { useUiStore } from '../../store/uiStore';
 
 /**
@@ -97,6 +98,35 @@ export default function LocationPanel() {
           See this place from above today
         </button>
       </div>
+
+      {(() => {
+        const { previous, next } = lapNeighbours(location.id);
+        const prevLoc = previous ? locationById.get(previous) : null;
+        const nextLoc = next ? locationById.get(next) : null;
+        if (!prevLoc && !nextLoc) return null;
+        return (
+          <nav className="lap-walk" aria-label="Walk the lap">
+            {prevLoc && (
+              <button
+                type="button"
+                className="menu-button"
+                onClick={() => selectLocation(prevLoc.id)}
+              >
+                ← {prevLoc.name}
+              </button>
+            )}
+            {nextLoc && (
+              <button
+                type="button"
+                className="menu-button"
+                onClick={() => selectLocation(nextLoc.id)}
+              >
+                {nextLoc.name} →
+              </button>
+            )}
+          </nav>
+        );
+      })()}
 
       {location.geometryStatus !== 'verified' && (
         <p className="location-pending">

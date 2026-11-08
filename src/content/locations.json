@@ -1,65 +1,100 @@
 [
   {
+    "id": "loc-start-finish",
+    "name": "Start & Finish and the Pits",
+    "story": "The heart of a race day. The period map clusters the Londonderry, Belfast and Ulster grandstands around the pits enclosure on this stretch, with the start and finish line just beyond. Every Dundrod lap of 1950–55 began and ended here — including all 84 laps of the 1955 Tourist Trophy. Today the grandstand on this straight is named for Joey Dunlop, from the circuit's motorcycling decades.",
+    "sourceRefs": [
+      "R38",
+      "R27"
+    ],
+    "geometryStatus": "provisional"
+  },
+  {
     "id": "loc-cochranstown",
     "name": "Cochranstown",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R25",
+      "R30",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "The right-hander at the foot of Deer's Leap's descent, opening into a tree-lined avenue that ran towards Quarterland — the stretch where spectators heard Farina's Alfa Romeo at full song in 1951. The Foyle and Derry enclosures stood here on the period map."
   },
   {
     "id": "loc-irelands-corner",
     "name": "Ireland's Corner",
     "sourceRefs": [
       "R11",
-      "R14"
+      "R14",
+      "R27",
+      "R30"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "The start of the stretch that still fills visiting drivers with awe: from Ireland's Corner to Wheeler's the road sweeps on and on in top gear, with curious cambers and surface changes to catch out the unwary."
   },
   {
     "id": "loc-quarterland",
     "name": "Quarterland",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R26",
+      "R30",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "The far end of the tree-lined avenue from Cochranstown, where the course swung onto the Quarterland road for the run across the top of the circuit — fast, narrow and funnelled between banks."
   },
   {
     "id": "loc-budore",
     "name": "Budore",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R26",
+      "R30"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "Along the high northern leg of the course, Budore carried the cars between Ireland's Corner and Jordan's Cross — heavily cambered country road, built for drainage rather than cornering, on a circuit one writer described as having its own microclimate."
   },
   {
     "id": "loc-jordans-cross",
     "name": "Jordan's Cross",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R34",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "A crossroads taken barely breathing off full throttle — today's riders describe sweeping through flat out — with the Antrim grandstand marked beside it on the period map."
   },
   {
     "id": "loc-wheelers-corner",
     "name": "Wheeler's Corner",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R23",
+      "R27",
+      "R28",
+      "R34",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "The corner that closed the awe-inspiring run from Ireland's Corner: slower than it looks, rewarding momentum rather than bravery. The Slemish enclosure overlooked it. Eric Winterbottom's fatal 1951 crash was reported here, and Olivier Gendebien's Ferrari crashed here in 1955, breaking his arm."
   },
   {
     "id": "loc-1950s-hairpin",
     "name": "The 1950s hairpin",
-    "story": "The tighter 1950s hairpin belongs to the 1950–55 layout. The later Lindsay Hairpin name belongs to the altered post-1965 course.",
+    "story": "The only real stop on the lap: a bottom-gear hairpin at the end of a downhill approach, its braking area rippled by years of hard stopping — kind, one writer noted, to the drum brakes of the day. The Down and Mourne grandstands flanked it on the period map. The tighter 1950s hairpin belongs to the 1950–55 layout; the later Lindsay Hairpin name belongs to the rebuilt corner of 1965.",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R30",
+      "R38"
     ],
     "geometryStatus": "provisional"
   },
@@ -68,62 +103,77 @@
     "name": "The Quarry",
     "sourceRefs": [
       "R11",
-      "R14"
+      "R14",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "Climbing away from the hairpin, the cars passed The Quarry with the Camlough enclosure alongside — the last named corner before the grandstands, the pits and the start–finish line."
   },
   {
     "id": "loc-rushyhill",
     "name": "Rushyhill",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R27",
+      "R30",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "The first mile of the lap: from the start the road runs through a series of fast, sweeping corners past Rushyhill towards Leathemstown crossroads. Drivers learned this stretch, like the rest of Dundrod, by feel — a top-gear run between grass banks, with crests that hid what was coming."
   },
   {
     "id": "loc-leathemstown-corner",
     "name": "Leathemstown Corner",
     "sourceRefs": [
       "R13",
-      "R14"
+      "R14",
+      "R27",
+      "R38"
     ],
-    "geometryStatus": "provisional"
+    "geometryStatus": "provisional",
+    "story": "The crossroads where the course turned onto the Leathemstown road — the end of that first sweeping mile. The period map places the Fermanagh enclosure here, one of the county-named spectator stands that ringed the circuit."
   },
   {
     "id": "loc-leathemstown-bridge",
     "name": "Leathemstown Bridge",
-    "story": "The old Leathemstown Bridge was part of the period route. In 1965 the bridge section was bypassed, shortening the circuit; the later layout should not be substituted for the 1950s course.",
+    "story": "The old Leathemstown Bridge was part of the period route. In 1965 the bridge section was bypassed with a straightened road, so the 1950s cars crossed ground today's circuit no longer uses.",
     "sourceRefs": [
       "R06",
       "R13",
-      "R14"
+      "R14",
+      "R24",
+      "R30"
     ],
     "geometryStatus": "provisional"
   },
   {
     "id": "loc-deers-leap",
     "name": "Deer's Leap",
-    "story": "On the second lap of the 1955 Tourist Trophy, a multi-car crash here killed Jim Mayers and William Smith.",
+    "story": "A blind brow and then a steep descent, with the right-hand bend at Cochranstown waiting at the bottom — writers have called it the course's one terrifying downhill section. By 1955 a marshal stood on the crest with a warning flag to signal slower cars hidden beyond it. On the second lap of the 1955 Tourist Trophy, a multi-car crash here killed Jim Mayers and William Smith.",
     "incidentIds": [
       "inc-1955-deers-leap"
     ],
     "sourceRefs": [
       "R11",
-      "R14"
+      "R14",
+      "R23",
+      "R25",
+      "R30"
     ],
     "geometryStatus": "provisional"
   },
   {
     "id": "loc-tornagrough",
     "name": "Tornagrough",
-    "story": "Richard Mainwaring died here when his Elva crashed during the 1955 Tourist Trophy.",
+    "story": "A fast corner on the road that now bears its name — today's riders describe carrying corner speed and lean through here rather than braking hard. Richard Mainwaring died here when his Elva crashed during the 1955 Tourist Trophy.",
     "incidentIds": [
       "inc-1955-tornagrough"
     ],
     "sourceRefs": [
       "R11",
-      "R14"
+      "R14",
+      "R34"
     ],
     "geometryStatus": "provisional"
   }

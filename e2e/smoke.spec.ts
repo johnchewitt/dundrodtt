@@ -49,7 +49,10 @@ test('story chapters render from content with working season links', async ({
   page,
 }) => {
   await page.goto('#/story');
-  await expect(page.getByText(/The race that stopped/)).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'The Ards TT' }),
+  ).toBeVisible();
+  await expect(page.getByText(/not a Dundrod event/)).toBeVisible();
   await expect(page.getByText(/Forty thousand pounds of road/)).toBeVisible();
   await page.getByRole('link', { name: 'The 1955 season in full' }).click();
   await expect
@@ -237,4 +240,155 @@ test('circuit page: explorer live with provisional landmarks', async ({
   } else {
     await expect(page.getByText(/could not load/)).toBeVisible();
   }
+});
+
+/* ---------- Stage 4: Six Racing Seasons timeline ---------- */
+
+test('season timeline strip shows six stations with honest meeting dots', async ({
+  page,
+}) => {
+  await page.goto('#/seasons');
+  const strip = page.locator('.season-timeline');
+  await expect(strip).toBeVisible();
+  await expect(strip.locator('li')).toHaveCount(6);
+  // 12 scheduled meetings, two of which did not run (1952 TT, 1954 UT).
+  await expect(strip.locator('.tl-dot')).toHaveCount(12);
+  await expect(strip.locator('.tl-dot[data-held]')).toHaveCount(10);
+  await expect(strip.getByText('The Final Chapter')).toBeVisible();
+});
+
+test('1954 chapter keeps the two result systems distinct', async ({ page }) => {
+  await page.goto('#/seasons#y1954');
+  const chapter = page.locator('#y1954');
+  await expect(
+    chapter.getByText('Scratch / championship result', { exact: false }),
+  ).toBeVisible();
+  await expect(
+    chapter.getByText('Handicap result', { exact: false }),
+  ).toBeVisible();
+  await expect(chapter.getByText(/Laureau/).first()).toBeVisible();
+});
+
+test('chapter photo strip opens the viewer scoped to its year', async ({
+  page,
+}) => {
+  await page.goto('#/seasons#y1950');
+  const strip = page.locator('#y1950 .photo-strip button');
+  await strip.first().scrollIntoViewIfNeeded();
+  await strip.first().click();
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  await expect(viewer.locator('.plate-id')).toHaveText(/DU-1950/);
+  await page.keyboard.press('Escape');
+  await expect(viewer).toBeHidden();
+});
+
+test('photograph viewer links to driver profiles', async ({ page }) => {
+  await page.goto('#/seasons#y1952');
+  const hero = page.locator('#y1952 .chapter-hero');
+  await hero.scrollIntoViewIfNeeded();
+  await hero.click();
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  const link = viewer.getByRole('link', { name: 'Juan Manuel Fangio' });
+  await expect(link).toBeVisible();
+  await link.click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Drivers & Teams' }),
+  ).toBeVisible();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () =>
+          document
+            .getElementById('p-juan-manuel-fangio')
+            ?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 400;
+    })
+    .toBe(true);
+});
+
+test('season chapter chips deep-link a documented circuit place', async ({
+  page,
+}) => {
+  await page.goto('#/seasons#y1955');
+  const chip = page.getByRole('link', { name: /Deer's Leap on the circuit/ });
+  await chip.scrollIntoViewIfNeeded();
+  await chip.click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
+  ).toBeVisible();
+  await expect(
+    page.locator('.location-panel').getByText(/Deer's Leap/).first(),
+  ).toBeVisible();
+});
+
+/* ---------- Refinement pass: period names, gallery, profiles, films ---------- */
+
+test('archive shows the full 44-photo gallery with captions', async ({ page }) => {
+  await page.goto('#/archive');
+  await expect(page.locator('.gallery-grid .plate')).toHaveCount(44);
+  await expect(
+    page.getByRole('heading', { name: 'The full archive, 1951–1955' }),
+  ).toBeVisible();
+});
+
+test('film tab links out to the BFI film without embedding', async ({ page }) => {
+  await page.goto('#/archive?section=film');
+  const link = page.getByRole('link', { name: /Ulster Trophy, Dundrod \(1955\)/ });
+  await expect(link).toBeVisible();
+  await expect(link).toHaveAttribute('href', /player\.bfi\.org\.uk/);
+  await expect(page.locator('iframe')).toHaveCount(0);
+});
+
+test('driver cards carry archive photographs and new profiles', async ({ page }) => {
+  await page.goto('#/drivers');
+  await expect(page.locator('.driver-photo img').first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Bobby Baird' })).toBeVisible();
+  await expect(page.getByText(/Belfast Telegraph/).first()).toBeVisible();
+});
+
+test('circuit page shows the period programme map with OSNI credit', async ({ page }) => {
+  await page.goto('#/circuit');
+  await expect(
+    page.getByRole('heading', { name: 'The circuit as the programmes drew it' }),
+  ).toBeVisible();
+  await expect(page.getByText(/H\.M\. Stationery Office/)).toBeVisible();
+});
+
+test('the lap now begins at the start and finish line', async ({ page }) => {
+  await page.goto('#/circuit');
+  await expect(
+    page.getByRole('button', { name: 'Start & Finish and the Pits' }),
+  ).toBeVisible();
+  await page.getByRole('button', { name: 'Start & Finish and the Pits' }).click();
+  await expect(
+    page.locator('.location-panel').getByText(/grandstands/).first(),
+  ).toBeVisible();
+});
+
+/* ---------- QA pass additions ---------- */
+
+test('season chapter archive links land on a filtered year gallery', async ({
+  page,
+}) => {
+  await page.goto('#/archive?year=1952');
+  await expect(
+    page.getByRole('heading', { name: /photographs from 1952/ }),
+  ).toBeVisible();
+  await expect(page.locator('.gallery-grid .plate')).toHaveCount(13);
+  // Event filter narrows further; 1952 had no TT, so RAC TT yields the honest empty state.
+  await page.getByRole('button', { name: 'RAC TT', exact: true }).click();
+  await expect(page.getByText(/honest about its gaps/)).toBeVisible();
+});
+
+test('location panel walks the lap in sequence', async ({ page }) => {
+  await page.goto('#/circuit?loc=loc-start-finish');
+  const panel = page.locator('.location-panel');
+  await expect(panel.getByRole('heading', { name: /Start & Finish/ })).toBeVisible();
+  await panel.getByRole('button', { name: /Rushyhill/ }).click();
+  await expect(panel.getByRole('heading', { name: 'Rushyhill' })).toBeVisible();
+  await panel.getByRole('button', { name: /← Start & Finish/ }).click();
+  await expect(panel.getByRole('heading', { name: /Start & Finish/ })).toBeVisible();
 });

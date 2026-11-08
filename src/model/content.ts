@@ -31,6 +31,10 @@ export interface Year {
   year: number;
   summary: string;
   storyCue?: string;
+  /** Stage 4 chapter heading, e.g. "Racing Comes to Dundrod". */
+  chapterTitle: string;
+  /** Photo register ID used as the chapter hero plate. */
+  heroPhotoId: string;
   sourceRefs: string[];
 }
 
@@ -61,6 +65,8 @@ export interface Race {
 export interface Person {
   id: string;
   name: string;
+  /** Curated archive photograph shown on the profile card. */
+  photoId?: string;
   role?: 'driver' | 'team-figure' | 'other';
   homePlace?: string;
   context?: string;
@@ -92,6 +98,8 @@ export interface Photo {
   yearBasis: string | null;
   event: string | null;
   peopleNames: string[];
+  /** IDs of catalogued people unambiguously matched from peopleNames (hedged names keep their hedge in display). */
+  personIds: string[];
   carSubject: string | null;
   raceNumber: string | null;
   caption: string | null;
@@ -145,7 +153,7 @@ export interface Source {
 export interface Film {
   id: string;
   title: string;
-  status: 'unavailable' | 'authorised';
+  status: 'unavailable' | 'authorised' | 'external';
   provider?: 'british-pathe' | 'ni-screen' | 'other';
   url?: string;
   date?: string;
@@ -171,12 +179,24 @@ export interface ThenAndNow {
   note?: string;
 }
 
+export interface StoryFigure {
+  src: string;
+  webp?: string;
+  alt: string;
+  caption: string;
+  credit?: string;
+  width: number;
+  height: number;
+}
+
 export interface StoryChapter {
   id: string;
   kicker: string;
   title: string;
   paragraphs: string[];
   photoIds: string[];
+  /** Non-photographic figure (e.g. the period course map). */
+  figure?: StoryFigure;
   link: { to: string; label: string } | null;
   sourceRefs: string[];
   tone: 'paper' | 'dark';

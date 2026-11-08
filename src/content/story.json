@@ -2,14 +2,19 @@
   {
     "id": "ch-before",
     "kicker": "Before Dundrod",
-    "title": "The race that stopped",
+    "title": "The Ards TT",
     "paragraphs": [
-      "The RAC Tourist Trophy had been staged on the 13.5-mile Ards road course from 1928 to 1936. On 5 September 1936, a car lost control on Church Street in Newtownards and hit spectators. Eight people later died and up to 40 were injured. The tragedy ended the Ards TT.",
-      "The race moved to Donington Park for 1937 and 1938, then the war interrupted international motor racing. When racing returned to Northern Ireland, Dundrod was a post-war return — not an immediate replacement for Ards."
+      "Before Dundrod there was Ards. From 1928 the RAC Tourist Trophy ran on a 13.7-mile triangle of closed public roads through Dundonald, Newtownards and Comber — brought to Ulster largely through the efforts of Harry Ferguson. It became Northern Ireland's premier sporting event, drawing crowds in the hundreds of thousands and winners of the stature of Rudolf Caracciola and Tazio Nuvolari.",
+      "On 5 September 1936, in heavy rain, local driver Jack Chambers lost control of his Riley on Church Street in Newtownards. The car struck a lamppost and ran into spectators on the footpath: eight people were killed, among them fourteen-year-old Samuel Wilson, and around forty were injured. The race was never held at Ards again, and the Tourist Trophy moved to Donington Park. A memorial plaque to the eight was unveiled in Newtownards in 2024.",
+      "The Ards tragedy belongs to Ards — it was not a Dundrod event. But it is part of why, when the Tourist Trophy returned to Northern Ireland in 1950, it came to a new circuit in the quieter hills northwest of Belfast."
     ],
     "photoIds": [],
     "link": null,
-    "sourceRefs": ["R12", "R02"],
+    "sourceRefs": [
+      "R02",
+      "R12",
+      "R33"
+    ],
     "tone": "dark"
   },
   {
@@ -21,9 +26,26 @@
       "That makes Dundrod a purpose-designed road circuit — but not a fully purpose-built permanent track. The 1950–55 course measured 7 miles 732 yards and ran clockwise over closed public roads, through named country-road landmarks: Cochranstown, Quarterland, Budore, Jordan's Cross, Wheeler's Corner, the hairpin, Rushyhill, Leathemstown Corner and the old Leathemstown Bridge. The roads crossed rolling ground with fast approaches, gradients, crests, dips, changing cambers and blind sections. The same landscape that made the circuit memorable left little room to recover from a mistake."
     ],
     "photoIds": [],
-    "link": { "to": "/circuit", "label": "Explore the circuit" },
-    "sourceRefs": ["R04", "R06", "R13", "R14"],
-    "tone": "paper"
+    "link": {
+      "to": "/circuit",
+      "label": "Explore the circuit"
+    },
+    "sourceRefs": [
+      "R04",
+      "R06",
+      "R13",
+      "R14"
+    ],
+    "tone": "paper",
+    "figure": {
+      "src": "circuit/period-map.jpg",
+      "webp": "circuit/period-map.webp",
+      "alt": "A 1950s race programme map of the Dundrod circuit, drawn from the Ordnance Survey of Northern Ireland, showing the corner names and the county-named grandstands and enclosures.",
+      "caption": "The circuit as the race programmes drew it: corner names, the pits, and grandstands named for the counties and hills of Ulster — Londonderry, Belfast and Ulster stands at the start, Down and Mourne at the Hairpin, Fermanagh at Leathemstown, Slemish at Wheeler's.",
+      "credit": "Period race programme, based upon the Ordnance Survey of Northern Ireland by sanction of H.M. Stationery Office.",
+      "width": 1600,
+      "height": 978
+    }
   },
   {
     "id": "ch-scheme",
@@ -33,9 +55,13 @@
       "A contemporary report of Antrim County Council's approval described an estimated £40,000 scheme: construction, reconstruction and widening of several roads, including a diversion, over a reported total of 12,366 lineal yards. One new road section was to be 515 yards long.",
       "The same plan listed a grandstand, offices, pits, barricades and fences, and the Ministry of Commerce had agreed to recommend a £20,000 grant. These are the reported plan and estimates — the article does not provide a final audited outturn."
     ],
-    "photoIds": [],
+    "photoIds": [
+      "DU-1950-01"
+    ],
     "link": null,
-    "sourceRefs": ["R04"],
+    "sourceRefs": [
+      "R04"
+    ],
     "tone": "paper"
   },
   {
@@ -46,9 +72,15 @@
       "Dundrod's car-racing years were bound up with the Ulster Automobile Club, whose Ulster Trophy opened the circuit and ran through its seasons. When the Prime Minister, Sir Basil Brooke, declared the new circuit open at the August 1950 meeting, the club's chairman was at his side for the ceremony.",
       "The club's fuller history — and its part in the Ards years before Dundrod — will be told here as the supplied club material is added."
     ],
-    "photoIds": [],
+    "photoIds": [
+      "DU-1951-01"
+    ],
     "link": null,
-    "sourceRefs": ["R03", "R06", "R02"],
+    "sourceRefs": [
+      "R03",
+      "R06",
+      "R02"
+    ],
     "tone": "dark"
   },
   {
@@ -59,9 +91,21 @@
       "The Dundrod circuit opened for racing with the Ulster Trophy meeting on 12 August 1950. Peter Whitehead won the Trophy in a Ferrari 125; the meeting also included a handicap contest won by Anthony Powys-Lybbe in an Alfa Romeo P3. Contemporary press coverage called it the opening of a new circuit.",
       "The RAC Tourist Trophy followed on 16 September, five weeks later. Twenty-year-old Stirling Moss took it in Tommy Wisdom's Jaguar XK120 on the eve of his twenty-first birthday, winning both on the road and on handicap in difficult weather. It was his first Tourist Trophy victory and the moment that brought him to wider notice."
     ],
-    "photoIds": ["DU-1950-05", "DU-1950-06"],
-    "link": { "to": "/seasons#y1950", "label": "The 1950 season in full" },
-    "sourceRefs": ["R03", "R05", "R17", "R18", "R19"],
+    "photoIds": [
+      "DU-1950-05",
+      "DU-1950-06"
+    ],
+    "link": {
+      "to": "/seasons#y1950",
+      "label": "The 1950 season in full"
+    },
+    "sourceRefs": [
+      "R03",
+      "R05",
+      "R17",
+      "R18",
+      "R19"
+    ],
     "tone": "paper"
   },
   {
@@ -72,9 +116,24 @@
       "Across the seasons that followed, Dundrod moved from a local return to an international stage. Giuseppe Farina, the reigning Formula One World Champion, won the 1951 Ulster Trophy in an Alfa Romeo 159 and set a 4:44 lap record — with Queen Elizabeth and Princess Margaret in attendance. In 1952, Stirling Moss and Juan Manuel Fangio appeared in the experimental V16 BRM, though neither finished the race Piero Taruffi won.",
       "In 1953 the Tourist Trophy became a round of the World Sportscar Championship, won by Peter Collins and Pat Griffith for Aston Martin after a long, difficult race in fog — the same year the Ulster Grand Prix motorcycle races moved from Clady to Dundrod. By 1954 one TT carried two result systems at once: Hawthorn and Trintignant took the scratch and championship result for Ferrari, while the little DB-Panhard of Laureau and Armagnac was awarded the handicap Tourist Trophy."
     ],
-    "photoIds": ["DU-1952-02", "DU-1953-04", "DU-1954-01"],
-    "link": { "to": "/seasons", "label": "Follow all six seasons" },
-    "sourceRefs": ["R06", "R07", "R08", "R09", "R10", "R13", "R21"],
+    "photoIds": [
+      "DU-1952-02",
+      "DU-1953-04",
+      "DU-1954-01"
+    ],
+    "link": {
+      "to": "/seasons",
+      "label": "Follow all six seasons"
+    },
+    "sourceRefs": [
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R13",
+      "R21"
+    ],
     "tone": "paper"
   },
   {
@@ -86,9 +145,19 @@
       "On the second lap, a multi-car crash at Deer's Leap killed Jim Mayers and William Smith. Richard Mainwaring died later in the race when his Elva crashed at Tornagrough. Three deaths made this the final car race at Dundrod; the RAC Tourist Trophy never returned. Motorcycle racing, which had arrived in 1953, continued after the cars left.",
       "This history is recorded here with respect for the drivers who died at the circuit: Eric Winterbottom in 1951, and Jim Mayers, William Smith and Richard Mainwaring in 1955."
     ],
-    "photoIds": ["DU-1955-05"],
-    "link": { "to": "/seasons#y1955", "label": "The 1955 season in full" },
-    "sourceRefs": ["R06", "R10", "R11", "R15"],
+    "photoIds": [
+      "DU-1955-05"
+    ],
+    "link": {
+      "to": "/seasons#y1955",
+      "label": "The 1955 season in full"
+    },
+    "sourceRefs": [
+      "R06",
+      "R10",
+      "R11",
+      "R15"
+    ],
     "tone": "dark"
   }
 ]

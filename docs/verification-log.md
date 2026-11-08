@@ -2,6 +2,147 @@
 
 Each stage records what passed and what remains unverified.
 
+## Post-stage QA pass (Stage 4 + refinements) — 2026-11-08
+**Passed — functional & technical:** route-by-route console/network/image
+audit at 1440 px and 390 px: zero broken images on any route (all 44
+photos, covers, period map, both geojson layers resolve); the only
+failing requests in this environment are the ArcGIS CDN domains blocked
+by the sandbox proxy (the deployed site loads them — verified in a real
+browser at deployment). Fixed: index.html never linked the shipped
+favicon.svg, so every page load 404'd on /favicon.ico — link added
+(Vite rebases it under /dundrodtt/). Fixed: @testing-library/dom peer
+dependency pruned by an earlier --legacy-peer-deps install — restored.
+Lint gate added: typescript-eslint does not yet support TypeScript 7.0
+(upstream issue #10940), so `npm run lint` runs oxlint (react plugin)
+over src/e2e/scripts — currently clean; revisit typescript-eslint when
+TS ≥7.1 support lands. Gates: tsc clean · lint clean · validator green
+(46/44 photos, 12 races, 30 people, 14 locations) · 22/22 Vitest (new
+lap-order↔landmarks test) · 28/28 Playwright (2 new) · production build.
+**Passed — historical accuracy:** 70-check scripted audit green: 1952
+UT held (Taruffi, Vandervell Ferrari 375) vs 1952 TT not held; no 1954
+Ulster Trophy; 1954 scratch/handicap winners distinct; 1955 UT
+fastest-finisher vs Champion Trophy distinct; 1955 TT 84 laps 7:03:11
+(7:03:12 nowhere); 'Lindsay' appears only inside the 1965 explanatory
+note; 'Queen Elizabeth' not 'Queen Mother'; £8,000 claim absent; Ards
+marked not a Dundrod event; hedged identifications verbatim; hidden
+contributor nameless; hero photos match their years; every photo
+personId resolves. Three location stories reworded for attribution
+precision (descriptions credited to writers/today's riders, not period
+drivers; unsourced corner direction removed).
+**Five UX improvements implemented (not just listed):**
+1. Archive year + event filter chips — also fixes a real defect: season
+   chapters linked /archive?year=YYYY but the archive ignored the
+   parameter; filtered view shows count, story link, and an honest
+   empty state (e.g. 1952 + RAC TT).
+2. Photograph viewer: event/meta line under the caption and touch-swipe
+   navigation between photographs.
+3. Season timeline strip auto-scrolls the active year station into view
+   while reading (narrow screens) and carries full chapter titles.
+4. Location panel "walk the lap": previous/next stop navigation in
+   clockwise seq order from the start/finish line (shared lapOrder
+   module, unit-tested against landmarks.geojson).
+5. Drivers & Teams grouped presentation — Champions and works stars /
+   The home challenge / The wider entry / Around the paddock — curated
+   ids only, unplaced profiles fall through so nothing can vanish.
+**Regression:** earlier-stage features re-verified by the full e2e
+suite (cover, story, circuit explorer with toolbar, seasons anchors,
+archive viewer, credits, titles) plus photo/driver/year/location
+relationship checks in the accuracy audit.
+**Unverified / outstanding:** ArcGIS runtime behaviour re-verified in
+this sandbox only up to the CDN block — live-site map re-check belongs
+with the next deployment; ESLint proper deferred to typescript-eslint
+TS7 support; everything in the Stage 4 and refinement entries below
+still stands (survey-grade landmark positions, 1955 UT day-of-month,
+Winterbottom location hedge, licensed corner photography pending).
+
+## Refinement pass (owner testing feedback) — 2026-11-08
+**Passed:** period programme map scan (owner-supplied) saved as evidence
+and served in-app (circuit/period-map.webp/jpg, OSNI/HMSO credit, Crown
+copyright of the era expired) — displayed on Explore the Circuit and as
+the figure in the Story's circuit chapter. Landmark-name audit against
+the scan: all 13 shipped names confirmed period-correct (Deer's Leap and
+Tornagrough are not labelled on this map but are documented period names
+from the 1955 race sources); added a 14th landmark, Start & Finish and
+the Pits, placed on the Quarry–Rushyhill straight per the map
+(provisional like the rest), and renumbered the guided lap to begin at
+the start line. Corner-by-corner driver's-eye stories written for all 14
+places from researched sources (Motor Sport 1955 report and Oct 2000
+feature, Maurice Hamilton, Bob Montgomery/Irish Times, RacingCircuits,
+modern riders' accounts hedged as such) — sources R23–R38 registered.
+Ards chapter renamed "The Ards TT" and expanded (1928–1936, Harry
+Ferguson, Caracciola/Nuvolari, the 5 September 1936 accident told
+without graphic detail, 2024 memorial; Ards/Dundrod distinction kept).
+Story chapters now each carry imagery where the pack or the period map
+provides it (the Ards chapter honestly has none). Nine new driver
+profiles (Baird, Parnell, Gerard, Kelly, Allard, Bira, Rolt, Macklin,
+Rosier) + enriched existing ones; photos.json personIds re-resolved
+(28→42 links); every profile card now shows a curated archive photograph
+(register-ID badge). Race records gained verified dates (1951 UT 2 June,
+1951 TT 15 Sept, 1953 UT 16 May, 1953 TT 5 Sept, 1954 TT 11 Sept, 1955
+TT 17 Sept) and podium/pole/fastest-lap notes rendered on the result
+cards. Winterbottom's 1951 accident location added as reported
+(Wheeler's Corner, hedged, R28) — giving 1951 a circuit link chip.
+Archive photography is now the full 44-photo gallery (responsive 2–3
+columns, captions below; the 1950 rarities keep a roomier two-across
+section); Film tab links out to the BFI Player's free 1955 Ulster Trophy
+film (external link, not embedded; Film.status 'external' added).
+CLAUDE.md amended on the owner's instruction: web supplementation
+allowed with register entries; corrections register still wins (7:03:11
+kept over Wikipedia's 7:03:12). Gates: validator green (30 people, 14
+locations), tsc clean, 21/21 Vitest, 26/26 Playwright e2e (5 new),
+visual review of Archive/Drivers/Circuit/Story.
+**Unverified / outstanding:** start/finish landmark position is
+provisional (placed ~45% along the Quarry→Rushyhill straight to match
+the map's label; survey-grade confirmation outstanding like all
+landmarks); 1955 Ulster Trophy exact date still month-only; Winterbottom
+location is a reported attribution (Wikipedia fatalities list), hedged
+in copy; no internet photographs of the corners added this pass — the
+desktop-app bridge (used previously to fetch imagery through the
+owner's browser) was offline, and the workspace proxy blocks image
+hosts; licensed modern corner photography (e.g. CC BY-SA Geograph) can
+be added with per-image credits when the owner reconnects or supplies
+files. No photographs of drivers will be downloaded from the web, per
+policy.
+
+## Stage 4 — Six Racing Seasons interactive timeline — 2026-11-08
+**Passed:** horizontal 1950–1955 timeline strip (sticky, scrollable; one
+station per year with chapter title and a dot per scheduled meeting —
+filled when held, hollow for the 1952 TT and 1954 Ulster Trophy, so the
+strip itself stays historically honest); six cinematic story chapters
+built entirely from the verified catalogue — chapter kicker (roman
+numeral + ghost year numeral), prompt-supplied chapter titles, storyCue
+standfirst, verified summary, hero photograph per year (1955's large PNG
+gets the wide treatment; all others stay within native-size rules),
+race-result panels unchanged in their classification distinctions,
+documented events kept inside their year (no standalone remembrance),
+clickable photo strip per year opening the full-screen viewer scoped to
+that season, and connected link chips (race winners and documented-event
+people → driver-profile anchors; documented places → `/circuit?loc=`
+deep link that opens the location story panel). Photo viewer now links
+catalogued people in the image to their profiles; `photos.json` gained
+`personIds` (28 resolved, exact-name matches only — uncatalogued names
+stay as text, hedged names keep their hedge); `years.json` gained
+`chapterTitle` + `heroPhotoId`; validator extended (hero resolves, is in
+the archive, matches its year; personIds resolve). Driver cards carry
+`id` anchors. Gates: `tsc --noEmit` clean, build + validator green,
+21/21 Vitest (3 new Stage 4 content tests), 21/21 Playwright e2e (5 new:
+timeline dots honest, 1954 two-result-system distinction, year-scoped
+viewer, viewer→driver deep link, chapter→circuit place deep link).
+Visual review at 1440 px and 390 px via screenshots.
+**Fixed en route (latent regressions exposed when the ArcGIS CDN became
+reachable in the test sandbox):** the desktop-nav rule
+`.menu-button { display:none }` at ≥60rem was hiding every toolbar that
+reuses the class — circuit map-mode/lap buttons and the photo viewer's
+Previous/Close/Next on desktop. Now scoped to the masthead menu and its
+drawer. Chapter anchors also gained scroll-margin so deep links clear
+the sticky timeline.
+**Unverified / outstanding:** no photograph has a verified circuit
+location, so no photo→map jumps were added (prompt allows them only if
+verified); per-image contributor credits deliberately not added to the
+viewer — the collection-level Armstrong credit remains the only credit,
+per the permanent photo rules; plus the standing outstanding items
+below.
+
 ## Merge & first deployment — 2026-11-08
 **Passed:** PRs #1–#3 merged to main (stage branches left in place — the
 environment's safety rules block branch deletion; owner can tidy).
