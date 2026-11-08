@@ -1496,3 +1496,8 @@ a.driver-card:focus-visible {
   border-bottom: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
 }
 .record-list li.record-win strong { color: var(--gold); }
+
+/* QA5: anchored team/car cards clear the masthead; record links */
+.drivers-page .driver-card[id] { scroll-margin-top: 7.5rem; }
+.record-list a { color: var(--gold); text-decoration-color: color-mix(in srgb, var(--gold) 45%, transparent); }
+.record-list a:hover { text-decoration-color: var(--gold); }

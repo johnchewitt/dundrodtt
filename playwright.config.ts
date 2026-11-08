@@ -11,8 +11,11 @@ export default defineConfig({
       : undefined,
   },
   webServer: {
-    command: 'npm run preview -- --port 4173 --strictPort',
+    // Always build first and never reuse a stray server: e2e must test
+    // the code as it stands, not whatever an old preview was serving.
+    command: 'npm run build && npm run preview -- --port 4173 --strictPort',
     url: 'http://localhost:4173/dundrodtt/',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
+    timeout: 120_000,
   },
 });

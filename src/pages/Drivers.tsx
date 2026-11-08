@@ -10,7 +10,7 @@ import {
   yearById,
   type Person,
 } from '../model/content';
-import { racesOfCar, racesOfTeam } from '../model/relationships';
+import { appearancesOf, racesOfCar, racesOfTeam, winsOf } from '../model/relationships';
 
 /**
  * Curated presentation groups (ids only — all facts stay in content).
@@ -87,10 +87,25 @@ export default function Drivers() {
   const otherHeroes = heroes.filter((p) => p.id !== 'p-desmond-titterington');
 
   const q = query.trim().toLowerCase();
-  const matches = (p: Person) =>
-    [p.name, p.homePlace, p.nationality, p.context]
+  // The haystack keeps the search box's promise: names, places, and the
+  // cars and teams in each driver's documented record.
+  const haystack = (p: Person) =>
+    [
+      p.name,
+      p.homePlace,
+      p.nationality,
+      p.context,
+      ...winsOf(p.id).flatMap((w) => [
+        w.classification.carId ?? '',
+        w.classification.teamId ?? '',
+      ]),
+      ...appearancesOf(p).map((a) => a.appearance.car ?? ''),
+    ]
       .filter(Boolean)
-      .some((s) => s!.toLowerCase().includes(q));
+      .join(' ')
+      .toLowerCase()
+      .replace(/[-_]/g, ' ');
+  const matches = (p: Person) => haystack(p).includes(q.replace(/[-_]/g, ' '));
   const searching = q.length > 0;
   const found = searching ? drivers.filter(matches) : [];
 
@@ -209,7 +224,7 @@ export default function Drivers() {
               ),
             ];
             return (
-              <article key={t.id} className="driver-card team-card">
+              <article key={t.id} id={t.id} className="driver-card team-card">
                 {photo && (
                   <div className="driver-photo">
                     <img
@@ -273,7 +288,7 @@ export default function Drivers() {
               ),
             ];
             return (
-              <article key={c.id} className="driver-card car-card">
+              <article key={c.id} id={c.id} className="driver-card car-card">
                 {photo && (
                   <div className="driver-photo">
                     <img

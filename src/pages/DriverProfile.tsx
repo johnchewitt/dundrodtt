@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PhotoViewer from '../components/PhotoViewer';
 import DateLabel from '../components/ui/DateLabel';
@@ -31,6 +31,14 @@ export default function DriverProfile() {
   const { personId } = useParams();
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const person = personId ? personById.get(personId) : undefined;
+
+  // Per-person document title (the global handler only knows the
+  // top-level experiences).
+  useEffect(() => {
+    if (person) {
+      document.title = `${person.name} · Dundrod — The Forgotten Racing Years`;
+    }
+  }, [person]);
 
   if (!person) {
     return (
@@ -133,15 +141,39 @@ export default function DriverProfile() {
               const team = classification.teamId
                 ? teamById.get(classification.teamId)?.name
                 : null;
+              const coWinners = classification.winnerPersonIds
+                .filter((pid) => pid !== person.id)
+                .map((pid) => personById.get(pid))
+                .filter((p) => p !== undefined);
               return (
                 <li key={`${race.id}-${classification.award}`} className="record-win">
                   <DateLabel>{year}</DateLabel>{' '}
                   <strong>
                     {eventLabelOf[race.event]} — {awardLabelOf[classification.award]}
                   </strong>
-                  {car ? <> · {car}</> : null}
+                  {coWinners.length > 0 && (
+                    <>
+                      {' '}
+                      shared with{' '}
+                      {coWinners.map((p, i) => (
+                        <span key={p.id}>
+                          {i > 0 ? ' and ' : ''}
+                          <Link to={`/drivers/${p.id}`}>{p.name}</Link>
+                        </span>
+                      ))}
+                    </>
+                  )}
+                  {car ? (
+                    <>
+                      {' '}
+                      · <Link to={`/drivers#${classification.carId}`}>{car}</Link>
+                    </>
+                  ) : null}
                   {team && !car?.includes(team.replace(' (works)', '')) ? (
-                    <> ({team})</>
+                    <>
+                      {' '}
+                      (<Link to={`/drivers#${classification.teamId}`}>{team}</Link>)
+                    </>
                   ) : null}
                   {classification.note ? (
                     <span className="muted"> — {classification.note}</span>
@@ -198,6 +230,28 @@ export default function DriverProfile() {
           </ul>
         </>
       )}
+
+      {(() => {
+        const together = [
+          ...new Set(
+            photos.flatMap((p) => p.personIds).filter((pid) => pid !== person.id),
+          ),
+        ]
+          .map((pid) => personById.get(pid))
+          .filter((p) => p !== undefined);
+        return together.length > 0 ? (
+          <>
+            <h2 className="chapter-subhead">In the same frames</h2>
+            <div className="chapter-links">
+              {together.map((p) => (
+                <Link key={p.id} className="chip" to={`/drivers/${p.id}`}>
+                  {p.name}
+                </Link>
+              ))}
+            </div>
+          </>
+        ) : null;
+      })()}
 
       {places.length > 0 && (
         <div className="chapter-links">

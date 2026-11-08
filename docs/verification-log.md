@@ -2,6 +2,44 @@
 
 Each stage records what passed and what remains unverified.
 
+## Post-stage QA pass (Stage 5) — 2026-11-08
+**Passed — functional & technical:** route-wide console/network/image
+audit at 1440 px and 390 px covering every experience plus four driver
+profiles and the unknown-ID route (honest not-found page): zero broken
+images; the only console error is the sandbox-blocked ArcGIS tunnel
+(the live site loads the SDK). Found and fixed a test-infrastructure
+hazard: Playwright reused any stray preview server, so e2e could run
+against a stale build — webServer now always builds first and never
+reuses (two "failures" during QA were exactly this, both passed against
+the real build). Gates: tsc clean · oxlint clean · validator green ·
+28/28 Vitest · 36/36 Playwright (4 new) · production build.
+**Passed — historical accuracy:** 180-check scripted audit of Stage 5
+data: no appearance duplicates or contradicts a win; appearances only
+in held races; results never phrased as win claims; all sources
+resolve; localHero is exactly the two NI drivers; Porsche and the
+Platé entry carry no victory links; every car photograph's catalogued
+subject matches its car; specs all carry R39; Bill Smith / William
+Smith remain separate records pending verification.
+**Five UX improvements implemented:**
+1. Profile pages set per-person document titles (found in audit: all
+   profiles shared the generic site title).
+2. Shared victories link their co-winners — Moss's 1955 record links
+   John Fitch, Collins links Griffith, and so on.
+3. The search box now keeps its own promise: "name, place, car or
+   team" — the haystack includes each driver's documented cars and
+   teams, so "BRM" finds Fangio and "Ecurie Ecosse" finds Titterington.
+4. Team and machine cards are anchor targets; the cars and teams named
+   in a profile's record deep-link straight to their cards.
+5. "In the same frames" — each profile surfaces the other catalogued
+   people who appear in its photographs, as profile chips (derived
+   from personIds; nothing asserted beyond the captions).
+**Regression:** full suite re-run after all changes (36/36) covering
+every earlier stage's journeys; relationship integrity re-verified by
+the 180-check audit plus the Vitest relationships suite.
+**Unverified / outstanding:** unchanged from the Stage 5 entry below
+(no web portraits by policy; Shawe-Taylor's 1950 finish unrecorded;
+Bira's 1952 result unverified; the two Smiths; Porsche driver detail).
+
 ## Stage 5 — Drivers, Teams & Legendary Cars — 2026-11-08
 **Passed:** LOCAL HEROES editorial feature (Titterington lead card —
 1955 Ulster Trophy fastest-finisher win and the shared works D-Type with
