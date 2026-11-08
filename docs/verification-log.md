@@ -2,6 +2,17 @@
 
 Each stage records what passed and what remains unverified.
 
+## Third deployment — Stage 6 archive live — 2026-11-08
+**Passed:** PR #6 (Stage 6 photographic & film archive + owner-approved
+1955 Pathé newsreel + QA) merged to main; GitHub Pages workflow run
+42527315117 fully green (npm ci → build with type-check and content
+validator → Vitest → deploy). Live at
+https://johnchewitt.github.io/dundrodtt/.
+**Unverified / outstanding:** live in-browser spot-check again
+recommended on first visit — the shareable viewer URL
+(/#/archive?photo=DU-1951-08), the film links opening on their
+holders' sites, and the circuit map.
+
 ## Post-stage QA pass (Stage 6) — 2026-11-08
 **Passed — functional & technical:** 14 routes × 2 viewports audited,
 including filter permutations, the shareable-photo URL, both new tabs
