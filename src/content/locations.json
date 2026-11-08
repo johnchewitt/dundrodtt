@@ -57,7 +57,7 @@
       "R30"
     ],
     "geometryStatus": "provisional",
-    "story": "Along the high northern leg of the course, Budore carried the cars between Ireland's Corner and Jordan's Cross — heavily cambered country road, built for drainage rather than cornering, in what the drivers knew as a circuit with its own microclimate."
+    "story": "Along the high northern leg of the course, Budore carried the cars between Ireland's Corner and Jordan's Cross — heavily cambered country road, built for drainage rather than cornering, on a circuit one writer described as having its own microclimate."
   },
   {
     "id": "loc-jordans-cross",
@@ -150,7 +150,7 @@
   {
     "id": "loc-deers-leap",
     "name": "Deer's Leap",
-    "story": "A blind brow and then a steep descent — contemporaries called Deer's Leap the most feared section of the course, with the right-hand bend at Cochranstown waiting at the bottom. By 1955 a marshal stood on the crest with a warning flag to signal slower cars hidden beyond it. On the second lap of the 1955 Tourist Trophy, a multi-car crash here killed Jim Mayers and William Smith.",
+    "story": "A blind brow and then a steep descent, with the right-hand bend at Cochranstown waiting at the bottom — writers have called it the course's one terrifying downhill section. By 1955 a marshal stood on the crest with a warning flag to signal slower cars hidden beyond it. On the second lap of the 1955 Tourist Trophy, a multi-car crash here killed Jim Mayers and William Smith.",
     "incidentIds": [
       "inc-1955-deers-leap"
     ],
@@ -166,7 +166,7 @@
   {
     "id": "loc-tornagrough",
     "name": "Tornagrough",
-    "story": "A fast left on the road that now bears its name, where commitment and lean mattered more than brakes. Richard Mainwaring died here when his Elva crashed during the 1955 Tourist Trophy.",
+    "story": "A fast corner on the road that now bears its name — today's riders describe carrying corner speed and lean through here rather than braking hard. Richard Mainwaring died here when his Elva crashed during the 1955 Tourist Trophy.",
     "incidentIds": [
       "inc-1955-tornagrough"
     ],

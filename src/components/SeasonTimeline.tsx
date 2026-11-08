@@ -12,6 +12,16 @@ import { races, years } from '../model/content';
 export default function SeasonTimeline() {
   const [active, setActive] = useState<string | null>(null);
 
+  // Keep the active station visible inside the horizontally scrolling
+  // strip (matters on narrow screens where later years sit off-screen).
+  useEffect(() => {
+    if (!active) return;
+    const station = document.querySelector(
+      `.season-timeline li[data-active]`,
+    );
+    station?.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }, [active]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,7 +45,11 @@ export default function SeasonTimeline() {
           const meetings = races.filter((r) => r.yearId === y.id);
           return (
             <li key={y.id} data-active={active === y.id || undefined}>
-              <a href={`#/seasons#${y.id}`} aria-current={active === y.id ? 'true' : undefined}>
+              <a
+                href={`#/seasons#${y.id}`}
+                title={`${y.year} — ${y.chapterTitle}`}
+                aria-current={active === y.id ? 'true' : undefined}
+              >
                 <span className="tl-meetings" aria-hidden="true">
                   {meetings.map((r) => (
                     <i

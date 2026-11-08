@@ -117,3 +117,19 @@ describe('six seasons timeline (Stage 4)', () => {
     expect(personById.get(winner)?.name).toBe('Piero Taruffi');
   });
 });
+
+describe('lap order', () => {
+  it('matches the landmarks layer sequence exactly', async () => {
+    const { lapOrder } = await import('./lapOrder');
+    const { readFileSync } = await import('node:fs');
+    const data = JSON.parse(
+      readFileSync('public/circuit/landmarks.geojson', 'utf8'),
+    ) as {
+      features: Array<{ properties: { locId: string; seq: number } }>;
+    };
+    const bySeq = [...data.features].sort(
+      (a, b) => a.properties.seq - b.properties.seq,
+    );
+    expect(bySeq.map((f) => f.properties.locId)).toEqual(lapOrder);
+  });
+});

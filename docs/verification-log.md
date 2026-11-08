@@ -2,6 +2,59 @@
 
 Each stage records what passed and what remains unverified.
 
+## Post-stage QA pass (Stage 4 + refinements) — 2026-11-08
+**Passed — functional & technical:** route-by-route console/network/image
+audit at 1440 px and 390 px: zero broken images on any route (all 44
+photos, covers, period map, both geojson layers resolve); the only
+failing requests in this environment are the ArcGIS CDN domains blocked
+by the sandbox proxy (the deployed site loads them — verified in a real
+browser at deployment). Fixed: index.html never linked the shipped
+favicon.svg, so every page load 404'd on /favicon.ico — link added
+(Vite rebases it under /dundrodtt/). Fixed: @testing-library/dom peer
+dependency pruned by an earlier --legacy-peer-deps install — restored.
+Lint gate added: typescript-eslint does not yet support TypeScript 7.0
+(upstream issue #10940), so `npm run lint` runs oxlint (react plugin)
+over src/e2e/scripts — currently clean; revisit typescript-eslint when
+TS ≥7.1 support lands. Gates: tsc clean · lint clean · validator green
+(46/44 photos, 12 races, 30 people, 14 locations) · 22/22 Vitest (new
+lap-order↔landmarks test) · 28/28 Playwright (2 new) · production build.
+**Passed — historical accuracy:** 70-check scripted audit green: 1952
+UT held (Taruffi, Vandervell Ferrari 375) vs 1952 TT not held; no 1954
+Ulster Trophy; 1954 scratch/handicap winners distinct; 1955 UT
+fastest-finisher vs Champion Trophy distinct; 1955 TT 84 laps 7:03:11
+(7:03:12 nowhere); 'Lindsay' appears only inside the 1965 explanatory
+note; 'Queen Elizabeth' not 'Queen Mother'; £8,000 claim absent; Ards
+marked not a Dundrod event; hedged identifications verbatim; hidden
+contributor nameless; hero photos match their years; every photo
+personId resolves. Three location stories reworded for attribution
+precision (descriptions credited to writers/today's riders, not period
+drivers; unsourced corner direction removed).
+**Five UX improvements implemented (not just listed):**
+1. Archive year + event filter chips — also fixes a real defect: season
+   chapters linked /archive?year=YYYY but the archive ignored the
+   parameter; filtered view shows count, story link, and an honest
+   empty state (e.g. 1952 + RAC TT).
+2. Photograph viewer: event/meta line under the caption and touch-swipe
+   navigation between photographs.
+3. Season timeline strip auto-scrolls the active year station into view
+   while reading (narrow screens) and carries full chapter titles.
+4. Location panel "walk the lap": previous/next stop navigation in
+   clockwise seq order from the start/finish line (shared lapOrder
+   module, unit-tested against landmarks.geojson).
+5. Drivers & Teams grouped presentation — Champions and works stars /
+   The home challenge / The wider entry / Around the paddock — curated
+   ids only, unplaced profiles fall through so nothing can vanish.
+**Regression:** earlier-stage features re-verified by the full e2e
+suite (cover, story, circuit explorer with toolbar, seasons anchors,
+archive viewer, credits, titles) plus photo/driver/year/location
+relationship checks in the accuracy audit.
+**Unverified / outstanding:** ArcGIS runtime behaviour re-verified in
+this sandbox only up to the CDN block — live-site map re-check belongs
+with the next deployment; ESLint proper deferred to typescript-eslint
+TS7 support; everything in the Stage 4 and refinement entries below
+still stands (survey-grade landmark positions, 1955 UT day-of-month,
+Winterbottom location hedge, licensed corner photography pending).
+
 ## Refinement pass (owner testing feedback) — 2026-11-08
 **Passed:** period programme map scan (owner-supplied) saved as evidence
 and served in-app (circuit/period-map.webp/jpg, OSNI/HMSO credit, Crown

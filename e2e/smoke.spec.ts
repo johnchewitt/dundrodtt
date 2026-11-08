@@ -367,3 +367,28 @@ test('the lap now begins at the start and finish line', async ({ page }) => {
     page.locator('.location-panel').getByText(/grandstands/).first(),
   ).toBeVisible();
 });
+
+/* ---------- QA pass additions ---------- */
+
+test('season chapter archive links land on a filtered year gallery', async ({
+  page,
+}) => {
+  await page.goto('#/archive?year=1952');
+  await expect(
+    page.getByRole('heading', { name: /photographs from 1952/ }),
+  ).toBeVisible();
+  await expect(page.locator('.gallery-grid .plate')).toHaveCount(13);
+  // Event filter narrows further; 1952 had no TT, so RAC TT yields the honest empty state.
+  await page.getByRole('button', { name: 'RAC TT', exact: true }).click();
+  await expect(page.getByText(/honest about its gaps/)).toBeVisible();
+});
+
+test('location panel walks the lap in sequence', async ({ page }) => {
+  await page.goto('#/circuit?loc=loc-start-finish');
+  const panel = page.locator('.location-panel');
+  await expect(panel.getByRole('heading', { name: /Start & Finish/ })).toBeVisible();
+  await panel.getByRole('button', { name: /Rushyhill/ }).click();
+  await expect(panel.getByRole('heading', { name: 'Rushyhill' })).toBeVisible();
+  await panel.getByRole('button', { name: /← Start & Finish/ }).click();
+  await expect(panel.getByRole('heading', { name: /Start & Finish/ })).toBeVisible();
+});
