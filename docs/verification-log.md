@@ -2,6 +2,16 @@
 
 Each stage records what passed and what remains unverified.
 
+## Publication — the complete experience live — 2026-11-08
+**Passed:** PR #7 merged on the owner's authorisation; GitHub Pages
+workflow run 42529691196 fully green (build with type-check and content
+validator, unit tests, deploy). The complete seven-experience
+application — Discover Dundrod, Story, Circuit, Seasons, Drivers &
+Teams, Archive, Today — is published at
+https://johnchewitt.github.io/dundrodtt/. All seven roadmap stages and
+their QA passes are delivered; open verification items remain
+consolidated in docs/final-report.md §6.
+
 ## Stage 7 — Final experience, verification & publication prep — 2026-11-08
 **Passed:** DISCOVER DUNDROD guided visit (eight scenes from the return
 of racing to the roads today; every historical sentence resolved at
