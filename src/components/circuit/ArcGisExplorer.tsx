@@ -48,10 +48,12 @@ function makeLayer(
   },
 ): CircuitLayer {
   const isGeojson = /\.(geo)?json($|\?)/i.test(url);
-  // GeoJSON is WGS84 by spec; the SDK reprojects. A relative path serves
-  // from the app's own origin (e.g. public/circuit/route.geojson).
-  const resolved =
-    isGeojson && !/^https?:/i.test(url) ? import.meta.env.BASE_URL + url : url;
+  // GeoJSON is WGS84 by spec; the SDK reprojects. The SDK fetches layer
+  // data inside CDN-origin workers, so a repo-relative path must become
+  // an ABSOLUTE URL on this app's own origin.
+  const resolved = /^https?:/i.test(url)
+    ? url
+    : new URL(import.meta.env.BASE_URL + url, window.location.origin).href;
   return isGeojson
     ? new GeoJSONLayer({ url: resolved, ...options })
     : new FeatureLayer({ url: resolved, ...options });
@@ -157,10 +159,13 @@ export default function ArcGisExplorer() {
       );
       try {
         await layers.route.when();
-        if (layers.route.fullExtent) {
-          await view.goTo(layers.route.fullExtent.expand(1.25), {
-            animate: false,
-          });
+        // GeoJSONLayer may finish loading before its extent is computed;
+        // queryExtent is the reliable source.
+        const extent =
+          layers.route.fullExtent ??
+          (await layers.route.queryExtent()).extent;
+        if (extent) {
+          await view.goTo(extent.expand(1.25), { animate: false });
         }
       } catch {
         setLoadError(true);
