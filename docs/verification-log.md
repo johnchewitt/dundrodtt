@@ -2,6 +2,34 @@
 
 Each stage records what passed and what remains unverified.
 
+## Post-stage QA pass (Stage 7 / publication) — 2026-11-08
+**Passed — functional & technical:** full regression on the published
+feature set: 31/31 Vitest, 63/63 Playwright (incl. the 12-route axe
+suite and 2 new tests), tsc (forced), oxlint, validator, production
+build; route sweep at both viewports — zero app console errors, zero
+failed requests, zero broken images. Final historical audit
+(display-scope corrected) clean: corrections register honoured,
+films linked never embedded, 46/44 register intact, handling note in
+no display code.
+**Five UX improvements implemented:**
+1. Mobile tour controls are now sticky at the bottom of the viewport —
+   found in review: autoplay could advance while Pause/Next sat below
+   the fold on phones.
+2. Visible "Scene n of 8" counter in the tour controls (aria-live).
+3. Autoplay pacing made visible: a thin gold progress bar fills over
+   each scene, disappears when paused, and is removed entirely under
+   prefers-reduced-motion.
+4. Reduced-motion visitors are told autoplay is off and pointed at
+   Play/Next instead of facing a silent still page.
+5. The map toolbar now states the legend — the gold line is the
+   1950–55 course — which matters most over modern satellite imagery
+   on Dundrod Today; next-scene photographs also preload during the
+   tour for seamless transitions.
+**Not done, by instruction:** no deployment — these refinements sit on
+qa-stage-7 awaiting the owner.
+**Unverified / outstanding:** unchanged — consolidated in
+docs/final-report.md §6.
+
 ## Publication — the complete experience live — 2026-11-08
 **Passed:** PR #7 merged on the owner's authorisation; GitHub Pages
 workflow run 42529691196 fully green (build with type-check and content
