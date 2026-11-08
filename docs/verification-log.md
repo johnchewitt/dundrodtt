@@ -2,6 +2,32 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 3 circuit wiring — 2026-11-08
+**Passed:** the owner's circuit trace (supplied as EPSG:29902 GeoJSON +
+modern UGP corner map) was verified — closed loop, clockwise, correct
+Dundrod geography, 12,061 m — and found to follow the post-1965 layout
+at the hairpin (modern corner names incl. Lindsay Hairpin / Joey's
+Windmill on the companion map). With the owner's approval the 1950s
+hairpin was restored: a 19-vertex spur digitised from georeferenced
+current imagery of the surviving roads (Upper Springfield Rd out, the
+now-dead-end lane back), corroborated by the 1954 RAC TT programme
+track map (OS-based; copy in data/circuit/) and the documented ~110 m
+1965 relocation. Corrected route (12,313 m) committed as
+public/circuit/route.geojson (WGS84) with full provenance in
+data/circuit/PROVENANCE.md; routeLayerUrl configured; explorer renders
+route-only without landmarks (none supplied — nothing invented); lap
+and location-panel copy updated; validator, tsc, Vitest 17/17,
+Playwright 16/16, build green.
+**Unverified / outstanding:** live map rendering (this environment
+blocks the ArcGIS CDN — verify with npm run dev on an open network);
+the ~60 m of the hairpin U crossing a modern yard is approximate;
+measured length sits +3.2% over the documented 7 mi 732 yd (owner's
+base trace +1.1%; quoted old-vs-modern figures are in tension with any
+sizeable spur — shape evidence treated as primary; owner may refine if
+the 1952–67 OS sheet surfaces); Leathemstown retained as supplied
+pending a period-sheet check; landmark points (locId/name/seq) still
+awaited for markers, camera moves and the guided lap.
+
 ## Stage 3 — Interactive circuit explorer — 2026-11-07
 **Passed:** the circuit experience is built end-to-end around the
 owner's still-awaited FeatureLayer (owner confirmed: not ready yet,
