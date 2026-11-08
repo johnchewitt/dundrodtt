@@ -62,11 +62,24 @@ export interface Race {
   sourceRefs: string[];
 }
 
+export interface Appearance {
+  raceId: string;
+  /** Documented result or participation, in words — never invented. */
+  result: string;
+  car?: string;
+  sourceRefs: string[];
+}
+
 export interface Person {
   id: string;
   name: string;
   /** Curated archive photograph shown on the profile card. */
   photoId?: string;
+  nationality?: string;
+  /** Northern Ireland driver featured in the Local Heroes editorial. */
+  localHero?: boolean;
+  /** Documented non-winning results and entries (wins derive from races). */
+  appearances?: Appearance[];
   role?: 'driver' | 'team-figure' | 'other';
   homePlace?: string;
   context?: string;
@@ -76,6 +89,10 @@ export interface Person {
 export interface Team {
   id: string;
   name: string;
+  /** Works team, independent entrant, or privateer effort. */
+  kind?: 'works' | 'entrant' | 'privateer';
+  country?: string;
+  photoId?: string;
   context?: string;
   sourceRefs: string[];
 }
@@ -83,6 +100,9 @@ export interface Team {
 export interface Car {
   id: string;
   name: string;
+  /** One-line verified engine/configuration note. */
+  spec?: string;
+  photoId?: string;
   context?: string;
   sourceRefs: string[];
 }

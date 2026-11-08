@@ -294,19 +294,9 @@ test('photograph viewer links to driver profiles', async ({ page }) => {
   await expect(link).toBeVisible();
   await link.click();
   await expect(
-    page.getByRole('heading', { level: 1, name: 'Drivers & Teams' }),
+    page.getByRole('heading', { level: 1, name: 'Juan Manuel Fangio' }),
   ).toBeVisible();
-  await expect
-    .poll(async () => {
-      const top = await page.evaluate(
-        () =>
-          document
-            .getElementById('p-juan-manuel-fangio')
-            ?.getBoundingClientRect().top,
-      );
-      return top !== undefined && top >= 0 && top < 400;
-    })
-    .toBe(true);
+  await expect(page.getByText('The Dundrod record')).toBeVisible();
 });
 
 test('season chapter chips deep-link a documented circuit place', async ({
@@ -345,7 +335,9 @@ test('film tab links out to the BFI film without embedding', async ({ page }) =>
 test('driver cards carry archive photographs and new profiles', async ({ page }) => {
   await page.goto('#/drivers');
   await expect(page.locator('.driver-photo img').first()).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Bobby Baird' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Bobby Baird' }).first(),
+  ).toBeVisible();
   await expect(page.getByText(/Belfast Telegraph/).first()).toBeVisible();
 });
 
@@ -391,4 +383,99 @@ test('location panel walks the lap in sequence', async ({ page }) => {
   await expect(panel.getByRole('heading', { name: 'Rushyhill' })).toBeVisible();
   await panel.getByRole('button', { name: /← Start & Finish/ }).click();
   await expect(panel.getByRole('heading', { name: /Start & Finish/ })).toBeVisible();
+});
+
+/* ---------- Stage 5: Drivers, Teams & Legendary Cars ---------- */
+
+test('local heroes feature leads with Titterington', async ({ page }) => {
+  await page.goto('#/drivers');
+  await expect(
+    page.getByRole('heading', { name: 'Local Heroes' }),
+  ).toBeVisible();
+  const lead = page.locator('.hero-feature-lead');
+  await expect(lead.getByRole('heading', { name: 'Desmond Titterington' })).toBeVisible();
+  await lead.getByRole('link', { name: /Full Dundrod record/ }).click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Desmond Titterington' }),
+  ).toBeVisible();
+  await expect(page.getByText(/shared with Mike Hawthorn/i).first()).toBeVisible();
+});
+
+test('driver search finds the Belfast newspaperman', async ({ page }) => {
+  await page.goto('#/drivers');
+  await page.getByLabel('Search the catalogue').fill('Belfast');
+  await expect(
+    page.locator('#the-drivers').getByRole('heading', { name: 'Bobby Baird' }),
+  ).toBeVisible();
+  await page.getByLabel('Search the catalogue').fill('zzz');
+  await expect(page.getByText(/only holds documented Dundrod competitors/)).toBeVisible();
+});
+
+test('driver profile derives the full Dundrod record', async ({ page }) => {
+  await page.goto('#/drivers/p-stirling-moss');
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Stirling Moss' }),
+  ).toBeVisible();
+  const record = page.locator('.record-list li');
+  await expect(record).toHaveCount(5); // three TT wins + 1952 BRM + 1953 DNS
+  await expect(page.locator('.record-win')).toHaveCount(3);
+  await expect(page.locator('.photo-strip img').first()).toBeVisible();
+});
+
+test('team and car cards stay honest about kind and years', async ({ page }) => {
+  await page.goto('#/drivers');
+  const mercedes = page.locator('.team-card', { hasText: 'Mercedes-Benz' });
+  await expect(mercedes.getByText('Works team · Germany')).toBeVisible();
+  await expect(mercedes.getByRole('link', { name: 'Victory, 1955' })).toBeVisible();
+  const vandervell = page.locator('.team-card', { hasText: 'Vandervell' });
+  await expect(vandervell.getByText('Independent entrant · Great Britain')).toBeVisible();
+  const brm = page.locator('.car-card', { hasText: 'BRM V16' });
+  await expect(brm.getByText(/supercharged V16/)).toBeVisible();
+});
+
+/* ---------- Stage 5 QA pass ---------- */
+
+test('profiles set their own document titles and link shared wins', async ({
+  page,
+}) => {
+  await page.goto('#/drivers/p-stirling-moss');
+  await expect(page).toHaveTitle(/Stirling Moss · Dundrod/);
+  // 1955 win was shared with John Fitch — the record links him.
+  const record = page.locator('.record-list');
+  await record.getByRole('link', { name: 'John Fitch' }).click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'John Fitch' }),
+  ).toBeVisible();
+  await expect(page).toHaveTitle(/John Fitch · Dundrod/);
+});
+
+test('search keeps its promise: cars and teams find their drivers', async ({
+  page,
+}) => {
+  await page.goto('#/drivers');
+  const input = page.getByLabel('Search the catalogue');
+  await input.fill('BRM');
+  const results = page.locator('#the-drivers');
+  await expect(results.getByRole('heading', { name: 'Juan Manuel Fangio' })).toBeVisible();
+  await input.fill('Ecurie Ecosse');
+  await expect(results.getByRole('heading', { name: 'Desmond Titterington' })).toBeVisible();
+});
+
+test('record car links jump to the machine card', async ({ page }) => {
+  await page.goto('#/drivers/p-stirling-moss');
+  await page.locator('.record-list').getByRole('link', { name: 'Jaguar XK120' }).click();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () => document.getElementById('c-jaguar-xk120')?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 400;
+    })
+    .toBe(true);
+});
+
+test('profiles surface the people seen in the same frames', async ({ page }) => {
+  await page.goto('#/drivers/p-juan-manuel-fangio');
+  await expect(page.getByRole('heading', { name: 'In the same frames' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Louis Rosier' })).toBeVisible();
 });

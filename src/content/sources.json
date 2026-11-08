@@ -220,5 +220,11 @@
     "title": "1950s race programme circuit map (owner-supplied scan)",
     "note": "Period course map: corner names, county-named grandstands and enclosures, start/finish and pits. Based upon the Ordnance Survey of Northern Ireland by sanction of HMSO; Crown copyright of the era has expired.",
     "kind": "supplied"
+  },
+  {
+    "id": "R39",
+    "title": "Car technical references — manufacturer model histories (Wikipedia model pages)",
+    "note": "One-line engine/configuration facts only; nothing race-specific.",
+    "kind": "verified-web"
   }
 ]

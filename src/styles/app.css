@@ -1353,3 +1353,151 @@ img { max-width: 100%; height: auto; display: block; }
   margin-top: var(--space-3);
 }
 .lap-walk .menu-button { font-size: var(--step--1); }
+
+/* ---------- Stage 5: Drivers, Teams & Legendary Cars ---------- */
+
+.page-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  margin: var(--space-2) 0 var(--space-4);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  padding-bottom: var(--space-2);
+}
+.page-jumps a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: var(--step--1);
+}
+.page-jumps a:hover { text-decoration: underline; }
+
+.drivers-page section[id] { scroll-margin-top: 7.5rem; }
+.drivers-page section { margin-top: var(--space-5); }
+.drivers-page #local-heroes { margin-top: 0; }
+
+.local-heroes-title {
+  font-size: var(--step-3);
+  letter-spacing: 0.02em;
+  margin-top: 0;
+}
+
+.hero-feature {
+  display: grid;
+  gap: var(--space-3);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3);
+  margin-top: var(--space-3);
+}
+.hero-feature-lead { border-color: var(--gold); }
+@media (min-width: 56rem) {
+  .hero-feature-lead { grid-template-columns: 1.1fr 1fr; align-items: center; }
+}
+.hero-feature-photo { display: block; position: relative; }
+.hero-feature-photo img {
+  display: block;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  filter: sepia(0.12) contrast(1.02);
+}
+.hero-feature h3 { margin: 0 0 var(--space-1); font-size: var(--step-2); }
+.hero-feature h3 a { color: var(--text-on-dark); text-decoration: none; }
+.hero-feature h3 a:hover { color: var(--gold); }
+.hero-feature-row {
+  display: grid;
+  gap: var(--space-3);
+}
+@media (min-width: 56rem) {
+  .hero-feature-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.drivers-search { max-width: 28rem; }
+.drivers-search label {
+  display: block;
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+  margin-bottom: var(--space-1);
+}
+.drivers-search input {
+  width: 100%;
+  font: inherit;
+  color: var(--text-on-dark);
+  background: color-mix(in srgb, var(--midnight) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+}
+.drivers-search input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* cards are links now */
+a.driver-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+a.driver-card:hover,
+a.driver-card:focus-visible {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.driver-card-cta {
+  display: inline-block;
+  margin-top: var(--space-2);
+  color: var(--gold);
+  font-size: var(--step--1);
+}
+
+.car-spec {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+}
+.card-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: 0; }
+
+/* ---------- Stage 5: driver profile ---------- */
+
+.profile-back { margin-bottom: var(--space-2); }
+.profile-back a { color: var(--gold); text-decoration: none; }
+.profile-back a:hover { text-decoration: underline; }
+
+.profile-head {
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+}
+@media (min-width: 56rem) {
+  .profile-head { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-5); }
+}
+.profile-head h1 { margin-bottom: var(--space-1); }
+.profile-meta {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold);
+  font-size: var(--step-1);
+}
+.profile-years { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: baseline; }
+.profile-bio { max-width: var(--measure); }
+
+.record-list {
+  list-style: none;
+  margin: var(--space-3) 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+.record-list li {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 18%, transparent);
+}
+.record-list li.record-win strong { color: var(--gold); }
+
+/* QA5: anchored team/car cards clear the masthead; record links */
+.drivers-page .driver-card[id] { scroll-margin-top: 7.5rem; }
+.record-list a { color: var(--gold); text-decoration-color: color-mix(in srgb, var(--gold) 45%, transparent); }
+.record-list a:hover { text-decoration-color: var(--gold); }

@@ -90,7 +90,7 @@ export default function PhotoViewer({
                   return person ? (
                     <Link
                       key={pid}
-                      to={`/drivers#${pid}`}
+                      to={`/drivers/${pid}`}
                       onClick={() => ref.current?.close()}
                     >
                       {person.name}
