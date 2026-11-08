@@ -178,6 +178,11 @@ export interface Film {
   url?: string;
   date?: string;
   yearId?: string;
+  raceId?: string;
+  personIds?: string[];
+  locationIds?: string[];
+  description?: string;
+  rightsHolder?: string;
   sourceRef?: string;
   authorisationNote?: string;
 }
@@ -248,6 +253,7 @@ export const teamById = byId(teams);
 export const yearById = byId(years);
 export const photoById = byId(photos);
 export const locationById = byId(locations);
+export const raceById = byId(races);
 
 /**
  * URL for a photo's served asset. Serving uses stable register-ID names
@@ -256,4 +262,35 @@ export const locationById = byId(locations);
  */
 export function photoUrl(photo: Pick<Photo, 'assetPath'>): string {
   return import.meta.env.BASE_URL + photo.assetPath;
+}
+
+/** Gallery thumbnail derivative (≤560px webp); originals stay untouched. */
+export function photoThumbUrl(photo: Pick<Photo, 'assetPath'>): string {
+  return (
+    import.meta.env.BASE_URL +
+    photo.assetPath
+      .replace(/^photos\//, 'photos-thumbs/')
+      .replace(/\.[a-z]+$/i, '.webp')
+  );
+}
+
+/**
+ * Identification confidence, read from the catalogue's own hedges —
+ * never a new claim. "probable" when the cataloguer wrote 'likely',
+ * 'unconfirmed', 'possibly' or 'unidentified'; "catalogued" otherwise.
+ */
+export function identificationOf(photo: Photo): 'catalogued' | 'probable' {
+  const text = [
+    photo.imageTitle,
+    photo.caption,
+    photo.event,
+    photo.carSubject,
+    ...photo.peopleNames,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  return /likely|unconfirmed|possibl|unidentified/.test(text)
+    ? 'probable'
+    : 'catalogued';
 }

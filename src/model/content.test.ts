@@ -133,3 +133,36 @@ describe('lap order', () => {
     expect(bySeq.map((f) => f.properties.locId)).toEqual(lapOrder);
   });
 });
+
+describe('archive derivatives and integrity labels (Stage 6)', () => {
+  it('every photograph has a thumbnail derivative on disk', async () => {
+    const { existsSync } = await import('node:fs');
+    const { photoThumbUrl } = await import('./content');
+    for (const p of photos) {
+      const rel = photoThumbUrl(p).replace(/^\//, '').replace(/^dundrodtt\//, '');
+      expect(existsSync(`public/${rel}`), rel).toBe(true);
+    }
+  });
+
+  it('identification labels come only from catalogue hedges', async () => {
+    const { identificationOf, photoById } = await import('./content');
+    expect(identificationOf(photoById.get('DU-1952-05')!)).toBe('probable');
+    expect(identificationOf(photoById.get('DU-1951-02')!)).toBe('probable');
+    expect(identificationOf(photoById.get('DU-1950-05')!)).toBe('catalogued');
+    expect(identificationOf(photoById.get('DU-1955-05')!)).toBe('catalogued');
+  });
+
+  it('film records link only verified races, people and holders', async () => {
+    const { films, raceById, personById } = await import('./content');
+    expect(films.length).toBeGreaterThanOrEqual(3);
+    for (const f of films) {
+      if (f.status === 'external') {
+        expect(f.url).toMatch(/^https:\/\//);
+        expect(f.authorisationNote).toBeTruthy();
+        expect(f.rightsHolder).toBeTruthy();
+      }
+      if (f.raceId) expect(raceById.has(f.raceId)).toBe(true);
+      for (const pid of f.personIds ?? []) expect(personById.has(pid)).toBe(true);
+    }
+  });
+});

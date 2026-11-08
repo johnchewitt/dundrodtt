@@ -6,6 +6,7 @@ import {
   carById,
   locationById,
   personById,
+  photoThumbUrl,
   photoUrl,
   teamById,
   yearById,
@@ -217,7 +218,7 @@ export default function DriverProfile() {
                   aria-label={`Open ${p.altText ?? p.id} in the viewer`}
                 >
                   <img
-                    src={photoUrl(p)}
+                    src={photoThumbUrl(p)}
                     alt=""
                     loading="lazy"
                     width={p.width}

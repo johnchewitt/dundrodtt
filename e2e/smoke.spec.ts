@@ -104,7 +104,7 @@ test('archive film section shows an honest unavailable state', async ({
     'aria-selected',
     'true',
   );
-  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+  await expect(page.getByText(/No embedded footage yet/)).toBeVisible();
 });
 
 test('year roundel-style anchors scroll to the season', async ({ page }) => {
@@ -142,7 +142,7 @@ test('mobile menu opens, navigates and closes', async ({ page }) => {
 
 test('old films route redirects into the archive', async ({ page }) => {
   await page.goto('#/films');
-  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+  await expect(page.getByText(/No embedded footage yet/)).toBeVisible();
 });
 
 test('home lobby cards reach every experience', async ({ page }) => {
@@ -164,7 +164,7 @@ test('archive tabs follow the ARIA keyboard pattern', async ({ page }) => {
     'true',
   );
   await expect(page.getByRole('tab', { name: 'Film' })).toBeFocused();
-  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+  await expect(page.getByText(/No embedded footage yet/)).toBeVisible();
 });
 
 test('viewer shows a position counter', async ({ page }) => {
@@ -318,7 +318,7 @@ test('season chapter chips deep-link a documented circuit place', async ({
 
 test('archive shows the full 44-photo gallery with captions', async ({ page }) => {
   await page.goto('#/archive');
-  await expect(page.locator('.gallery-grid .plate')).toHaveCount(44);
+  await expect(page.locator('.masonry .plate')).toHaveCount(44);
   await expect(
     page.getByRole('heading', { name: 'The full archive, 1951–1955' }),
   ).toBeVisible();
@@ -326,9 +326,12 @@ test('archive shows the full 44-photo gallery with captions', async ({ page }) =
 
 test('film tab links out to the BFI film without embedding', async ({ page }) => {
   await page.goto('#/archive?section=film');
-  const link = page.getByRole('link', { name: /Ulster Trophy, Dundrod \(1955\)/ });
-  await expect(link).toBeVisible();
-  await expect(link).toHaveAttribute('href', /player\.bfi\.org\.uk/);
+  const card = page.locator('.film-card', { hasText: 'Ulster Trophy, Dundrod (1955)' });
+  await expect(card).toBeVisible();
+  await expect(card.getByRole('link', { name: 'Watch the film' })).toHaveAttribute(
+    'href',
+    /player\.bfi\.org\.uk/,
+  );
   await expect(page.locator('iframe')).toHaveCount(0);
 });
 
@@ -369,7 +372,7 @@ test('season chapter archive links land on a filtered year gallery', async ({
   await expect(
     page.getByRole('heading', { name: /photographs from 1952/ }),
   ).toBeVisible();
-  await expect(page.locator('.gallery-grid .plate')).toHaveCount(13);
+  await expect(page.locator('.masonry .plate')).toHaveCount(13);
   // Event filter narrows further; 1952 had no TT, so RAC TT yields the honest empty state.
   await page.getByRole('button', { name: 'RAC TT', exact: true }).click();
   await expect(page.getByText(/honest about its gaps/)).toBeVisible();
@@ -478,4 +481,115 @@ test('profiles surface the people seen in the same frames', async ({ page }) => 
   await page.goto('#/drivers/p-juan-manuel-fangio');
   await expect(page.getByRole('heading', { name: 'In the same frames' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Louis Rosier' })).toBeVisible();
+});
+
+/* ---------- Stage 6: the photographic & film archive ---------- */
+
+test('the Lost Photographs of 1950 lead the archive', async ({ page }) => {
+  await page.goto('#/archive');
+  await expect(
+    page.getByRole('heading', { name: 'The Lost Photographs of 1950' }),
+  ).toBeVisible();
+  await expect(page.locator('.lost-1950 .plate')).toHaveCount(7);
+});
+
+test('driver and search filters cut the gallery honestly', async ({ page }) => {
+  await page.goto('#/archive');
+  await page.getByLabel(/Driver/).selectOption({ label: 'Juan Manuel Fangio' });
+  await expect(page.getByRole('heading', { name: /5 photographs of Juan Manuel Fangio/ })).toBeVisible();
+  await page.getByLabel(/Search/).fill('BRM');
+  await expect(page.locator('.masonry .plate')).toHaveCount(3);
+  await page.getByLabel(/Search/).fill('zzz-nothing');
+  await expect(page.getByText(/honest about its gaps/)).toBeVisible();
+});
+
+test('viewer shows subject, identification label and collection link', async ({ page }) => {
+  await page.goto('#/archive?q=DU-1952-05');
+  await page.locator('.masonry .plate-button').first().click();
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer.getByText(/Identification: probable/)).toBeVisible();
+  await viewer.getByRole('link', { name: 'Contributed collection' }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Behind the Photographs' }),
+  ).toBeVisible();
+});
+
+test('behind the photographs honours the contributors correctly', async ({ page }) => {
+  await page.goto('#/archive?section=behind');
+  await expect(page.getByRole('heading', { name: 'Neville Armstrong' })).toBeVisible();
+  await expect(page.locator('#panel-behind img').first()).toBeVisible();
+  await expect(page.getByText(/second contributor/)).toBeVisible();
+  // the hidden contributor never gets a name or placeholder
+  const text = await page.locator('#panel-behind').innerText();
+  expect(text).not.toMatch(/\[|TBC|placeholder|null/i);
+});
+
+test('film collection links out with full provenance', async ({ page }) => {
+  await page.goto('#/archive?section=film');
+  const cards = page.locator('.film-card');
+  await expect(cards).toHaveCount(4);
+  const pathe = cards.filter({ hasText: 'Ulster Tourist Trophy (1950)' });
+  await expect(pathe.getByText('British Pathé').first()).toBeVisible();
+  await expect(pathe.getByRole('link', { name: /Watch at British Pathé/ })).toHaveAttribute(
+    'href',
+    /britishpathe\.com/,
+  );
+  const niscreen = cards.filter({ hasText: 'Stirling Moss and the RAC' });
+  await niscreen.getByRole('link', { name: 'Stirling Moss' }).click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Stirling Moss' }),
+  ).toBeVisible();
+});
+
+test('season chapters carry their films', async ({ page }) => {
+  await page.goto('#/seasons#y1950');
+  const films1950 = page.locator('#y1950 .chapter-films');
+  await expect(films1950.getByRole('link', { name: /Ulster Tourist Trophy \(1950\)/ })).toBeVisible();
+  await page.goto('#/seasons#y1955');
+  await expect(
+    page.locator('#y1955 .chapter-films a'),
+  ).toHaveCount(3);
+});
+
+test('the portrait never shows its internal handling caption', async ({ page }) => {
+  await page.goto('#/archive?section=behind');
+  const panel = page.locator('#panel-behind');
+  await expect(panel.getByText('DU-ACK-01')).toBeVisible();
+  await expect(panel.getByText(/keep it separate/)).toHaveCount(0);
+  await expect(panel.getByText(/Excluded from the main gallery/)).toHaveCount(0);
+});
+
+test('acknowledgements page never leaks the portrait handling note', async ({
+  page,
+}) => {
+  await page.goto('#/credits');
+  await expect(page.getByText('Neville and Beverley Armstrong.')).toBeVisible();
+  await expect(page.getByText(/keep it separate/)).toHaveCount(0);
+});
+
+/* ---------- Stage 6 QA pass ---------- */
+
+test('photographs are shareable by URL and the viewer syncs it', async ({
+  page,
+}) => {
+  await page.goto('#/archive?photo=DU-1951-08');
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  await expect(viewer.getByText('DU-1951-08')).toBeVisible();
+  // museum label: the catalogue title leads the caption
+  await expect(viewer.locator('.viewer-title')).toHaveText(/Stirling Moss in a Jaguar C-Type/);
+  await page.keyboard.press('ArrowRight');
+  await expect(page).toHaveURL(/photo=DU-1951-09/);
+  await page.keyboard.press('Escape');
+  await expect(viewer).toBeHidden();
+  await expect(page).not.toHaveURL(/photo=/);
+});
+
+test('clear-all-filters resets the archive in one step', async ({ page }) => {
+  await page.goto('#/archive?year=1952&event=ulster-trophy');
+  await expect(page.getByRole('heading', { name: /13 photographs from 1952/ })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear all filters' }).click();
+  await expect(
+    page.getByRole('heading', { name: 'The Lost Photographs of 1950' }),
+  ).toBeVisible();
 });

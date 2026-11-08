@@ -13,7 +13,15 @@ export default function Credits() {
         return (
           <section key={a.id}>
             <p className="standfirst">{a.message}</p>
-            {portrait ? <PhotoPlate photo={portrait} contained /> : null}
+            {portrait ? (
+              /* The portrait's catalogue caption is an internal handling
+                 note — display copy comes from the acknowledgement. */
+              <PhotoPlate
+                photo={portrait}
+                contained
+                caption="Neville and Beverley Armstrong."
+              />
+            ) : null}
           </section>
         );
       })}

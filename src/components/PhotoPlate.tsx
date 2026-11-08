@@ -1,11 +1,16 @@
 import { useState } from 'react';
-import { photoUrl, type Photo } from '../model/content';
+import { photoThumbUrl, photoUrl, type Photo } from '../model/content';
 
 interface PhotoPlateProps {
   photo: Photo;
   /** Contained plates respect the small native size of archive scans. */
   contained?: boolean;
   loading?: 'eager' | 'lazy';
+  /** Serve the untouched original instead of the gallery thumbnail. */
+  full?: boolean;
+  /** Display caption override — for records whose catalogue caption is
+   *  an internal handling note (e.g. the contributor portrait). */
+  caption?: string;
 }
 
 /**
@@ -18,6 +23,8 @@ export default function PhotoPlate({
   photo,
   contained = false,
   loading = 'lazy',
+  full = false,
+  caption,
 }: PhotoPlateProps) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -28,7 +35,7 @@ export default function PhotoPlate({
             // Cached images can complete before React attaches onLoad.
             if (el?.complete && el.naturalWidth > 0) setLoaded(true);
           }}
-          src={photoUrl(photo)}
+          src={full ? photoUrl(photo) : photoThumbUrl(photo)}
           alt={photo.altText ?? ''}
           loading={loading}
           width={photo.width}
@@ -44,7 +51,7 @@ export default function PhotoPlate({
       </div>
       <figcaption>
         <span className="plate-id">{photo.id}</span>
-        {photo.caption}
+        {caption ?? photo.caption}
       </figcaption>
     </figure>
   );
