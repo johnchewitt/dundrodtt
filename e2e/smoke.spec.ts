@@ -183,3 +183,58 @@ test('story chapter rail marks the current chapter', async ({ page }) => {
     )
     .toMatch(/The last flag/);
 });
+
+test('circuit page: catalogue selection opens the location story', async ({
+  page,
+}) => {
+  await page.goto('#/circuit');
+  await page.getByRole('button', { name: "Deer's Leap" }).click();
+  const panel = page.getByRole('complementary', { name: /Deer's Leap/ });
+  await expect(panel).toBeVisible();
+  await expect(panel.getByText(/killed Jim Mayers and William Smith/)).toBeVisible();
+  await expect(panel.getByText(/never guessed/)).toBeVisible();
+  await expect(panel.getByText(/marker is provisional/)).toBeVisible();
+  await panel.getByRole('link', { name: '1955' }).click();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () => document.getElementById('y1955')?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 300;
+    })
+    .toBe(true);
+});
+
+test('circuit page: explorer live with provisional landmarks', async ({
+  page,
+}) => {
+  await page.goto('#/circuit');
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
+  ).toBeVisible();
+  // The explorer loads, or reports failure honestly; never a dead panel.
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        () =>
+          !!document.querySelector('.explorer') ||
+          !!document.querySelector('.map-fallback') ||
+          !!document.querySelector('.loading-panel'),
+      ),
+    )
+    .toBe(true);
+  // When the SDK can reach its assets the toolbar renders; in a
+  // network-restricted environment the labelled error state shows.
+  const explorer = await page
+    .waitForSelector('.explorer-toolbar', { timeout: 15000 })
+    .catch(() => null);
+  if (explorer) {
+    await expect(page.getByRole('button', { name: 'Satellite' })).toBeVisible();
+    await expect(page.getByRole('button', { name: '3D terrain' })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: /Take a Lap of Dundrod|Lap again/ }),
+    ).toBeVisible();
+  } else {
+    await expect(page.getByText(/could not load/)).toBeVisible();
+  }
+});

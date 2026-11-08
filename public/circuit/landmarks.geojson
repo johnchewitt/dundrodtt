@@ -1,0 +1,203 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.1004647,
+     54.5845248
+    ]
+   },
+   "properties": {
+    "locId": "loc-rushyhill",
+    "name": "Rushyhill",
+    "seq": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.1134554,
+     54.5861764
+    ]
+   },
+   "properties": {
+    "locId": "loc-leathemstown-corner",
+    "name": "Leathemstown Corner",
+    "seq": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.1149086,
+     54.587847
+    ]
+   },
+   "properties": {
+    "locId": "loc-leathemstown-bridge",
+    "name": "Leathemstown Bridge",
+    "seq": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.1226483,
+     54.6011694
+    ]
+   },
+   "properties": {
+    "locId": "loc-deers-leap",
+    "name": "Deer's Leap",
+    "seq": 4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.1124418,
+     54.6085134
+    ]
+   },
+   "properties": {
+    "locId": "loc-cochranstown",
+    "name": "Cochranstown",
+    "seq": 5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0973052,
+     54.6093881
+    ]
+   },
+   "properties": {
+    "locId": "loc-quarterland",
+    "name": "Quarterland",
+    "seq": 6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0910667,
+     54.6088693
+    ]
+   },
+   "properties": {
+    "locId": "loc-irelands-corner",
+    "name": "Ireland's Corner",
+    "seq": 7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0843381,
+     54.6068917
+    ]
+   },
+   "properties": {
+    "locId": "loc-budore",
+    "name": "Budore",
+    "seq": 8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0748116,
+     54.6018173
+    ]
+   },
+   "properties": {
+    "locId": "loc-jordans-cross",
+    "name": "Jordan's Cross",
+    "seq": 9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0682738,
+     54.5980125
+    ]
+   },
+   "properties": {
+    "locId": "loc-wheelers-corner",
+    "name": "Wheeler's Corner",
+    "seq": 10
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0634849,
+     54.5907615
+    ]
+   },
+   "properties": {
+    "locId": "loc-tornagrough",
+    "name": "Tornagrough",
+    "seq": 11
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.0574839,
+     54.5931471
+    ]
+   },
+   "properties": {
+    "locId": "loc-1950s-hairpin",
+    "name": "The 1950s hairpin",
+    "seq": 12
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.076512,
+     54.5816443
+    ]
+   },
+   "properties": {
+    "locId": "loc-the-quarry",
+    "name": "The Quarry",
+    "seq": 13
+   }
+  }
+ ],
+ "properties": {
+  "note": "Provisional landmark points: placed on the verified route polyline from the 1954 programme map order, the owner's corner map and route geometry (bends/junctions/stream crossing); period names. Pending survey-grade confirmation."
+ }
+}

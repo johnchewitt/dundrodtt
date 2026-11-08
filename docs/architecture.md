@@ -42,12 +42,30 @@ docs/                       // this documentation set
 scripts/                    // content validator, asset pipeline
 ```
 
-## ArcGIS integration contract
-- **Owner supplies, when ready**: an ArcGIS Online **FeatureLayer** (item
-  ID or service URL) carrying the circuit geometry and landmark points,
-  plus portal URL if not ArcGIS Online, plus an API key only if required
-  (via uncommitted `.env`: `VITE_ARCGIS_API_KEY`). Until supplied,
-  `appSettings.arcgis.featureLayer` is `null` and nothing is invented.
+## ArcGIS integration contract (Stage 3: implemented, awaiting the layer)
+- **Owner supplies, when ready** (publicly shared, no key needed):
+  - `routeLayerUrl` — FeatureLayer URL for the 1950–55 course polyline
+    (rendered as an illuminated gold route; the camera opens on this
+    layer's own `fullExtent`, so the app hardcodes no coordinates).
+  - `landmarksLayerUrl` — FeatureLayer URL for landmark points (may be a
+    sublayer of the same service) with fields:
+    `locId` (string — must match `CircuitLocation.id`, e.g.
+    `loc-deers-leap`; see src/content/locations.json for all 13 ids),
+    `name` (string — period label shown on the map),
+    `seq` (integer — clockwise order for the guided lap; features
+    without `seq` are skipped by the lap but still selectable).
+  - Any Web Mercator / WGS84 service works; the SDK reprojects.
+  - **GeoJSON alternative**: either URL may instead point at a `.geojson`
+    file — remote, or committed to the repo and referenced relatively
+    (e.g. `circuit/route.geojson` under `public/circuit/`). GeoJSON is
+    WGS84 by spec (reprojected automatically) and one geometry type per
+    file, so route and landmarks are two files; same `locId`/`name`/`seq`
+    fields on the points. Repo-hosted GeoJSON keeps the circuit
+    versioned with the app and needs no ArcGIS Online hosting.
+  Both set in `src/config/appSettings.ts`. `VITE_ARCGIS_API_KEY`
+  (uncommitted `.env`) remains supported for modern basemap styles;
+  the default basemaps used (`dark-gray-vector`, `hybrid`) are keyless.
+  Until supplied, both URLs are `null` and nothing is invented.
 - **Division of responsibility**: the FeatureLayer owns geography
   (geometry, basemap context); local JSON owns meaning (location stories,
   photos, incidents, then-and-now). Join key: each landmark feature

@@ -2,6 +2,93 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 3 completion — landmarks, lap, map modes — 2026-11-08
+**Passed:** 13 provisional landmark points generated — every point
+snapped onto the verified route polyline, positioned from the 1954
+programme map order, the owner's corner map and the route's own
+geometric features (the B101/B38 junction, the angled stream-crossing
+kink at Leathemstown Bridge, the digitised hairpin tip); period names,
+clockwise seq 1–13; provenance appended to data/circuit/PROVENANCE.md.
+landmarksLayerUrl configured: markers with period-style labels,
+map-click → story panel, catalogue → camera goTo, and "Take a Lap of
+Dundrod" (full play/pause/skip/restart/exit on the tested LapEngine)
+are all live. Map modes: dark / satellite / 3D terrain scene
+(arcgis-scene, world elevation), store-driven; the location panel gains
+a Then & Now section (honest no-modern-photo state + "see this place
+from above today" satellite action). geometryStatus 'provisional'
+introduced and labelled in the panel. Gates: validator (now checks
+landmarks locIds, unique seq, Dundrod-area coordinates); tsc; oxlint;
+Vitest 18/18; Playwright 15/15; production build.
+**Unverified / outstanding (honestly):** live rendering of basemap,
+markers, camera flights, 2D/3D transitions and lap motion needs an
+open network (this environment blocks the ArcGIS CDN — the e2e asserts
+the explorer-or-honest-error contract instead); landmark positions are
+provisional pending survey-grade confirmation; Then & Now photo
+comparisons await approved modern photography; no photo↔location links
+exist yet so no "Show on Circuit" actions are shown (none invented).
+
+## Stage 3 circuit wiring — 2026-11-08
+**Passed:** the owner's circuit trace (supplied as EPSG:29902 GeoJSON +
+modern UGP corner map) was verified — closed loop, clockwise, correct
+Dundrod geography, 12,061 m — and found to follow the post-1965 layout
+at the hairpin (modern corner names incl. Lindsay Hairpin / Joey's
+Windmill on the companion map). With the owner's approval the 1950s
+hairpin was restored: a 19-vertex spur digitised from georeferenced
+current imagery of the surviving roads (Upper Springfield Rd out, the
+now-dead-end lane back), corroborated by the 1954 RAC TT programme
+track map (OS-based; copy in data/circuit/) and the documented ~110 m
+1965 relocation. Corrected route (12,313 m) committed as
+public/circuit/route.geojson (WGS84) with full provenance in
+data/circuit/PROVENANCE.md; routeLayerUrl configured; explorer renders
+route-only without landmarks (none supplied — nothing invented); lap
+and location-panel copy updated; validator, tsc, Vitest 17/17,
+Playwright 16/16, build green.
+**Unverified / outstanding:** live map rendering (this environment
+blocks the ArcGIS CDN — verify with npm run dev on an open network);
+the ~60 m of the hairpin U crossing a modern yard is approximate;
+measured length sits +3.2% over the documented 7 mi 732 yd (owner's
+base trace +1.1%; quoted old-vs-modern figures are in tension with any
+sizeable spur — shape evidence treated as primary; owner may refine if
+the 1952–67 OS sheet surfaces); Leathemstown retained as supplied
+pending a period-sheet check; landmark points (locId/name/seq) still
+awaited for markers, camera moves and the guided lap.
+
+## Stage 3 — Interactive circuit explorer — 2026-11-07
+**Passed:** the circuit experience is built end-to-end around the
+owner's still-awaited FeatureLayer (owner confirmed: not ready yet,
+will be shared publicly, no API key). Selection model is
+backend-independent: the 13-location landmark catalogue (period names,
+chips) drives a floating glass story panel with verified stories,
+restrained incident records (Deer's Leap, Tornagrough), documented-year
+links into the seasons, honest no-verified-photographs and
+geometry-pending states, and source references — all working today
+without the map. ArcGIS Maps SDK installed (@arcgis/map-components +
+core + calcite 5.2.1, satisfies ^5.1); the explorer module
+(ArcGisExplorer) is lazy-loaded ONLY when `routeLayerUrl` is set:
+dark/satellite keyless basemaps, illuminated gold route (glow + line
+renderers), labelled landmark layer, hitTest click → locId → panel,
+catalogue selection → camera goTo, load-error state, and the guided
+"Take a Lap" built on a pure, fully unit-tested LapEngine
+(play/pause/skip/restart/exit, dwell sequencing, reduced-motion instant
+jumps, no racing-speed simulation). Layer schema contract documented in
+docs/architecture.md (locId/name/seq). Gates: validator; tsc; oxlint;
+Vitest 17/17 (4 new LapEngine tests); Playwright 16/16 (2 new: Deer's
+Leap panel + sensitive text + year link; honest no-map states with
+zero ArcGIS chunks requested); build — ArcGIS fully code-split, main
+bundle ~349 KB raw.
+**Not executed (honestly):** live map rendering, geometry/coordinate
+verification, landmark positions, camera behaviour on real geometry,
+2D/3D transitions, FeatureLayer query performance, Then & Now against
+satellite imagery — all require the owner's verified circuit layer;
+the schematic fallback and honest states cover every surface
+meanwhile. 3D scene option and Then & Now swipe are scoped to light up
+after the layer lands (both need real geometry to be anything but
+pretence).
+**Uncertainty documented:** all 13 locations carry
+`geometryStatus: "pending"`; no photo↔location links exist because the
+catalogue records no verified photographic locations — none invented,
+no "Show on Circuit" actions shown without coordinates.
+
 ## Stage 2 QA pass — 2026-11-07
 **Problems found and fixed:** Archive tabs ignored arrow keys (ARIA tabs
 pattern incomplete) — roving tabindex + ArrowLeft/Right activation

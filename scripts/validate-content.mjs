@@ -108,6 +108,24 @@ const catalogued = new Set(photos.map((p) => p.assetPath));
 for (const f of onDisk)
   check(catalogued.has(f), `uncatalogued photo asset on disk: ${f}`);
 
+
+// Landmarks layer (provisional points): every locId resolves, seq unique.
+const landmarksPath = join(root, 'public/circuit/landmarks.geojson');
+if (existsSync(landmarksPath)) {
+  const lm = JSON.parse(readFileSync(landmarksPath, 'utf8'));
+  const seqs = new Set();
+  for (const f of lm.features) {
+    const { locId, seq } = f.properties ?? {};
+    refCheck(`landmark ${locId}`, locId, locationIds, 'location');
+    check(Number.isInteger(seq) && !seqs.has(seq), `landmark ${locId}: bad/duplicate seq`);
+    seqs.add(seq);
+    check(f.geometry?.type === 'Point', `landmark ${locId}: not a Point`);
+    const [lon, lat] = f.geometry.coordinates;
+    check(lat > 54.5 && lat < 54.7 && lon > -6.2 && lon < -6.0,
+      `landmark ${locId}: coordinates outside the Dundrod area`);
+  }
+}
+
 // Exclusions
 check(photos.filter((p) => p.include).length === 44, 'archive must hold exactly 44 photos');
 check(!photos.find((p) => p.id === 'DU-1955-04-DUP')?.include, 'duplicate must stay excluded');

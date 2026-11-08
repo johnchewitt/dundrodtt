@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   acknowledgements,
+  locations,
   archivePhotos,
   personById,
   photos,
@@ -64,5 +65,22 @@ describe('acknowledgements', () => {
     )!;
     expect(hidden.visibility).toBe('hidden');
     expect(hidden.name).toBeNull();
+  });
+});
+
+describe('landmarks layer', () => {
+  it('every landmark locId resolves and seq is a clean clockwise sequence', async () => {
+    const { readFileSync } = await import('node:fs');
+    const data = JSON.parse(
+      readFileSync('public/circuit/landmarks.geojson', 'utf8'),
+    ) as { features: Array<{ properties: { locId: string; seq: number } }> };
+    const ids = new Set(locations.map((l) => l.id));
+    for (const f of data.features) {
+      expect(ids.has(f.properties.locId)).toBe(true);
+    }
+    const seqs = data.features.map((f) => f.properties.seq);
+    expect(new Set(seqs).size).toBe(data.features.length);
+    expect(Math.min(...seqs)).toBe(1);
+    expect(Math.max(...seqs)).toBe(data.features.length);
   });
 });
