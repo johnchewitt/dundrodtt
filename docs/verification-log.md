@@ -2,6 +2,14 @@
 
 Each stage records what passed and what remains unverified.
 
+## Published under the new title — 2026-11-08
+**Passed:** PR #8 merged on the owner's authorisation; GitHub Pages
+workflow run 42530663713 fully green. Live at
+https://johnchewitt.github.io/dundrodtt/ as
+"Dundrod: A Golden Age of Motorsport", carrying the post-publication QA
+refinements (sticky mobile tour controls, scene counter, autoplay
+pacing bar, reduced-motion notice, map legend, next-scene preload).
+
 ## Retitle (owner-directed) — 2026-11-08
 **Passed:** application identity renamed to "Dundrod: A Golden Age of
 Motorsport" across the wordmark, cover, document titles (incl. tour and
