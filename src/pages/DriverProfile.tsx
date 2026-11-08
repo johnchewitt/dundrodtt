@@ -37,7 +37,7 @@ export default function DriverProfile() {
   // top-level experiences).
   useEffect(() => {
     if (person) {
-      document.title = `${person.name} · Dundrod — The Forgotten Racing Years`;
+      document.title = `${person.name} · Dundrod: A Golden Age of Motorsport`;
     }
   }, [person]);
 

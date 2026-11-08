@@ -2,6 +2,14 @@
 
 Each stage records what passed and what remains unverified.
 
+## Retitle (owner-directed) — 2026-11-08
+**Passed:** application identity renamed to "Dundrod: A Golden Age of
+Motorsport" across the wordmark, cover, document titles (incl. tour and
+profile pages), Open Graph/Twitter metadata, regenerated social card,
+README, design-token header and CLAUDE.md; opening headline and
+distinction unchanged. Gates re-run: tsc · oxlint · validator · 31/31
+Vitest · full Playwright suite green.
+
 ## Post-stage QA pass (Stage 7 / publication) — 2026-11-08
 **Passed — functional & technical:** full regression on the published
 feature set: 31/31 Vitest, 63/63 Playwright (incl. the 12-route axe

@@ -123,7 +123,7 @@ test('document titles change per experience', async ({ page }) => {
   await page.goto('#/archive');
   await expect(page).toHaveTitle(/The Archive · Dundrod/);
   await page.goto('');
-  await expect(page).toHaveTitle(/^Dundrod — The Forgotten Racing Years$/);
+  await expect(page).toHaveTitle(/^Dundrod: A Golden Age of Motorsport$/);
 });
 
 test('mobile menu opens, navigates and closes', async ({ page }) => {

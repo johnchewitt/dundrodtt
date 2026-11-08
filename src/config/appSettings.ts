@@ -39,7 +39,7 @@ export const arcgisSettings: ArcgisSettings = {
 };
 
 export const siteSettings = {
-  identity: 'Dundrod — The Forgotten Racing Years',
+  identity: 'Dundrod: A Golden Age of Motorsport',
   headline: 'When Formula 1 Came to Northern Ireland',
   subtitle:
     "Six extraordinary seasons. Legendary drivers. The world's finest racing cars. One unforgettable road circuit.",

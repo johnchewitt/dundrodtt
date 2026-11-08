@@ -76,7 +76,7 @@ export default function Discover() {
   }, [index]);
 
   useEffect(() => {
-    document.title = 'Discover Dundrod · Dundrod — The Forgotten Racing Years';
+    document.title = 'Discover Dundrod · Dundrod: A Golden Age of Motorsport';
   }, []);
 
   useEffect(() => {

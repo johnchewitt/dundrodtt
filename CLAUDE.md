@@ -1,10 +1,10 @@
-# DUNDROD — The Forgotten Racing Years
+# DUNDROD: A Golden Age of Motorsport
 
 Permanent project instructions. These bind every development stage.
 
 A premium interactive digital heritage experience about motor racing at the
 Dundrod circuit, County Antrim, Northern Ireland, 1950–1955. Application
-identity: **Dundrod — The Forgotten Racing Years**. Opening headline:
+identity (renamed by the owner, 2026-11-08): **Dundrod: A Golden Age of Motorsport**. Opening headline:
 **WHEN FORMULA 1 CAME TO NORTHERN IRELAND**, subtitle: *Six extraordinary
 seasons. Legendary drivers. The world's finest racing cars. One
 unforgettable road circuit.*
