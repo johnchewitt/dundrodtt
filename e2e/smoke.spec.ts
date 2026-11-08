@@ -5,7 +5,7 @@ test('cover tells the story and preserves the headline distinction', async ({
 }) => {
   await page.goto('');
   await expect(
-    page.getByRole('heading', { name: /When Formula 1 Came to Northern Ireland/i }),
+    page.getByRole('heading', { name: /When Formula One.*came to Northern Ireland/is }),
   ).toBeVisible();
   await expect(
     page.getByText(/never a championship Grand Prix/i).first(),

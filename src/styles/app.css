@@ -625,7 +625,8 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--ivory);
   font-style: italic;
   font-weight: 650;
-  max-width: 15ch;
+  /* the owner's explicit two-line break controls the shape */
+  max-width: 25ch;
   margin-bottom: var(--space-3);
 }
 
@@ -1731,3 +1732,6 @@ a.driver-card:focus-visible {
   }
   .discover-count { flex-basis: 100%; }
 }
+
+/* Headline renders on the owner's two lines at every width */
+.headline-line { display: block; }
