@@ -1,0 +1,9 @@
+[
+  { "id": "t-vandervell", "name": "Vandervell", "context": "Entered the Ferrari 375 that Piero Taruffi took to victory in the 1952 Ulster Trophy.", "sourceRefs": ["R08"] },
+  { "id": "t-ecurie-ecosse", "name": "Ecurie Ecosse", "context": "Entered the Jaguar D-Type in which Desmond Titterington was fastest finisher at the May 1955 Ulster Trophy.", "sourceRefs": ["R16", "R22"] },
+  { "id": "t-aston-martin", "name": "Aston Martin", "context": "A recurring British works entry; Collins and Griffith's 1953 TT win came in the works DB3S.", "sourceRefs": ["R06", "R21"] },
+  { "id": "t-scuderia-ferrari", "name": "Scuderia Ferrari", "context": "The 750 Monza of Hawthorn and Trintignant took the 1954 TT scratch and championship result.", "sourceRefs": ["R09"] },
+  { "id": "t-mercedes-benz", "name": "Mercedes-Benz", "context": "The 300 SLR team of the 1955 TT; Moss and Fitch won the final Dundrod car race in a 300 SLR.", "sourceRefs": ["R10", "R15"] },
+  { "id": "t-jaguar", "name": "Jaguar (works)", "context": "A single factory D-Type, shared by Mike Hawthorn and Desmond Titterington, challenged the Mercedes team in the 1955 TT until mechanical failure late in the race.", "sourceRefs": ["R06", "R10"] },
+  { "id": "t-brm", "name": "BRM", "context": "Brought the experimental V16 for Moss and Fangio at the 1952 Ulster Trophy; neither finished.", "sourceRefs": ["R13"] }
+]

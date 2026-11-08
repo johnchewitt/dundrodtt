@@ -1,0 +1,31 @@
+[
+  {
+    "id": "inc-1951-tt",
+    "yearId": "y1951",
+    "raceId": "race-1951-tt",
+    "peopleNames": ["Eric Winterbottom"],
+    "personIds": ["p-eric-winterbottom"],
+    "text": "Eric Winterbottom died in a first-lap crash at the 1951 Tourist Trophy.",
+    "sourceRefs": ["R06"]
+  },
+  {
+    "id": "inc-1955-deers-leap",
+    "yearId": "y1955",
+    "raceId": "race-1955-tt",
+    "locationId": "loc-deers-leap",
+    "peopleNames": ["Jim Mayers", "William Smith"],
+    "personIds": ["p-jim-mayers", "p-william-smith"],
+    "text": "On the second lap, a multi-car crash at Deer's Leap killed Jim Mayers and William Smith.",
+    "sourceRefs": ["R10", "R11", "R15"]
+  },
+  {
+    "id": "inc-1955-tornagrough",
+    "yearId": "y1955",
+    "raceId": "race-1955-tt",
+    "locationId": "loc-tornagrough",
+    "peopleNames": ["Richard Mainwaring"],
+    "personIds": ["p-richard-mainwaring"],
+    "text": "Richard Mainwaring died later in the race when his Elva crashed at Tornagrough.",
+    "sourceRefs": ["R11"]
+  }
+]

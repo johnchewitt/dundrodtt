@@ -58,10 +58,13 @@ won the 1951 Ulster Trophy; Moss and Fangio appeared in the V16 BRM in
 - The gallery spreadsheet is the primary photo metadata catalogue: 46
   records — 44 for the race archive, one duplicate JPEG excluded in favour
   of its higher-resolution PNG (DU-1955-04-DUP), one contributor portrait
-  (DU-ACK-01) kept out of the race archive. Use its exact relative File
-  paths (normalize filenames to NFC — the zip extracts NFD), display its
-  Caption, use its Alt text, filter by year/event, keep Review note
-  internal (never rendered).
+  (DU-ACK-01) kept out of the race archive. Keep its exact relative File
+  path verbatim in each record as the catalogue identity (NFC-normalized —
+  the zip extracts NFD), but SERVE images under stable register-ID asset
+  names (`photos/<year>/<ID>.<ext>`): several original filenames contain
+  `#` and other characters static hosts mis-serve. Display its Caption,
+  use its Alt text, filter by year/event, keep Review note internal
+  (never rendered).
 - Collection credit, shown once at collection level: "Neville Armstrong
   kindly contributed photographs of Dundrod from the 1950s." No per-image
   donor credits. The portrait (Neville with his wife Beverley) appears

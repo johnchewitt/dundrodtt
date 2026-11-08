@@ -1,0 +1,136 @@
+[
+  {
+    "id": "race-1950-ut",
+    "yearId": "y1950",
+    "event": "ulster-trophy",
+    "status": "held",
+    "date": "1950-08-12",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-peter-whitehead"], "carId": "c-ferrari-125" },
+      { "award": "handicap", "winnerPersonIds": ["p-anthony-powys-lybbe"], "carId": "c-alfa-romeo-p3", "note": "Handicap contest at the August meeting, kept distinct from the Trophy result." }
+    ],
+    "notes": "Contemporary press coverage called it the opening of a new circuit.",
+    "sourceRefs": ["R03", "R18", "R19"]
+  },
+  {
+    "id": "race-1950-tt",
+    "yearId": "y1950",
+    "event": "rac-tt",
+    "status": "held",
+    "date": "1950-09-16",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-stirling-moss"], "carId": "c-jaguar-xk120", "note": "Tommy Wisdom's Jaguar XK120; won both on the road and on handicap in difficult weather." }
+    ],
+    "sourceRefs": ["R05", "R17"]
+  },
+  {
+    "id": "race-1951-ut",
+    "yearId": "y1951",
+    "event": "ulster-trophy",
+    "status": "held",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-giuseppe-farina"], "carId": "c-alfa-romeo-159", "note": "Set a lap record of 4 minutes 44 seconds." }
+    ],
+    "sourceRefs": ["R06", "R07"]
+  },
+  {
+    "id": "race-1951-tt",
+    "yearId": "y1951",
+    "event": "rac-tt",
+    "status": "held",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-stirling-moss"], "carId": "c-jaguar-c-type", "note": "C-Types finished first and second, with another in fourth." }
+    ],
+    "incidentIds": ["inc-1951-tt"],
+    "sourceRefs": ["R06", "R07"]
+  },
+  {
+    "id": "race-1952-ut",
+    "yearId": "y1952",
+    "event": "ulster-trophy",
+    "status": "held",
+    "date": "1952-06-07",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-piero-taruffi"], "carId": "c-ferrari-375", "teamId": "t-vandervell", "note": "Mike Hawthorn second in a Cooper-Bristol. Moss and Fangio appeared in the experimental V16 BRM; neither finished." }
+    ],
+    "sourceRefs": ["R08", "R13", "R20"]
+  },
+  {
+    "id": "race-1952-tt",
+    "yearId": "y1952",
+    "event": "rac-tt",
+    "status": "not-held",
+    "notHeldReason": "Cancelled after a weak entry and limited public support.",
+    "sourceRefs": ["R20"]
+  },
+  {
+    "id": "race-1953-ut",
+    "yearId": "y1953",
+    "event": "ulster-trophy",
+    "status": "held",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-mike-hawthorn"], "carId": "c-ferrari-500", "note": "A Formula Two event." }
+    ],
+    "sourceRefs": ["R06", "R13", "R21"]
+  },
+  {
+    "id": "race-1953-tt",
+    "yearId": "y1953",
+    "event": "rac-tt",
+    "status": "held",
+    "championship": "World Sportscar Championship round",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-peter-collins", "p-pat-griffith"], "carId": "c-aston-martin-db3s", "teamId": "t-aston-martin", "note": "A long, difficult race in fog." }
+    ],
+    "sourceRefs": ["R06", "R13", "R21"]
+  },
+  {
+    "id": "race-1954-ut",
+    "yearId": "y1954",
+    "event": "ulster-trophy",
+    "status": "not-held",
+    "notHeldReason": "No Ulster Trophy was held at Dundrod in 1954.",
+    "sourceRefs": ["R01", "R06"]
+  },
+  {
+    "id": "race-1954-tt",
+    "yearId": "y1954",
+    "event": "rac-tt",
+    "status": "held",
+    "championship": "World Sportscar Championship round",
+    "classifications": [
+      { "award": "scratch", "winnerPersonIds": ["p-mike-hawthorn", "p-maurice-trintignant"], "carId": "c-ferrari-750-monza", "teamId": "t-scuderia-ferrari", "note": "Scratch and championship result." },
+      { "award": "handicap", "winnerPersonIds": ["p-gerard-laureau", "p-paul-armagnac"], "carId": "c-db-panhard", "note": "The Tourist Trophy was awarded under the handicap classification." }
+    ],
+    "notes": "One race, two result systems — name both classifications when discussing the winner.",
+    "sourceRefs": ["R09", "R10"]
+  },
+  {
+    "id": "race-1955-ut",
+    "yearId": "y1955",
+    "event": "ulster-trophy",
+    "status": "held",
+    "date": "1955-05",
+    "classifications": [
+      { "award": "fastest-finisher", "winnerPersonIds": ["p-desmond-titterington"], "carId": "c-jaguar-d-type", "teamId": "t-ecurie-ecosse", "note": "The Ulster Trophy went to the fastest finisher in the mixed sports-car and single-seater handicap." },
+      { "award": "handicap-champion-trophy", "winnerPersonIds": ["p-bill-smith"], "carId": "c-jaguar-c-type", "note": "Bill Smith won the handicap Champion Trophy." }
+    ],
+    "sourceRefs": ["R16", "R22"]
+  },
+  {
+    "id": "race-1955-tt",
+    "yearId": "y1955",
+    "event": "rac-tt",
+    "status": "held",
+    "date": "1955-09",
+    "laps": 84,
+    "time": "7:03:11",
+    "championship": "World Sportscar Championship round; Golden Jubilee running of the RAC event",
+    "classifications": [
+      { "award": "outright", "winnerPersonIds": ["p-stirling-moss", "p-john-fitch"], "carId": "c-mercedes-300-slr", "teamId": "t-mercedes-benz", "note": "84 laps in 7 hours 3 minutes 11 seconds at an average 88.32 mph. Hawthorn's Jaguar D-Type set the 4 minute 42 second lap record, about 94.67 mph." }
+    ],
+    "incidentIds": ["inc-1955-deers-leap", "inc-1955-tornagrough"],
+    "notes": "The final car race at Dundrod.",
+    "sourceRefs": ["R06", "R10", "R11", "R15"]
+  }
+]
