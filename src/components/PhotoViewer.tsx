@@ -84,12 +84,15 @@ export default function PhotoViewer({
                 : 'Identification: as catalogued'}
             </span>
             <span>
-              <Link to="/archive?section=behind" onClick={() => ref.current?.close()}>
-                Contributed collection
-              </Link>
+              {/* No manual close: navigating unmounts the viewer, and
+                  closing first can cancel the link's own navigation. */}
+              <Link to="/archive?section=behind">Contributed collection</Link>
             </span>
           </p>
           <figcaption>
+            {photo.imageTitle && (
+              <span className="viewer-title">{photo.imageTitle}</span>
+            )}
             <span className="plate-id">{photo.id}</span>
             {photo.caption}
             <span className="viewer-count" aria-live="polite">

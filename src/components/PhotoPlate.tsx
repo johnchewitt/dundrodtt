@@ -8,6 +8,9 @@ interface PhotoPlateProps {
   loading?: 'eager' | 'lazy';
   /** Serve the untouched original instead of the gallery thumbnail. */
   full?: boolean;
+  /** Display caption override — for records whose catalogue caption is
+   *  an internal handling note (e.g. the contributor portrait). */
+  caption?: string;
 }
 
 /**
@@ -21,6 +24,7 @@ export default function PhotoPlate({
   contained = false,
   loading = 'lazy',
   full = false,
+  caption,
 }: PhotoPlateProps) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -47,7 +51,7 @@ export default function PhotoPlate({
       </div>
       <figcaption>
         <span className="plate-id">{photo.id}</span>
-        {photo.caption}
+        {caption ?? photo.caption}
       </figcaption>
     </figure>
   );

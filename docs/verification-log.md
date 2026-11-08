@@ -2,6 +2,49 @@
 
 Each stage records what passed and what remains unverified.
 
+## Post-stage QA pass (Stage 6) — 2026-11-08
+**Passed — functional & technical:** 14 routes × 2 viewports audited,
+including filter permutations, the shareable-photo URL, both new tabs
+and a driver profile: ZERO app console errors, zero failed requests,
+zero broken images (ArcGIS CDN block filtered as environmental). Gates:
+tsc (forced) · oxlint · validator · 31/31 Vitest · 46/46 Playwright ·
+production build.
+**Fixed:** the Acknowledgements page had rendered the contributor
+portrait's catalogue caption — an internal handling instruction — since
+Stage 2; PhotoPlate now takes a display-caption override, Credits uses
+it, and an e2e test guards both this page and Behind the Photographs.
+Also fixed two viewer races found while testing: closing the dialog
+could cancel an inner link's navigation (the collection link now lets
+the route change unmount the viewer), and the close handler could
+clobber a just-navigated URL (openPhoto now uses a functional
+search-params update).
+**Passed — historical accuracy:** 46-check Stage 6 audit: every
+external film links to its holder's own page (BFI/Pathé/DFA), carries
+rights holder, registered source and the linked-not-embedded note; no
+iframes or third-party embeds anywhere in the app; no film claims
+embed authorisation; the four confirm-before-publication photographs
+all ship with their catalogue hedges intact and are the ones the
+viewer marks "probable"; the Lost-1950 copy uses only the supplied
+wording, renders no placeholder name and never the hidden record's own
+message; the 1950 Pathé film is tied to the TT only and the BFI film
+to the Ulster Trophy only.
+**Five UX improvements implemented:**
+1. Photographs are shareable: ?photo=DU-… opens the viewer, arrowing
+   rewrites the URL (replace, no history spam), Escape clears it.
+2. The viewer gained its museum label — the catalogue title leads the
+   caption in display serif.
+3. One-step "Clear all filters" chip on any filtered view.
+4. Keyboard focus is now visible on every gallery plate
+   (focus-visible outline on .plate-button).
+5. The first Lost-1950 plates load eagerly for a faster first paint;
+   everything else stays lazy.
+**Regression:** full suite re-run (46/46) covering every earlier
+stage's journeys; relationship integrity re-verified by the audit.
+**Unverified / outstanding:** unchanged from the Stage 6 entry below;
+the linked Pathé "Tragedy Mars" page carries the story's selected
+originals (mute duplicate) — if the owner prefers the issued sound
+newsreel, Pathé's site search can confirm its slug on a visit.
+
 ## Stage 6 — The Photographic & Film Archive — 2026-11-08
 **Passed:** archive rebuilt as the collection's centrepiece. Photography:
 editorial masonry gallery (1/2/3 columns, register order preserved),

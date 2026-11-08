@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { Link, useSearchParams } from 'react-router-dom';
 import PhotoPlate from '../components/PhotoPlate';
 import PhotoViewer from '../components/PhotoViewer';
@@ -59,7 +59,7 @@ export default function Archive() {
   const driver = params.get('driver');
   const subject = params.get('subject');
   const q = (params.get('q') ?? '').trim().toLowerCase();
-  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const photoParam = params.get('photo');
 
   // People and subjects offered as filters come straight from the catalogue.
   const driverOptions = [
@@ -94,6 +94,23 @@ export default function Archive() {
 
   const viewerPhotos = filtering ? filtered : archivePhotos;
   const indexOf = (id: string) => viewerPhotos.findIndex((p) => p.id === id);
+  // The viewer is URL-addressable: ?photo=DU-1951-08 opens it, navigation
+  // rewrites it (replace, not push), closing clears it — so any
+  // photograph can be shared as a link.
+  const viewerIndex = photoParam ? indexOf(photoParam) : null;
+  const openPhoto = (index: number | null) => {
+    // Functional update: the dialog's close event can fire just after a
+    // link inside it has navigated, so always start from the live URL.
+    setParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (index === null || !viewerPhotos[index]) next.delete('photo');
+        else next.set('photo', viewerPhotos[index].id);
+        return next;
+      },
+      { replace: true },
+    );
+  };
 
   const setFilters = (next: Record<string, string | null>) => {
     const merged: Record<string, string> = {};
@@ -106,15 +123,14 @@ export default function Archive() {
       ...next,
     };
     for (const [k, v] of Object.entries(current)) if (v) merged[k] = v;
-    setParams(merged);
-    setViewerIndex(null);
+    setParams(merged); // drops any open ?photo= — filters define a new set
   };
 
   const plateButton = (p: Photo) => (
     <button
       type="button"
       className="plate-button"
-      onClick={() => setViewerIndex(indexOf(p.id))}
+      onClick={() => openPhoto(indexOf(p.id))}
       aria-label={`View full screen: ${p.imageTitle ?? p.id}`}
     >
       <PhotoPlate photo={p} contained />
@@ -256,6 +272,15 @@ export default function Archive() {
                   <Link to={`/seasons#y${year}`}>Read the {year} story</Link>.
                 </p>
               )}
+              <p>
+                <button
+                  type="button"
+                  className="chip chip-clear"
+                  onClick={() => setParams({})}
+                >
+                  Clear all filters
+                </button>
+              </p>
               {filtered.length === 0 && (
                 <p className="muted">
                   No photographs in the archive match this combination — the
@@ -292,8 +317,17 @@ export default function Archive() {
                   wait. <Link to="/seasons#y1950">Read the 1950 story</Link>.
                 </p>
                 <ul className="masonry masonry-special">
-                  {special.map((p) => (
-                    <li key={p.id}>{plateButton(p)}</li>
+                  {special.map((p, i) => (
+                    <li key={p.id}>
+                      <button
+                        type="button"
+                        className="plate-button"
+                        onClick={() => openPhoto(indexOf(p.id))}
+                        aria-label={`View full screen: ${p.imageTitle ?? p.id}`}
+                      >
+                        <PhotoPlate photo={p} contained loading={i < 2 ? 'eager' : 'lazy'} />
+                      </button>
+                    </li>
                   ))}
                 </ul>
               </section>
@@ -310,9 +344,9 @@ export default function Archive() {
           )}
           <PhotoViewer
             photos={viewerPhotos}
-            index={viewerIndex}
-            onClose={() => setViewerIndex(null)}
-            onNavigate={setViewerIndex}
+            index={viewerIndex !== null && viewerIndex >= 0 ? viewerIndex : null}
+            onClose={() => openPhoto(null)}
+            onNavigate={openPhoto}
           />
         </div>
       )}

@@ -1597,3 +1597,18 @@ a.driver-card:focus-visible {
 }
 .viewer-details span + span::before { content: '· '; color: var(--gold); }
 .viewer-details a { color: var(--gold); }
+
+/* QA6: focusable plates, museum labels, clear-filters */
+.plate-button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+.viewer-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  color: var(--text-on-dark);
+  margin-bottom: 0.2rem;
+}
+.chip-clear { border-style: dashed; color: var(--text-on-dark-soft); }
+.chip-clear:hover { color: var(--midnight); }

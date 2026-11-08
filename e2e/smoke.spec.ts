@@ -558,3 +558,38 @@ test('the portrait never shows its internal handling caption', async ({ page }) 
   await expect(panel.getByText(/keep it separate/)).toHaveCount(0);
   await expect(panel.getByText(/Excluded from the main gallery/)).toHaveCount(0);
 });
+
+test('acknowledgements page never leaks the portrait handling note', async ({
+  page,
+}) => {
+  await page.goto('#/credits');
+  await expect(page.getByText('Neville and Beverley Armstrong.')).toBeVisible();
+  await expect(page.getByText(/keep it separate/)).toHaveCount(0);
+});
+
+/* ---------- Stage 6 QA pass ---------- */
+
+test('photographs are shareable by URL and the viewer syncs it', async ({
+  page,
+}) => {
+  await page.goto('#/archive?photo=DU-1951-08');
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  await expect(viewer.getByText('DU-1951-08')).toBeVisible();
+  // museum label: the catalogue title leads the caption
+  await expect(viewer.locator('.viewer-title')).toHaveText(/Stirling Moss in a Jaguar C-Type/);
+  await page.keyboard.press('ArrowRight');
+  await expect(page).toHaveURL(/photo=DU-1951-09/);
+  await page.keyboard.press('Escape');
+  await expect(viewer).toBeHidden();
+  await expect(page).not.toHaveURL(/photo=/);
+});
+
+test('clear-all-filters resets the archive in one step', async ({ page }) => {
+  await page.goto('#/archive?year=1952&event=ulster-trophy');
+  await expect(page.getByRole('heading', { name: /13 photographs from 1952/ })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear all filters' }).click();
+  await expect(
+    page.getByRole('heading', { name: 'The Lost Photographs of 1950' }),
+  ).toBeVisible();
+});
