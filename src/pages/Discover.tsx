@@ -4,6 +4,7 @@ import PhotoPlate from '../components/PhotoPlate';
 import {
   personById,
   photoById,
+  photoUrl,
   storyChapters,
   yearById,
 } from '../model/content';
@@ -64,8 +65,18 @@ export default function Discover() {
   const photo = step.photoId ? photoById.get(step.photoId) : undefined;
   const last = index === steps.length - 1;
 
+  // Seamless transitions: the next scene's photograph loads while this
+  // one is on stage.
   useEffect(() => {
-    document.title = 'Discover Dundrod · Dundrod — The Forgotten Racing Years';
+    const next = steps[index + 1];
+    if (next?.photoId) {
+      const p = photoById.get(next.photoId);
+      if (p) new Image().src = photoUrl(p);
+    }
+  }, [index]);
+
+  useEffect(() => {
+    document.title = 'Discover Dundrod · Dundrod: A Golden Age of Motorsport';
   }, []);
 
   useEffect(() => {
@@ -102,6 +113,7 @@ export default function Discover() {
         <h1>Discover Dundrod</h1>
         <p className="muted">
           Eight scenes, about four minutes — or take it at your own pace.
+          {reduced && ' Autoplay is off, respecting your reduced-motion setting — use Play or Next.'}
         </p>
       </header>
 
@@ -153,7 +165,16 @@ export default function Discover() {
         ) : null}
       </section>
 
+      {playing && !last && (
+        <div className="discover-progress" aria-hidden="true">
+          <span key={step.id} className="discover-progress-fill" />
+        </div>
+      )}
+
       <nav className="discover-controls" aria-label="Tour controls">
+        <span className="discover-count" aria-live="polite">
+          Scene {index + 1} of {steps.length}
+        </span>
         <button
           type="button"
           className="menu-button"

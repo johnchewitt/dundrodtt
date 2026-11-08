@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { experiences } from './SiteHeader';
 
-const SITE = 'Dundrod — The Forgotten Racing Years';
+const SITE = 'Dundrod: A Golden Age of Motorsport';
 
 /**
  * Keeps navigation honest: per-route document titles, scroll-to-top on

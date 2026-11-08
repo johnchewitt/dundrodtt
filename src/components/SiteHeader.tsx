@@ -38,7 +38,7 @@ export default function SiteHeader() {
     <header className="masthead">
       <div className="masthead-inner">
         <NavLink to="/" className="wordmark">
-          Dundrod<em>The Forgotten Racing Years</em>
+          Dundrod<em>A Golden Age of Motorsport</em>
         </NavLink>
         <button
           type="button"

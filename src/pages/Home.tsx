@@ -23,7 +23,7 @@ export default function Home() {
 
 function Cover() {
   return (
-    <section className="cover" aria-label="Dundrod — The Forgotten Racing Years">
+    <section className="cover" aria-label="Dundrod: A Golden Age of Motorsport">
       <div className="cover-photos" aria-hidden="true">
         {coverPhotos.map(({ photo, webp }, i) => (
           <picture key={photo.id} className={`cover-photo cover-photo-${i + 1}`}>
@@ -41,7 +41,7 @@ function Cover() {
       <div className="cover-inner">
         <p className="cover-mark enter enter-1">
           Dundrod
-          <span>The Forgotten Racing Years</span>
+          <span>A Golden Age of Motorsport</span>
         </p>
         <h1 className="enter enter-2">{siteSettings.headline}</h1>
         <p className="cover-subtitle enter enter-3">{siteSettings.subtitle}</p>

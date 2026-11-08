@@ -1694,3 +1694,40 @@ a.driver-card:focus-visible {
   color: var(--text-on-dark-soft);
 }
 .footer-rights { font-size: 0.78rem; color: var(--text-on-dark-soft); max-width: var(--measure); }
+
+/* QA7 final: tour progress, scene counter, mobile sticky controls */
+.discover-progress {
+  height: 2px;
+  background: color-mix(in srgb, var(--gold) 20%, transparent);
+  overflow: hidden;
+}
+.discover-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  animation: discover-advance 16s linear forwards;
+}
+@keyframes discover-advance {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .discover-progress { display: none; }
+}
+.discover-count {
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+  margin-right: var(--space-2);
+}
+@media (max-width: 60rem) {
+  .discover-controls {
+    position: sticky;
+    bottom: 0;
+    background: color-mix(in srgb, var(--midnight) 92%, transparent);
+    backdrop-filter: blur(10px);
+    padding: var(--space-2) var(--page-pad);
+    margin-inline: calc(-1 * var(--page-pad));
+    z-index: 30;
+  }
+  .discover-count { flex-basis: 100%; }
+}

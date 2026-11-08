@@ -347,8 +347,9 @@ export default function ArcGisExplorer() {
           ))}
         </div>
         <span className="toolbar-note">
-          Landmark markers are provisional — placed on the verified route
-          from the period maps, pending survey-grade confirmation.
+          The gold line is the 1950–55 course. Landmark markers are
+          provisional — placed on the verified route from the period maps,
+          pending survey-grade confirmation.
         </span>
         <TakeALap
           controls={lap}

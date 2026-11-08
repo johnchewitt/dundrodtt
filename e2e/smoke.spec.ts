@@ -123,7 +123,7 @@ test('document titles change per experience', async ({ page }) => {
   await page.goto('#/archive');
   await expect(page).toHaveTitle(/The Archive · Dundrod/);
   await page.goto('');
-  await expect(page).toHaveTitle(/^Dundrod — The Forgotten Racing Years$/);
+  await expect(page).toHaveTitle(/^Dundrod: A Golden Age of Motorsport$/);
 });
 
 test('mobile menu opens, navigates and closes', async ({ page }) => {
@@ -649,4 +649,34 @@ test('home leads with the guided tour', async ({ page }) => {
   await page.goto('#/');
   await page.getByRole('link', { name: 'Discover Dundrod' }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Discover Dundrod' })).toBeVisible();
+});
+
+/* ---------- Stage 7 QA pass ---------- */
+
+test('tour announces its scene count and paces itself visibly', async ({
+  page,
+}) => {
+  await page.goto('#/discover');
+  await expect(page.getByText('Scene 1 of 8')).toBeVisible();
+  await expect(page.locator('.discover-progress')).toBeVisible();
+  await page.getByRole('button', { name: 'Pause' }).click();
+  await expect(page.locator('.discover-progress')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Next →' }).click();
+  await expect(page.getByText('Scene 2 of 8')).toBeVisible();
+});
+
+test('map toolbar explains the gold line when the SDK loads', async ({
+  page,
+}) => {
+  await page.goto('#/circuit');
+  const note = page.locator('.toolbar-note');
+  const appeared = await note.isVisible().catch(() => false);
+  if (appeared) {
+    await expect(note).toContainText('gold line is the 1950–55 course');
+  } else {
+    // environment without the ArcGIS CDN: the labelled fallback shows
+    await expect(
+      page.locator('.map-fallback, .loading-panel').first(),
+    ).toBeVisible();
+  }
 });
