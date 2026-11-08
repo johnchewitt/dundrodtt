@@ -1,6 +1,6 @@
 # Dundrod: A Golden Age of Motorsport
 
-**When Formula 1 came to Northern Ireland.** A digital heritage
+**When Formula One came to Northern Ireland.** A digital heritage
 experience about the six seasons of international motor racing on the
 Dundrod road circuit, County Antrim, 1950–1955 — the Ulster Trophy and
 the RAC Tourist Trophy, the drivers and teams who came, the photographs

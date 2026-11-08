@@ -40,7 +40,7 @@ export const arcgisSettings: ArcgisSettings = {
 
 export const siteSettings = {
   identity: 'Dundrod: A Golden Age of Motorsport',
-  headline: 'When Formula 1 Came to Northern Ireland',
+  headline: 'When Formula One\ncame to Northern Ireland',
   subtitle:
     "Six extraordinary seasons. Legendary drivers. The world's finest racing cars. One unforgettable road circuit.",
   /** The distinction that must accompany the headline framing. */

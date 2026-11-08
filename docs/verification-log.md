@@ -2,6 +2,15 @@
 
 Each stage records what passed and what remains unverified.
 
+## Headline restyle (owner-directed) — 2026-11-08
+**Passed:** opening headline changed to the owner's exact casing and
+two-line break — "When Formula One / came to Northern Ireland" — on the
+cover (explicit line spans; measure widened so the break lands as
+specified), with the spelled-out form carried into the page metadata,
+social card and README. The championship distinction is untouched.
+Gates: tsc · oxlint · validator · 31/31 Vitest · 64/64 Playwright ·
+build · visual check at 1440/390 px.
+
 ## Published under the new title — 2026-11-08
 **Passed:** PR #8 merged on the owner's authorisation; GitHub Pages
 workflow run 42530663713 fully green. Live at

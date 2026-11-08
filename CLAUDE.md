@@ -4,8 +4,8 @@ Permanent project instructions. These bind every development stage.
 
 A premium interactive digital heritage experience about motor racing at the
 Dundrod circuit, County Antrim, Northern Ireland, 1950–1955. Application
-identity (renamed by the owner, 2026-11-08): **Dundrod: A Golden Age of Motorsport**. Opening headline:
-**WHEN FORMULA 1 CAME TO NORTHERN IRELAND**, subtitle: *Six extraordinary
+identity (renamed by the owner, 2026-11-08): **Dundrod: A Golden Age of Motorsport**. Opening headline (owner's exact casing and line break, 2026-11-08):
+**"When Formula One / came to Northern Ireland"** (two lines), subtitle: *Six extraordinary
 seasons. Legendary drivers. The world's finest racing cars. One
 unforgettable road circuit.*
 

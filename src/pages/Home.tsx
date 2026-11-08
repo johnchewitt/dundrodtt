@@ -43,7 +43,13 @@ function Cover() {
           Dundrod
           <span>A Golden Age of Motorsport</span>
         </p>
-        <h1 className="enter enter-2">{siteSettings.headline}</h1>
+        <h1 className="enter enter-2">
+          {siteSettings.headline.split('\n').map((line, i) => (
+            <span key={i} className="headline-line">
+              {line}
+            </span>
+          ))}
+        </h1>
         <p className="cover-subtitle enter enter-3">{siteSettings.subtitle}</p>
         <p className="cover-distinction enter enter-4">
           {siteSettings.headlineDistinction} Between 1950 and 1955, the
