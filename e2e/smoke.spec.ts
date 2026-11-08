@@ -193,7 +193,7 @@ test('circuit page: catalogue selection opens the location story', async ({
   await expect(panel).toBeVisible();
   await expect(panel.getByText(/killed Jim Mayers and William Smith/)).toBeVisible();
   await expect(panel.getByText(/never guessed/)).toBeVisible();
-  await expect(panel.getByText(/arrives with the verified circuit layer/)).toBeVisible();
+  await expect(panel.getByText(/arrives with the verified landmark points/)).toBeVisible();
   await panel.getByRole('link', { name: '1955' }).click();
   await expect
     .poll(async () => {
@@ -205,17 +205,27 @@ test('circuit page: catalogue selection opens the location story', async ({
     .toBe(true);
 });
 
-test('circuit page: no map configured means honest states, no ArcGIS load', async ({
+test('circuit page: route configured, landmark-dependent features honest', async ({
   page,
 }) => {
-  const arcgisRequests: string[] = [];
-  page.on('request', (r) => {
-    if (r.url().includes('chunks/') && /Map|arcgis|View/i.test(r.url()))
-      arcgisRequests.push(r.url());
-  });
   await page.goto('#/circuit');
-  await expect(page.getByText(/Schematic, not to scale/)).toBeVisible();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
+  ).toBeVisible();
+  // The explorer attempts to load (or reports failure); never a dead panel.
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        () =>
+          !!document.querySelector('.explorer') ||
+          !!document.querySelector('.map-fallback') ||
+          !!document.querySelector('.loading-panel'),
+      ),
+    )
+    .toBe(true);
+  // The guided lap explains that it waits for landmark points.
   await page.getByRole('button', { name: 'Take a Lap of Dundrod' }).click();
-  await expect(page.getByText(/waits for the accurate circuit map/)).toBeVisible();
-  expect(arcgisRequests).toEqual([]);
+  await expect(
+    page.getByText(/waits for their verified positions|waits for the accurate circuit map/),
+  ).toBeVisible();
 });

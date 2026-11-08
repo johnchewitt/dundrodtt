@@ -84,8 +84,8 @@ export default function LocationPanel() {
 
       {location.geometryStatus === 'pending' && (
         <p className="location-pending">
-          The historic name is verified from period sources; its position
-          on the interactive map arrives with the verified circuit layer.
+          The historic name is verified from period sources; its marker on
+          the interactive map arrives with the verified landmark points.
         </p>
       )}
 

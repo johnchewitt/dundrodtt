@@ -119,17 +119,23 @@ export default function ArcGisExplorer() {
     const { glow, line } = routeRenderers();
     const routeGlow = makeLayer(routeLayerUrl, { renderer: glow });
     const route = makeLayer(routeLayerUrl, { renderer: line });
-    const landmarks = makeLayer(landmarksLayerUrl ?? routeLayerUrl, {
-      renderer: landmarkRenderer(),
-      labelingInfo: [landmarkLabels()],
-      outFields: ['locId', 'name', 'seq'],
-    });
+    // Landmarks only when their layer exists — never derived from the
+    // route line, never invented.
+    const landmarks = landmarksLayerUrl
+      ? makeLayer(landmarksLayerUrl, {
+          renderer: landmarkRenderer(),
+          labelingInfo: [landmarkLabels()],
+          outFields: ['locId', 'name', 'seq'],
+        })
+      : null;
     landmarksRef.current = landmarks;
 
     const onReady = async () => {
       const view = el.view;
       viewRef.current = view;
-      el.map?.addMany([routeGlow, route, landmarks]);
+      el.map?.addMany(
+        landmarks ? [routeGlow, route, landmarks] : [routeGlow, route],
+      );
       try {
         await route.when();
         if (route.fullExtent) {
@@ -139,6 +145,7 @@ export default function ArcGisExplorer() {
         setLoadError(true);
         return;
       }
+      if (!landmarks) return;
       view.on('click', async (event) => {
         const hit = await view.hitTest(event, { include: [landmarks] });
         const graphic = hit.results.find((r) => r.type === 'graphic');

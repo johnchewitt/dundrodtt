@@ -31,8 +31,9 @@ export function TakeALap({
 }) {
   const [explain, setExplain] = useState(false);
   const mapReady = Boolean(arcgisSettings.routeLayerUrl);
+  const stopsReady = Boolean(arcgisSettings.landmarksLayerUrl);
 
-  if (!mapReady) {
+  if (!mapReady || !stopsReady) {
     return (
       <div className="take-a-lap">
         <button
@@ -45,10 +46,9 @@ export function TakeALap({
         </button>
         {explain && (
           <Unavailable title="The guided lap is nearly ready">
-            The lap flies the camera around the verified 1950s course,
-            pausing at its named places — so it waits for the accurate
-            circuit map rather than inventing the route. It switches on
-            the moment the circuit layer is supplied.
+            {mapReady
+              ? 'The route is on the map; the lap pauses at the named places, so it waits for their verified positions (the landmark points) rather than guessing where each corner sits.'
+              : 'The lap flies the camera around the verified 1950s course, pausing at its named places — so it waits for the accurate circuit map rather than inventing the route. It switches on the moment the circuit layer is supplied.'}
           </Unavailable>
         )}
       </div>

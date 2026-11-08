@@ -27,7 +27,12 @@ export interface ArcgisSettings {
 }
 
 export const arcgisSettings: ArcgisSettings = {
-  routeLayerUrl: null, // owner's verified circuit service — do not invent
+  // The 1950–55 route, corrected at the hairpin and owner-approved
+  // 2026-11-08; provenance in data/circuit/PROVENANCE.md.
+  routeLayerUrl: 'circuit/route.geojson',
+  // Landmark points (locId/name/seq) not yet supplied — selection
+  // storytelling runs from the catalogue; the map adds markers, camera
+  // moves and the guided lap once these exist.
   landmarksLayerUrl: null,
   portalUrl: 'https://www.arcgis.com',
   apiKey: import.meta.env.VITE_ARCGIS_API_KEY ?? null,
