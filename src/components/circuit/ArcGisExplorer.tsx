@@ -39,43 +39,61 @@ interface ArcgisViewElement extends HTMLElement {
   map: { addMany(layers: CircuitLayer[]): void } | null;
 }
 
+const isGeojson = (url: string) => /\.(geo)?json($|\?)/i.test(url);
+
+const absolute = (url: string) =>
+  /^https?:/i.test(url)
+    ? url
+    : new URL(import.meta.env.BASE_URL + url, window.location.origin).href;
+
+/**
+ * The SDK fetches GeoJSON inside CDN-origin workers, where same-origin
+ * paths break and concurrent fetches have proven flaky. So GeoJSON is
+ * fetched here on the main thread and each layer gets its own blob URL;
+ * hosted FeatureLayer URLs pass through untouched.
+ */
+async function layerSource(url: string): Promise<string> {
+  if (!isGeojson(url)) return url;
+  const response = await fetch(absolute(url));
+  if (!response.ok) throw new Error(`layer fetch ${response.status}`);
+  return URL.createObjectURL(await response.blob());
+}
+
 function makeLayer(
-  url: string,
+  source: string,
   options: {
     renderer: SimpleRenderer;
     labelingInfo?: LabelClass[];
     outFields?: string[];
   },
 ): CircuitLayer {
-  const isGeojson = /\.(geo)?json($|\?)/i.test(url);
-  // GeoJSON is WGS84 by spec; the SDK reprojects. The SDK fetches layer
-  // data inside CDN-origin workers, so a repo-relative path must become
-  // an ABSOLUTE URL on this app's own origin.
-  const resolved = /^https?:/i.test(url)
-    ? url
-    : new URL(import.meta.env.BASE_URL + url, window.location.origin).href;
-  return isGeojson
-    ? new GeoJSONLayer({ url: resolved, ...options })
-    : new FeatureLayer({ url: resolved, ...options });
+  return source.startsWith('blob:') || isGeojson(source)
+    ? new GeoJSONLayer({ url: source, ...options })
+    : new FeatureLayer({ url: source, ...options });
 }
 
-function buildLayers() {
+async function buildLayers() {
   const { routeLayerUrl, landmarksLayerUrl } = arcgisSettings;
   if (!routeLayerUrl) return null;
-  const routeGlow = makeLayer(routeLayerUrl, {
+  const [routeSrcGlow, routeSrc, lmSrc] = await Promise.all([
+    layerSource(routeLayerUrl),
+    layerSource(routeLayerUrl),
+    landmarksLayerUrl ? layerSource(landmarksLayerUrl) : Promise.resolve(null),
+  ]);
+  const routeGlow = makeLayer(routeSrcGlow, {
     renderer: new SimpleRenderer({
       symbol: new SimpleLineSymbol({ color: GOLD_GLOW, width: 10, cap: 'round' }),
     }),
   });
-  const route = makeLayer(routeLayerUrl, {
+  const route = makeLayer(routeSrc, {
     renderer: new SimpleRenderer({
       symbol: new SimpleLineSymbol({ color: GOLD, width: 3.2, cap: 'round' }),
     }),
   });
   // Landmarks only when their layer exists — never derived from the
   // route line, never invented.
-  const landmarks = landmarksLayerUrl
-    ? makeLayer(landmarksLayerUrl, {
+  const landmarks = lmSrc
+    ? makeLayer(lmSrc, {
         renderer: new SimpleRenderer({
           symbol: new SimpleMarkerSymbol({
             size: 11,
@@ -133,8 +151,19 @@ export default function ArcGisExplorer() {
   // Build (or rebuild, on 2D/3D switch) the view element.
   useEffect(() => {
     const container = containerRef.current;
-    const layers = buildLayers();
-    if (!container || !layers) return;
+    if (!container || !arcgisSettings.routeLayerUrl) return;
+    let cancelled = false;
+    let cleanupEl: ArcgisViewElement | null = null;
+
+    (async () => {
+    let layers: Awaited<ReturnType<typeof buildLayers>>;
+    try {
+      layers = await buildLayers();
+    } catch {
+      setLoadError(true);
+      return;
+    }
+    if (cancelled || !layers) return;
 
     const el = document.createElement(
       is3D ? 'arcgis-scene' : 'arcgis-map',
@@ -146,6 +175,7 @@ export default function ArcGisExplorer() {
     el.style.width = '100%';
     el.style.height = '100%';
     container.appendChild(el);
+    cleanupEl = el;
     elRef.current = el;
     landmarksRef.current = layers.landmarks;
 
@@ -186,14 +216,13 @@ export default function ArcGisExplorer() {
       );
     };
     el.addEventListener('arcgisViewReadyChange', onReady);
-    const onError = () => setLoadError(true);
-    el.addEventListener('arcgisError', onError);
+    el.addEventListener('arcgisError', () => setLoadError(true));
+    })();
 
     return () => {
+      cancelled = true;
       engineRef.current?.exit();
-      el.removeEventListener('arcgisViewReadyChange', onReady);
-      el.removeEventListener('arcgisError', onError);
-      el.remove();
+      cleanupEl?.remove();
       viewRef.current = null;
       elRef.current = null;
     };
