@@ -46,5 +46,19 @@
     "rightsHolder": "Northern Ireland Screen Digital Film Archive",
     "description": "Moss and his fellow drivers on the Dundrod roads in the Golden Jubilee Tourist Trophy of 17 September 1955 — the race he and Fitch won, and the circuit's last. The archive notes the film includes the race's accidents; it is presented by Northern Ireland Screen with that context.",
     "authorisationNote": "Viewed on Northern Ireland Screen's own Digital Film Archive player — linked out, not embedded or rehosted here."
+  },
+  {
+    "id": "film-1955-tt-pathe",
+    "title": "Tragedy Mars Ulster T.T. (1955)",
+    "status": "external",
+    "provider": "british-pathe",
+    "url": "https://www.britishpathe.com/video/tragedy-mars-ulster-t-t",
+    "date": "1955-09",
+    "yearId": "y1955",
+    "raceId": "race-1955-tt",
+    "sourceRef": "R42",
+    "rightsHolder": "British Pathé",
+    "description": "Pathé's newsreel story of the September 1955 Tourist Trophy — the race Moss won, and the race in which three drivers died. The title is Pathé's own, and the film is presented here as part of the historical record. This catalogue page carries the story's selected originals, which Pathé notes are a mute duplicate of the issued newsreel.",
+    "authorisationNote": "Viewed on British Pathé's own site — linked out, not embedded or rehosted here."
   }
 ]

@@ -21,6 +21,7 @@ docs/source-catalogue.md and the photo catalogue in src/content/.
 | Ulster Trophy, Dundrod (1955) | NI Screen DFA via BFI Player | External link | Linked to the BFI's own free player; not embedded or rehosted. |
 | Stirling Moss and the RAC Tourist Trophy Race (1955) | Northern Ireland Screen DFA | External link | Linked to the DFA's own player; description notes the film includes the race's accidents. |
 | Ulster Tourist Trophy (1950) | British Pathé (Film ID 2533.08) | External link | Linked to Pathé's own catalogue page; silent unissued footage, 1 min 35 sec. |
+| Tragedy Mars Ulster T.T. (1955) | British Pathé (story 55/76) | External link | Owner-approved 2026-11-08. Linked page carries the story's selected originals (Pathé: mute duplicate of the issued newsreel). Sober description; title is Pathé's own. |
 | Any Pathé / NI Screen embedding | — | NOT authorised | Honest "No embedded footage yet" state until permission is confirmed; nothing downloaded, rehosted or re-cut. |
 
 ## Standing rules

@@ -527,7 +527,7 @@ test('behind the photographs honours the contributors correctly', async ({ page 
 test('film collection links out with full provenance', async ({ page }) => {
   await page.goto('#/archive?section=film');
   const cards = page.locator('.film-card');
-  await expect(cards).toHaveCount(3);
+  await expect(cards).toHaveCount(4);
   const pathe = cards.filter({ hasText: 'Ulster Tourist Trophy (1950)' });
   await expect(pathe.getByText('British Pathé').first()).toBeVisible();
   await expect(pathe.getByRole('link', { name: /Watch at British Pathé/ })).toHaveAttribute(
@@ -548,7 +548,7 @@ test('season chapters carry their films', async ({ page }) => {
   await page.goto('#/seasons#y1955');
   await expect(
     page.locator('#y1955 .chapter-films a'),
-  ).toHaveCount(2);
+  ).toHaveCount(3);
 });
 
 test('the portrait never shows its internal handling caption', async ({ page }) => {
