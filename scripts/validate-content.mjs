@@ -79,9 +79,28 @@ for (const i of incidents) {
 for (const l of locations)
   (l.incidentIds ?? []).forEach((i) => refCheck(l.id, i, incidentIds, 'incident'));
 
-for (const f of films)
+for (const f of films) {
   check((f.status !== 'authorised' && f.status !== 'external') || !!f.url,
     `${f.id}: authorised/external film needs a url`);
+  if (f.yearId) refCheck(f.id, f.yearId, yearIds, 'year');
+  if (f.raceId) refCheck(f.id, f.raceId, raceIds, 'race');
+  for (const p of f.personIds ?? []) refCheck(f.id, p, personIds, 'person');
+  for (const l of f.locationIds ?? []) refCheck(f.id, l, locationIds, 'location');
+  if (f.sourceRef) refCheck(f.id, f.sourceRef, sourceIds, 'source');
+  check(f.status !== 'external' || !!f.authorisationNote,
+    `${f.id}: external film needs its linked-not-embedded note`);
+}
+
+// every catalogued photograph has its generated thumbnail derivative
+{
+  const { existsSync } = await import('node:fs');
+  for (const p of photos) {
+    const thumb = `public/${p.assetPath
+      .replace(/^photos\//, 'photos-thumbs/')
+      .replace(/\.[a-z]+$/i, '.webp')}`;
+    check(existsSync(thumb), `${p.id}: missing thumbnail ${thumb}`);
+  }
+}
 
 for (const p of people) {
   if (p.photoId) refCheck(p.id, p.photoId, photoIds, 'photo');

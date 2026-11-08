@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import {
+  films,
   incidents,
   locationById,
   personById,
-  photoUrl,
+  photoThumbUrl,
   races,
   type Photo,
   type Year,
@@ -77,7 +78,7 @@ export default function SeasonChapter({
             onClick={() => onOpenPhoto(heroIndex)}
             aria-label={`Open photograph ${hero.id} in the viewer`}
           >
-            <PhotoPlate photo={hero} contained loading={chapterNumber === 1 ? 'eager' : 'lazy'} />
+            <PhotoPlate photo={hero} contained full loading={chapterNumber === 1 ? 'eager' : 'lazy'} />
           </button>
         )}
       </header>
@@ -88,6 +89,27 @@ export default function SeasonChapter({
           <RaceResultCard key={r.id} race={r} />
         ))}
       </div>
+
+      {(() => {
+        const yearFilms = films.filter(
+          (f) => f.yearId === year.id && f.status !== 'unavailable' && f.url,
+        );
+        return yearFilms.length > 0 ? (
+          <div className="chapter-films">
+            <h3 className="chapter-subhead">On film</h3>
+            {yearFilms.map((f) => (
+              <p key={f.id}>
+                <a href={f.url} target="_blank" rel="noreferrer">
+                  {f.title}
+                </a>{' '}
+                <span className="muted">
+                  — viewed on {f.rightsHolder ?? "the holder's own player"}.
+                </span>
+              </p>
+            ))}
+          </div>
+        ) : null;
+      })()}
 
       {yearIncidents.length > 0 && (
         <div className="chapter-events">
@@ -110,7 +132,7 @@ export default function SeasonChapter({
                   aria-label={`Open ${p.altText ?? p.id} in the viewer`}
                 >
                   <img
-                    src={photoUrl(p)}
+                    src={photoThumbUrl(p)}
                     alt=""
                     loading="lazy"
                     width={p.width}

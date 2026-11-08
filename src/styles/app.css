@@ -1501,3 +1501,99 @@ a.driver-card:focus-visible {
 .drivers-page .driver-card[id] { scroll-margin-top: 7.5rem; }
 .record-list a { color: var(--gold); text-decoration-color: color-mix(in srgb, var(--gold) 45%, transparent); }
 .record-list a:hover { text-decoration-color: var(--gold); }
+
+/* ---------- Stage 6: the archive ---------- */
+
+/* editorial masonry: column flow keeps register order top-to-bottom */
+.masonry {
+  list-style: none;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  column-count: 1;
+  column-gap: var(--space-3);
+}
+@media (min-width: 40rem) { .masonry { column-count: 2; } }
+@media (min-width: 64rem) { .masonry { column-count: 3; } }
+.masonry li {
+  break-inside: avoid;
+  margin-bottom: var(--space-3);
+}
+.masonry .plate { margin: 0; }
+.masonry .plate-mount img { width: 100%; }
+@media (min-width: 64rem) {
+  .masonry-special { column-count: 2; }
+}
+
+.lost-1950 {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--deep-green) 55%, transparent),
+    transparent 70%
+  );
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: var(--radius-panel);
+  padding: var(--space-4);
+  margin: var(--space-4) 0 var(--space-5);
+}
+.lost-1950-title {
+  font-size: var(--step-3);
+  margin-top: 0;
+}
+
+.archive-filters-row2 {
+  gap: var(--space-3);
+  align-items: end;
+}
+.filter-select { display: grid; gap: 0.3rem; }
+.filter-select .filter-label { margin: 0; }
+.filter-select select,
+.filter-select input {
+  font: inherit;
+  color: var(--text-on-dark);
+  background: color-mix(in srgb, var(--midnight) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  min-width: 13rem;
+}
+.filter-select select:focus-visible,
+.filter-select input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.filter-select option { color: var(--ink); background: var(--ivory); }
+.archive-note { font-size: var(--step--1); }
+
+.film-card h3 { margin-bottom: var(--space-1); }
+.film-cta {
+  font-size: var(--step--1);
+  padding: 0.45rem 1.1rem;
+}
+.film-note { font-size: 0.78rem; margin-bottom: 0; }
+
+.behind-feature { margin-top: var(--space-4); }
+.behind .plate { margin: 0; }
+
+.chapter-films p { margin-bottom: var(--space-1); max-width: var(--measure); }
+.chapter-films a { color: var(--gold); }
+
+/* smooth viewer transitions: each new photograph fades in */
+@keyframes viewer-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.photo-viewer img { animation: viewer-fade 220ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .photo-viewer img { animation: none; }
+}
+.viewer-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 var(--space-2);
+  font-size: 0.78rem;
+  color: var(--text-on-dark-soft);
+  margin-top: var(--space-1);
+}
+.viewer-details span + span::before { content: '· '; color: var(--gold); }
+.viewer-details a { color: var(--gold); }

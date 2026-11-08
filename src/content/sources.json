@@ -226,5 +226,17 @@
     "title": "Car technical references — manufacturer model histories (Wikipedia model pages)",
     "note": "One-line engine/configuration facts only; nothing race-specific.",
     "kind": "verified-web"
+  },
+  {
+    "id": "R40",
+    "title": "Ulster Tourist Trophy (1950) — British Pathé catalogue",
+    "note": "Film ID 2533.08; unissued/unused silent footage, 1 min 35 sec; catalogued as TT racing in Ulster, 1950.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R41",
+    "title": "Stirling Moss and the RAC Tourist Trophy Race (1955) — Northern Ireland Screen Digital Film Archive",
+    "note": "DFA page: Dundrod, 17 September 1955, silent, 7 min 24 sec.",
+    "kind": "verified-web"
   }
 ]

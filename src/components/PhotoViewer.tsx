@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { personById, photoUrl, type Photo } from '../model/content';
+import { identificationOf, personById, photoUrl, type Photo } from '../model/content';
 
 interface PhotoViewerProps {
   photos: Photo[];
@@ -76,6 +76,19 @@ export default function PhotoViewer({
         >
           <img src={photoUrl(photo)} alt={photo.altText ?? ''} />
           {photo.event && <p className="viewer-meta">{photo.event}</p>}
+          <p className="viewer-details">
+            {photo.carSubject && <span>{photo.carSubject}</span>}
+            <span>
+              {identificationOf(photo) === 'probable'
+                ? 'Identification: probable — hedged in the catalogue'
+                : 'Identification: as catalogued'}
+            </span>
+            <span>
+              <Link to="/archive?section=behind" onClick={() => ref.current?.close()}>
+                Contributed collection
+              </Link>
+            </span>
+          </p>
           <figcaption>
             <span className="plate-id">{photo.id}</span>
             {photo.caption}
