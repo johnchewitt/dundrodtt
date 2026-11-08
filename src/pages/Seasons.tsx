@@ -1,64 +1,7 @@
 import { Link } from 'react-router-dom';
 import SeasonRail from '../components/SeasonRail';
-import {
-  carById,
-  incidents,
-  personById,
-  races,
-  teamById,
-  years,
-  type Classification,
-  type Race,
-} from '../model/content';
-
-const awardLabel: Record<Classification['award'], string> = {
-  outright: 'Winner',
-  scratch: 'Scratch / championship result',
-  handicap: 'Handicap result',
-  'fastest-finisher': 'Ulster Trophy (fastest finisher)',
-  'handicap-champion-trophy': 'Handicap Champion Trophy',
-};
-
-const eventLabel: Record<Race['event'], string> = {
-  'ulster-trophy': 'Ulster Trophy',
-  'rac-tt': 'RAC Tourist Trophy',
-};
-
-function RaceRecord({ race }: { race: Race }) {
-  return (
-    <div>
-      <h4>
-        {eventLabel[race.event]}
-        {race.championship ? ` · ${race.championship}` : ''}
-      </h4>
-      {race.status === 'not-held' ? (
-        <p className="muted">{race.notHeldReason}</p>
-      ) : (
-        <ul>
-          {race.classifications?.map((c) => (
-            <li key={c.award}>
-              <strong>{awardLabel[c.award]}:</strong>{' '}
-              {c.winnerPersonIds
-                .map((id) => personById.get(id)?.name)
-                .join(' and ')}
-              {c.carId ? `, ${carById.get(c.carId)?.name}` : ''}
-              {(() => {
-                // Skip the entrant when the car name already carries it
-                // ("Aston Martin DB3S (Aston Martin)" reads doubled).
-                const team = c.teamId ? teamById.get(c.teamId)?.name : null;
-                const car = c.carId ? carById.get(c.carId)?.name : '';
-                return team && !car?.includes(team.replace(' (works)', ''))
-                  ? ` (${team})`
-                  : '';
-              })()}
-              {c.note ? ` — ${c.note}` : ''}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+import RaceResultCard from '../components/ui/RaceResultCard';
+import { incidents, races, years } from '../model/content';
 
 export default function Seasons() {
   return (
@@ -79,11 +22,13 @@ export default function Seasons() {
           <hr className="section-rule" />
           <h2 id={`${y.id}-h`}>{y.year}</h2>
           <p>{y.summary}</p>
-          {races
-            .filter((r) => r.yearId === y.id)
-            .map((r) => (
-              <RaceRecord key={r.id} race={r} />
-            ))}
+          <div className="card-grid">
+            {races
+              .filter((r) => r.yearId === y.id)
+              .map((r) => (
+                <RaceResultCard key={r.id} race={r} />
+              ))}
+          </div>
           {incidents
             .filter((i) => i.yearId === y.id)
             .map((i) => (

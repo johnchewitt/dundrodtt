@@ -33,6 +33,11 @@ export default function PhotoPlate({
           loading={loading}
           width={photo.width}
           height={photo.height}
+          style={{
+            // Reserve layout before load: lazy images otherwise collapse.
+            aspectRatio: `${photo.width} / ${photo.height}`,
+            ...(contained ? { width: `min(100%, ${photo.width}px)` } : null),
+          }}
           data-loaded={loaded || undefined}
           onLoad={() => setLoaded(true)}
         />

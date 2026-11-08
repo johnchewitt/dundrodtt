@@ -1,7 +1,9 @@
+import DriverCard from '../components/ui/DriverCard';
 import { people } from '../model/content';
 
 export default function Drivers() {
   const drivers = people.filter((p) => p.role === 'driver' && p.context);
+  const figures = people.filter((p) => p.role === 'team-figure' && p.context);
   return (
     <div className="page">
       <h1>Drivers &amp; Teams</h1>
@@ -13,14 +15,17 @@ export default function Drivers() {
         Full profiles, cross-linked to seasons and photographs, arrive with
         the drivers build stage. The verified records are already here.
       </p>
-      <ul>
+      <div className="card-grid">
         {drivers.map((p) => (
-          <li key={p.id}>
-            <strong>{p.name}</strong>
-            {p.context ? <span className="muted"> — {p.context}</span> : null}
-          </li>
+          <DriverCard key={p.id} person={p} />
         ))}
-      </ul>
+      </div>
+      <h2>Around the paddock</h2>
+      <div className="card-grid">
+        {figures.map((p) => (
+          <DriverCard key={p.id} person={p} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -16,6 +16,7 @@ import sourcesJson from '../content/sources.json';
 import filmsJson from '../content/films.json';
 import acknowledgementsJson from '../content/acknowledgements.json';
 import thenAndNowJson from '../content/then-and-now.json';
+import storyJson from '../content/story.json';
 
 export type EventKind = 'ulster-trophy' | 'rac-tt';
 export type Award =
@@ -162,7 +163,19 @@ export interface ThenAndNow {
   note?: string;
 }
 
+export interface StoryChapter {
+  id: string;
+  kicker: string;
+  title: string;
+  paragraphs: string[];
+  photoIds: string[];
+  link: { to: string; label: string } | null;
+  sourceRefs: string[];
+  tone: 'paper' | 'dark';
+}
+
 export const years = yearsJson as Year[];
+export const storyChapters = storyJson as StoryChapter[];
 export const races = racesJson as Race[];
 export const people = peopleJson as Person[];
 export const teams = teamsJson as Team[];

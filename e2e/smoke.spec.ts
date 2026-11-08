@@ -1,33 +1,65 @@
 import { expect, test } from '@playwright/test';
 
-test('home tells the story and preserves the headline distinction', async ({
+test('cover tells the story and preserves the headline distinction', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('');
   await expect(
     page.getByRole('heading', { name: /When Formula 1 Came to Northern Ireland/i }),
   ).toBeVisible();
   await expect(
     page.getByText(/never a championship Grand Prix/i).first(),
   ).toBeVisible();
+  await page.getByRole('link', { name: 'Explore the Story' }).click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'The Dundrod Story' }),
+  ).toBeVisible();
 });
 
-test('navigation reaches every experience by keyboard-visible links', async ({
+test('navigation reaches every experience', async ({ page }) => {
+  await page.goto('');
+  for (const [name, heading] of [
+    ['The Dundrod Story', 'The Dundrod Story'],
+    ['Explore the Circuit', 'Explore the Circuit'],
+    ['Six Racing Seasons', 'Six Racing Seasons'],
+    ['Drivers & Teams', 'Drivers & Teams'],
+    ['The Archive', 'The Archive'],
+    ['Dundrod Today', 'Dundrod Today'],
+  ] as const) {
+    await page
+      .getByRole('navigation', { name: 'Experiences' })
+      .first()
+      .getByRole('link', { name })
+      .click();
+    await expect(
+      page.getByRole('heading', { level: 1, name: heading }),
+    ).toBeVisible();
+  }
+  // Acknowledgements lives in the footer.
+  await page
+    .getByRole('navigation', { name: /footer/i })
+    .getByRole('link', { name: 'Acknowledgements' })
+    .click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Acknowledgements' }),
+  ).toBeVisible();
+});
+
+test('story chapters render from content with working season links', async ({
   page,
 }) => {
-  await page.goto('/');
-  for (const [name, heading] of [
-    ['Six Seasons', 'Six Racing Seasons'],
-    ['The Circuit', 'Explore the Circuit'],
-    ['Photo Archive', 'The Photographic Archive'],
-    ['Drivers & Teams', 'Drivers & Teams'],
-    ['Film Archive', 'Film Archive'],
-    ['Dundrod Today', 'Dundrod Today'],
-    ['Acknowledgements', 'Acknowledgements'],
-  ] as const) {
-    await page.getByRole('navigation').first().getByRole('link', { name }).click();
-    await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
-  }
+  await page.goto('#/story');
+  await expect(page.getByText(/The race that stopped/)).toBeVisible();
+  await expect(page.getByText(/Forty thousand pounds of road/)).toBeVisible();
+  await page.getByRole('link', { name: 'The 1955 season in full' }).click();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () => document.getElementById('y1955')?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 300;
+    })
+    .toBe(true);
 });
 
 test('seasons page keeps 1952 facts straight', async ({ page }) => {
@@ -38,11 +70,12 @@ test('seasons page keeps 1952 facts straight', async ({ page }) => {
   ).toBeVisible();
 });
 
-test('archive photographs load real images', async ({ page }) => {
+test('archive photography loads images and the full-screen viewer works', async ({
+  page,
+}) => {
   await page.goto('#/archive');
   const img = page.locator('.plate img').first();
   await img.scrollIntoViewIfNeeded();
-  await expect(img).toBeVisible();
   await expect
     .poll(
       () =>
@@ -52,11 +85,27 @@ test('archive photographs load real images', async ({ page }) => {
       { timeout: 10_000 },
     )
     .toBe(true);
+  await page.locator('.plate-button').first().click();
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  await expect(viewer.locator('img')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(viewer).toBeHidden();
 });
 
-test('year roundels scroll to the season anchor', async ({ page }) => {
-  await page.goto('');
-  await page.getByRole('link', { name: '1952', exact: true }).click();
+test('archive film section shows an honest unavailable state', async ({
+  page,
+}) => {
+  await page.goto('#/archive?section=film');
+  await expect(page.getByRole('tab', { name: 'Film' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+});
+
+test('year roundel-style anchors scroll to the season', async ({ page }) => {
+  await page.goto('#/seasons#y1952');
   await expect
     .poll(async () => {
       const top = await page.evaluate(
@@ -69,7 +118,7 @@ test('year roundels scroll to the season anchor', async ({ page }) => {
 
 test('document titles change per experience', async ({ page }) => {
   await page.goto('#/archive');
-  await expect(page).toHaveTitle(/Photo Archive · Dundrod/);
+  await expect(page).toHaveTitle(/The Archive · Dundrod/);
   await page.goto('');
   await expect(page).toHaveTitle(/^Dundrod — The Forgotten Racing Years$/);
 });
@@ -80,10 +129,57 @@ test('mobile menu opens, navigates and closes', async ({ page }) => {
   await page.getByRole('button', { name: 'Menu' }).click();
   await page
     .getByRole('dialog')
-    .getByRole('link', { name: 'The Circuit' })
+    .getByRole('link', { name: 'Explore the Circuit' })
     .click();
   await expect(
     page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
   ).toBeVisible();
   await expect(page.getByRole('dialog')).toBeHidden();
+});
+
+test('old films route redirects into the archive', async ({ page }) => {
+  await page.goto('#/films');
+  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+});
+
+test('home lobby cards reach every experience', async ({ page }) => {
+  await page.goto('');
+  const lobby = page.getByRole('region', { name: 'Explore the exhibition' });
+  await expect(lobby.getByRole('link')).toHaveCount(6);
+  await lobby.getByRole('link', { name: /Six Racing Seasons/ }).click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Six Racing Seasons' }),
+  ).toBeVisible();
+});
+
+test('archive tabs follow the ARIA keyboard pattern', async ({ page }) => {
+  await page.goto('#/archive');
+  await page.getByRole('tab', { name: 'Photography' }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: 'Film' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(page.getByRole('tab', { name: 'Film' })).toBeFocused();
+  await expect(page.getByText(/No authorised footage yet/)).toBeVisible();
+});
+
+test('viewer shows a position counter', async ({ page }) => {
+  await page.goto('#/archive');
+  await page.locator('.plate-button').first().click();
+  await expect(page.locator('.viewer-count')).toHaveText(/1 of \d+/);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText(/2 of \d+/);
+  await page.keyboard.press('Escape');
+});
+
+test('story chapter rail marks the current chapter', async ({ page }) => {
+  await page.goto('#/story#ch-end');
+  await expect
+    .poll(() =>
+      page
+        .locator('.season-rail a[aria-current="true"]')
+        .getAttribute('aria-label'),
+    )
+    .toMatch(/The last flag/);
 });

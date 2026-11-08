@@ -2,6 +2,69 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 2 QA pass — 2026-11-07
+**Problems found and fixed:** Archive tabs ignored arrow keys (ARIA tabs
+pattern incomplete) — roving tabindex + ArrowLeft/Right activation
+added; cover CTA fell below the fold on landscape phones (844×390) — a
+short-screen media query now tightens the cover (first fix failed from
+cascade order: the override sat before the base rule; moved to end of
+file); cover shipped ~4.3 MB of PNG on first paint — display-resolution
+WebP derivatives (242 KB total, scripts/derive_cover_assets.py, served
+via <picture> with catalogue PNG fallback) cut the measured cover image
+payload to ~156 KB at first view.
+**Five UX improvements implemented:** (1) keyboard-accessible archive
+tabs; (2) museum-lobby cards under the cover — one glass card per
+experience, so home routes visitors instead of ending at the fold;
+(3) story chapter jump-rail (SectionRail generalised from the season
+rail) with current-chapter highlight; (4) full-screen viewer gains a
+"n of N" counter (aria-live) and preloads neighbouring plates;
+(5) cover performance + short-screen art direction above.
+**Tests executed (all passed):** validator; tsc; oxlint; Vitest 13/13;
+Playwright 14/14 (4 new: lobby cards, tab keyboard pattern, viewer
+counter, chapter-rail highlight); production build; console/network
+sweep across all nine routes — zero errors, zero failed requests;
+landscape CTA probe now true.
+**Not executed:** ArcGIS tests (still no ArcGIS code by design, Stage
+5); bundled Playwright browser (blocked download — system Chrome via
+CHROME_PATH).
+**Accuracy audit:** story.json chapters re-checked against the context
+document — Ards figures (8 dead, up to 40 injured, 5 Sep 1936), 1949
+scheme framed as estimates, 1950 opening facts, Farina/royals wording,
+1954 dual classification, 1955 restraint all verbatim-faithful; the UAC
+chapter's ribbon-cutting line matches the supplied Belfast Telegraph
+scan ("Premier Declares New Circuit Open"; caption names Sir Basil
+Brooke with the UAC chairman). No new historical claims introduced by
+QA; lobby card copy is navigational only.
+**Still requiring owner verification:** unchanged from Stage 1 QA.
+
+## Stage 2 — Cinematic foundation & visual identity — 2026-11-07
+**Passed:** full-screen cinematic cover (DUNDROD / THE FORGOTTEN RACING
+YEARS wordmark, headline, subtitle, distinction line, "Explore the
+Story" + ghost CTA) with slow crossfade/drift between the two large 1955
+PNGs — static under reduced motion — and one orchestrated staggered
+entrance; navigation restructured to the six main experiences (The
+Dundrod Story, Explore the Circuit, Six Racing Seasons, Drivers & Teams,
+The Archive, Dundrod Today) with Acknowledgements in the footer and the
+old /films route redirecting into The Archive's Film section; The
+Dundrod Story page rendered entirely from src/content/story.json (seven
+chapters: Ards, circuit creation, 1949 scheme, UAC, 1950 return,
+1951–54 rise, 1955 end — fatalities handled in-story with restraint, no
+standalone remembrance); design-system components added (DateLabel,
+RaceResultCard, DriverCard, Unavailable, full-screen PhotoViewer with
+Esc/arrow keys, glass cards, loading shimmer, archive tabs); Archive
+gains Photography/Film subcategories with the special 1950 presentation
+opening the full-screen viewer; Seasons refactored onto RaceResultCard;
+Drivers onto card grid; lazy plates reserve layout via aspect-ratio
+(collapse-before-load fixed). Gates: validator green (story chapter refs
+included); tsc clean; oxlint clean; Vitest 13/13; Playwright 10/10
+(cover + distinction + story CTA, six-experience nav + footer credits,
+story chapter links, 1952 facts, viewer open/Esc, film unavailable
+state, anchors, titles, mobile menu, /films redirect); production build;
+visual review at 1280/390 of cover, story, drivers.
+**Unverified / outstanding:** as Stage 1 (owner supplies + the four
+hedged photo records + hero PNG baked icon). UAC chapter deliberately
+short until the club history PDF arrives.
+
 ## Stage 1 QA pass — 2026-11-07
 **Problems found and fixed:** year roundels navigated to `/seasons#y19xx`
 without scrolling (anchor target 1,880 px below fold) — fixed with a

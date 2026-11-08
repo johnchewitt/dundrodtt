@@ -16,6 +16,9 @@ export default function SiteFooter() {
                 <Link to={e.path}>{e.label}</Link>
               </li>
             ))}
+            <li>
+              <Link to="/credits">Acknowledgements</Link>
+            </li>
           </ul>
         </nav>
         {credit && (
