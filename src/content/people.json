@@ -13,7 +13,26 @@
       "R30",
       "R32"
     ],
-    "photoId": "DU-1950-05"
+    "photoId": "DU-1950-05",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1952-ut",
+        "result": "Retired",
+        "car": "BRM V16",
+        "sourceRefs": [
+          "R08",
+          "R30"
+        ]
+      },
+      {
+        "raceId": "race-1953-ut",
+        "result": "Did not start the final",
+        "sourceRefs": [
+          "R32"
+        ]
+      }
+    ]
   },
   {
     "id": "p-peter-whitehead",
@@ -26,7 +45,27 @@
       "R30",
       "R32"
     ],
-    "photoId": "DU-1955-02"
+    "photoId": "DU-1955-02",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1951-ut",
+        "result": "Did not start — piston failure on the warm-up",
+        "car": "Ferrari 125",
+        "sourceRefs": [
+          "R29",
+          "R36"
+        ]
+      },
+      {
+        "raceId": "race-1955-tt",
+        "result": "Entered; photographed ahead of the works D-Type",
+        "car": "Cooper T38-Jaguar",
+        "sourceRefs": [
+          "S-GALLERY"
+        ]
+      }
+    ]
   },
   {
     "id": "p-anthony-powys-lybbe",
@@ -36,7 +75,8 @@
     "sourceRefs": [
       "R03",
       "R19"
-    ]
+    ],
+    "nationality": "British"
   },
   {
     "id": "p-giuseppe-farina",
@@ -50,7 +90,8 @@
       "R30",
       "R32"
     ],
-    "photoId": "DU-1951-04"
+    "photoId": "DU-1951-04",
+    "nationality": "Italian"
   },
   {
     "id": "p-piero-taruffi",
@@ -59,6 +100,17 @@
     "context": "Won the 1952 Ulster Trophy in a Vandervell-entered Ferrari 375.",
     "sourceRefs": [
       "R08"
+    ],
+    "nationality": "Italian",
+    "appearances": [
+      {
+        "raceId": "race-1955-tt",
+        "result": "Entered",
+        "car": "Works Ferrari",
+        "sourceRefs": [
+          "R23"
+        ]
+      }
     ]
   },
   {
@@ -74,7 +126,27 @@
       "R24",
       "R32"
     ],
-    "photoId": "DU-1952-03"
+    "photoId": "DU-1952-03",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1952-ut",
+        "result": "2nd",
+        "car": "Cooper-Bristol",
+        "sourceRefs": [
+          "R32"
+        ]
+      },
+      {
+        "raceId": "race-1955-tt",
+        "result": "Retired late while leading the challenge to Mercedes",
+        "car": "Works Jaguar D-Type, shared with Desmond Titterington",
+        "sourceRefs": [
+          "R15",
+          "R23"
+        ]
+      }
+    ]
   },
   {
     "id": "p-juan-manuel-fangio",
@@ -84,7 +156,19 @@
     "sourceRefs": [
       "R13"
     ],
-    "photoId": "DU-1952-11"
+    "photoId": "DU-1952-11",
+    "nationality": "Argentine",
+    "appearances": [
+      {
+        "raceId": "race-1952-ut",
+        "result": "Retired",
+        "car": "BRM V16",
+        "sourceRefs": [
+          "R08",
+          "R30"
+        ]
+      }
+    ]
   },
   {
     "id": "p-peter-collins",
@@ -94,7 +178,8 @@
     "sourceRefs": [
       "R06",
       "R21"
-    ]
+    ],
+    "nationality": "British"
   },
   {
     "id": "p-pat-griffith",
@@ -104,7 +189,8 @@
     "sourceRefs": [
       "R06",
       "R21"
-    ]
+    ],
+    "nationality": "British"
   },
   {
     "id": "p-maurice-trintignant",
@@ -113,6 +199,17 @@
     "context": "Shared the 1954 TT scratch and championship result with Mike Hawthorn in a Ferrari 750 Monza.",
     "sourceRefs": [
       "R09"
+    ],
+    "nationality": "French",
+    "appearances": [
+      {
+        "raceId": "race-1955-tt",
+        "result": "Entered",
+        "car": "Works Ferrari",
+        "sourceRefs": [
+          "R23"
+        ]
+      }
     ]
   },
   {
@@ -122,7 +219,8 @@
     "context": "With Paul Armagnac, took the 1954 Tourist Trophy under the handicap classification in a small DB-Panhard.",
     "sourceRefs": [
       "R10"
-    ]
+    ],
+    "nationality": "French"
   },
   {
     "id": "p-paul-armagnac",
@@ -131,7 +229,8 @@
     "context": "With Gérard Laureau, took the 1954 Tourist Trophy under the handicap classification in a small DB-Panhard.",
     "sourceRefs": [
       "R10"
-    ]
+    ],
+    "nationality": "French"
   },
   {
     "id": "p-desmond-titterington",
@@ -145,7 +244,20 @@
       "R22",
       "R35"
     ],
-    "photoId": "DU-1954-02"
+    "photoId": "DU-1954-02",
+    "nationality": "Northern Irish",
+    "localHero": true,
+    "appearances": [
+      {
+        "raceId": "race-1955-tt",
+        "result": "Retired late while leading the challenge to Mercedes",
+        "car": "Works Jaguar D-Type, shared with Mike Hawthorn",
+        "sourceRefs": [
+          "R15",
+          "R23"
+        ]
+      }
+    ]
   },
   {
     "id": "p-bill-smith",
@@ -164,7 +276,8 @@
     "sourceRefs": [
       "R15"
     ],
-    "photoId": "DU-1955-03"
+    "photoId": "DU-1955-03",
+    "nationality": "American"
   },
   {
     "id": "p-jim-mayers",
@@ -174,7 +287,8 @@
     "sourceRefs": [
       "R10",
       "R11"
-    ]
+    ],
+    "nationality": "British"
   },
   {
     "id": "p-william-smith",
@@ -193,7 +307,8 @@
     "context": "Died when his Elva crashed at Tornagrough during the 1955 TT.",
     "sourceRefs": [
       "R11"
-    ]
+    ],
+    "nationality": "British"
   },
   {
     "id": "p-eric-winterbottom",
@@ -202,7 +317,8 @@
     "context": "Died in a first-lap crash at the 1951 Tourist Trophy.",
     "sourceRefs": [
       "R06"
-    ]
+    ],
+    "nationality": "British"
   },
   {
     "id": "p-raymond-mays",
@@ -212,7 +328,8 @@
     "sourceRefs": [
       "S-GALLERY"
     ],
-    "photoId": "DU-1952-13"
+    "photoId": "DU-1952-13",
+    "nationality": "British"
   },
   {
     "id": "p-alfred-neubauer",
@@ -233,7 +350,19 @@
       "R29",
       "R32"
     ],
-    "photoId": "DU-1950-03"
+    "photoId": "DU-1950-03",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1950-ut",
+        "result": "2nd",
+        "car": "ERA",
+        "sourceRefs": [
+          "R29",
+          "R32"
+        ]
+      }
+    ]
   },
   {
     "id": "p-bobby-baird",
@@ -246,7 +375,35 @@
       "R29",
       "R32"
     ],
-    "photoId": "DU-1951-06"
+    "photoId": "DU-1951-06",
+    "nationality": "Northern Irish",
+    "localHero": true,
+    "appearances": [
+      {
+        "raceId": "race-1950-ut",
+        "result": "Retired — accident, lap 7",
+        "car": "1.1-litre MG K3-based special",
+        "sourceRefs": [
+          "R29"
+        ]
+      },
+      {
+        "raceId": "race-1951-ut",
+        "result": "Did not start — engine failure",
+        "car": "Baird-Griphon (Maserati engine)",
+        "sourceRefs": [
+          "R29"
+        ]
+      },
+      {
+        "raceId": "race-1953-ut",
+        "result": "3rd",
+        "car": "Ferrari 500",
+        "sourceRefs": [
+          "R32"
+        ]
+      }
+    ]
   },
   {
     "id": "p-reg-parnell",
@@ -257,7 +414,19 @@
       "R32",
       "R36"
     ],
-    "photoId": "DU-1951-03"
+    "photoId": "DU-1951-03",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1951-ut",
+        "result": "2nd",
+        "car": "Ferrari",
+        "sourceRefs": [
+          "R32",
+          "R36"
+        ]
+      }
+    ]
   },
   {
     "id": "p-joe-kelly",
@@ -269,7 +438,26 @@
       "R29",
       "R32"
     ],
-    "photoId": "DU-1952-12"
+    "photoId": "DU-1952-12",
+    "nationality": "Irish",
+    "appearances": [
+      {
+        "raceId": "race-1950-ut",
+        "result": "4th",
+        "car": "Alta",
+        "sourceRefs": [
+          "R29"
+        ]
+      },
+      {
+        "raceId": "race-1952-ut",
+        "result": "3rd",
+        "car": "Alta",
+        "sourceRefs": [
+          "R32"
+        ]
+      }
+    ]
   },
   {
     "id": "p-sydney-allard",
@@ -279,7 +467,18 @@
     "sourceRefs": [
       "R29"
     ],
-    "photoId": "DU-1950-06"
+    "photoId": "DU-1950-06",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1950-ut",
+        "result": "Retired — gasket, lap 9",
+        "car": "Steyr-engined Allard special",
+        "sourceRefs": [
+          "R29"
+        ]
+      }
+    ]
   },
   {
     "id": "p-prince-bira",
@@ -290,7 +489,19 @@
       "R32",
       "S-GALLERY"
     ],
-    "photoId": "DU-1952-04"
+    "photoId": "DU-1952-04",
+    "nationality": "Siamese",
+    "appearances": [
+      {
+        "raceId": "race-1952-ut",
+        "result": "Entered; photographed in the pits",
+        "car": "4.5-litre OSCA-engined car",
+        "sourceRefs": [
+          "S-GALLERY",
+          "R32"
+        ]
+      }
+    ]
   },
   {
     "id": "p-tony-rolt",
@@ -301,7 +512,18 @@
       "R30",
       "S-GALLERY"
     ],
-    "photoId": "DU-1953-03"
+    "photoId": "DU-1953-03",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1953-tt",
+        "result": "Entered; photographed",
+        "car": "Jaguar C-Type",
+        "sourceRefs": [
+          "S-GALLERY"
+        ]
+      }
+    ]
   },
   {
     "id": "p-lance-macklin",
@@ -311,7 +533,18 @@
     "sourceRefs": [
       "S-GALLERY"
     ],
-    "photoId": "DU-1955-01"
+    "photoId": "DU-1955-01",
+    "nationality": "British",
+    "appearances": [
+      {
+        "raceId": "race-1955-tt",
+        "result": "Entered",
+        "car": "Austin-Healey 100S, shared with John Dalton",
+        "sourceRefs": [
+          "S-GALLERY"
+        ]
+      }
+    ]
   },
   {
     "id": "p-louis-rosier",
@@ -322,6 +555,107 @@
       "R36",
       "S-GALLERY"
     ],
-    "photoId": "DU-1952-10"
+    "photoId": "DU-1952-10",
+    "nationality": "French",
+    "appearances": [
+      {
+        "raceId": "race-1951-ut",
+        "result": "Entered",
+        "car": "4.5-litre Ferrari",
+        "sourceRefs": [
+          "R36"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p-peter-walker",
+    "name": "Peter Walker",
+    "role": "driver",
+    "nationality": "British",
+    "context": "Jaguar's other C-Type man of 1951: second in that year's Tourist Trophy behind his young team-mate Moss.",
+    "appearances": [
+      {
+        "raceId": "race-1951-tt",
+        "result": "2nd",
+        "car": "Works Jaguar C-Type",
+        "sourceRefs": [
+          "R30"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "R30"
+    ]
+  },
+  {
+    "id": "p-ken-wharton",
+    "name": "Ken Wharton",
+    "role": "driver",
+    "nationality": "British",
+    "context": "Second in the 1953 Ulster Trophy final, chasing Hawthorn's Ferrari in a Cooper-Bristol.",
+    "appearances": [
+      {
+        "raceId": "race-1953-ut",
+        "result": "2nd",
+        "car": "Cooper-Bristol",
+        "sourceRefs": [
+          "R32"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "R32"
+    ]
+  },
+  {
+    "id": "p-cuth-harrison",
+    "name": "Cuth Harrison",
+    "role": "driver",
+    "nationality": "British",
+    "context": "Third in the opening 1950 Ulster Trophy in his pre-war ERA.",
+    "appearances": [
+      {
+        "raceId": "race-1950-ut",
+        "result": "3rd",
+        "car": "ERA",
+        "sourceRefs": [
+          "R32"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "R32"
+    ]
+  },
+  {
+    "id": "p-brian-shawe-taylor",
+    "name": "Brian Shawe-Taylor",
+    "role": "driver",
+    "nationality": "British",
+    "context": "Took pole position for the very first race on the new circuit in his ERA, and stood on the 1951 Ulster Trophy podium behind Farina and Parnell.",
+    "appearances": [
+      {
+        "raceId": "race-1950-ut",
+        "result": "Pole position (finishing position not recorded in the register)",
+        "car": "ERA R9B",
+        "sourceRefs": [
+          "R29",
+          "R32"
+        ]
+      },
+      {
+        "raceId": "race-1951-ut",
+        "result": "3rd",
+        "car": "ERA",
+        "sourceRefs": [
+          "R32"
+        ]
+      }
+    ],
+    "sourceRefs": [
+      "R29",
+      "R32"
+    ]
   }
 ]

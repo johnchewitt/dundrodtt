@@ -1,9 +1,136 @@
 [
-  { "id": "t-vandervell", "name": "Vandervell", "context": "Entered the Ferrari 375 that Piero Taruffi took to victory in the 1952 Ulster Trophy.", "sourceRefs": ["R08"] },
-  { "id": "t-ecurie-ecosse", "name": "Ecurie Ecosse", "context": "Entered the Jaguar D-Type in which Desmond Titterington was fastest finisher at the May 1955 Ulster Trophy.", "sourceRefs": ["R16", "R22"] },
-  { "id": "t-aston-martin", "name": "Aston Martin", "context": "A recurring British works entry; Collins and Griffith's 1953 TT win came in the works DB3S.", "sourceRefs": ["R06", "R21"] },
-  { "id": "t-scuderia-ferrari", "name": "Scuderia Ferrari", "context": "The 750 Monza of Hawthorn and Trintignant took the 1954 TT scratch and championship result.", "sourceRefs": ["R09"] },
-  { "id": "t-mercedes-benz", "name": "Mercedes-Benz", "context": "The 300 SLR team of the 1955 TT; Moss and Fitch won the final Dundrod car race in a 300 SLR.", "sourceRefs": ["R10", "R15"] },
-  { "id": "t-jaguar", "name": "Jaguar (works)", "context": "A single factory D-Type, shared by Mike Hawthorn and Desmond Titterington, challenged the Mercedes team in the 1955 TT until mechanical failure late in the race.", "sourceRefs": ["R06", "R10"] },
-  { "id": "t-brm", "name": "BRM", "context": "Brought the experimental V16 for Moss and Fangio at the 1952 Ulster Trophy; neither finished.", "sourceRefs": ["R13"] }
+  {
+    "id": "t-vandervell",
+    "name": "Vandervell",
+    "context": "Entered the Ferrari 375 that Piero Taruffi took to victory in the 1952 Ulster Trophy.",
+    "sourceRefs": [
+      "R08"
+    ],
+    "kind": "entrant",
+    "country": "Great Britain",
+    "photoId": "DU-1952-05"
+  },
+  {
+    "id": "t-ecurie-ecosse",
+    "name": "Ecurie Ecosse",
+    "context": "Entered the Jaguar D-Type in which Desmond Titterington was fastest finisher at the May 1955 Ulster Trophy.",
+    "sourceRefs": [
+      "R16",
+      "R22"
+    ],
+    "kind": "entrant",
+    "country": "Scotland"
+  },
+  {
+    "id": "t-aston-martin",
+    "name": "Aston Martin",
+    "context": "A recurring British works entry; Collins and Griffith's 1953 TT win came in the works DB3S.",
+    "sourceRefs": [
+      "R06",
+      "R21"
+    ],
+    "kind": "works",
+    "country": "Great Britain",
+    "photoId": "DU-1953-02"
+  },
+  {
+    "id": "t-scuderia-ferrari",
+    "name": "Scuderia Ferrari",
+    "context": "The 750 Monza of Hawthorn and Trintignant took the 1954 TT scratch and championship result.",
+    "sourceRefs": [
+      "R09"
+    ],
+    "kind": "works",
+    "country": "Italy",
+    "photoId": "DU-1954-01"
+  },
+  {
+    "id": "t-mercedes-benz",
+    "name": "Mercedes-Benz",
+    "context": "The 300 SLR team of the 1955 TT; Moss and Fitch won the final Dundrod car race in a 300 SLR.",
+    "sourceRefs": [
+      "R10",
+      "R15"
+    ],
+    "kind": "works",
+    "country": "Germany",
+    "photoId": "DU-1955-08"
+  },
+  {
+    "id": "t-jaguar",
+    "name": "Jaguar (works)",
+    "context": "A single factory D-Type, shared by Mike Hawthorn and Desmond Titterington, challenged the Mercedes team in the 1955 TT until mechanical failure late in the race.",
+    "sourceRefs": [
+      "R06",
+      "R10"
+    ],
+    "kind": "works",
+    "country": "Great Britain",
+    "photoId": "DU-1955-07"
+  },
+  {
+    "id": "t-brm",
+    "name": "BRM",
+    "context": "Brought the experimental V16 for Moss and Fangio at the 1952 Ulster Trophy; neither finished.",
+    "sourceRefs": [
+      "R13"
+    ],
+    "kind": "works",
+    "country": "Great Britain",
+    "photoId": "DU-1952-13"
+  },
+  {
+    "id": "t-alfa-romeo",
+    "name": "Alfa Romeo",
+    "kind": "works",
+    "country": "Italy",
+    "context": "The reigning World Champions' team: Farina's 1951 Ulster Trophy win and lap record came in the works 159 'Alfetta'.",
+    "photoId": "DU-1953-01",
+    "sourceRefs": [
+      "R06",
+      "R32"
+    ]
+  },
+  {
+    "id": "t-maserati",
+    "name": "Maserati",
+    "kind": "works",
+    "country": "Italy",
+    "context": "Two works 3-litre cars for Behra, Musso, Bordoni and Musy joined the 1955 Tourist Trophy entry.",
+    "photoId": "DU-1955-03",
+    "sourceRefs": [
+      "R23"
+    ]
+  },
+  {
+    "id": "t-porsche",
+    "name": "Porsche",
+    "kind": "works",
+    "country": "Germany",
+    "context": "The official Porsche team raced in the 1955 Tourist Trophy; Masten Gregory was loaned to it after Gendebien's Wheeler's Corner crash.",
+    "sourceRefs": [
+      "R23"
+    ]
+  },
+  {
+    "id": "t-db",
+    "name": "DB (Deutsch & Bonnet)",
+    "kind": "works",
+    "country": "France",
+    "context": "The small Panhard-powered DBs whose handicap victory gave Laureau and Armagnac the 1954 Tourist Trophy.",
+    "sourceRefs": [
+      "R09"
+    ]
+  },
+  {
+    "id": "t-enrico-plate",
+    "name": "Enrico Platé",
+    "kind": "entrant",
+    "country": "Italy",
+    "context": "Entered a Maserati 4CLT at the 1951 Ulster Trophy meeting — the entry survives in the photographic archive, its driver unconfirmed.",
+    "photoId": "DU-1951-02",
+    "sourceRefs": [
+      "S-GALLERY"
+    ]
+  }
 ]

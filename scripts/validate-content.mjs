@@ -83,8 +83,26 @@ for (const f of films)
   check((f.status !== 'authorised' && f.status !== 'external') || !!f.url,
     `${f.id}: authorised/external film needs a url`);
 
-for (const p of people)
+for (const p of people) {
   if (p.photoId) refCheck(p.id, p.photoId, photoIds, 'photo');
+  for (const a of p.appearances ?? []) {
+    refCheck(p.id, a.raceId, raceIds, 'race');
+    check(typeof a.result === 'string' && a.result.length > 0,
+      `${p.id}: appearance needs a documented result`);
+    check((a.sourceRefs ?? []).length > 0,
+      `${p.id}: appearance ${a.raceId} needs sourceRefs`);
+    for (const ref of a.sourceRefs ?? []) refCheck(p.id, ref, sourceIds, 'source');
+  }
+}
+
+for (const t of teams) {
+  if (t.photoId) refCheck(t.id, t.photoId, photoIds, 'photo');
+  check(!t.kind || ['works', 'entrant', 'privateer'].includes(t.kind),
+    `${t.id}: unknown team kind "${t.kind}"`);
+}
+
+for (const c of cars)
+  if (c.photoId) refCheck(c.id, c.photoId, photoIds, 'photo');
 
 for (const a of acknowledgements)
   check(a.visibility === 'visible' || a.name === null || true, '');

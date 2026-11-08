@@ -129,7 +129,7 @@ export default function SeasonChapter({
           {linkedPeople.map((pid) => {
             const person = personById.get(pid);
             return person ? (
-              <Link key={pid} className="chip" to={`/drivers#${pid}`}>
+              <Link key={pid} className="chip" to={`/drivers/${pid}`}>
                 {person.name}
               </Link>
             ) : null;

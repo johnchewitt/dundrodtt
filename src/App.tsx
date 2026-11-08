@@ -8,6 +8,7 @@ import Seasons from './pages/Seasons';
 import Circuit from './pages/Circuit';
 import Archive from './pages/Archive';
 import Drivers from './pages/Drivers';
+import DriverProfile from './pages/DriverProfile';
 import Today from './pages/Today';
 import Credits from './pages/Credits';
 
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/circuit" element={<Circuit />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/drivers" element={<Drivers />} />
+          <Route path="/drivers/:personId" element={<DriverProfile />} />
           <Route path="/today" element={<Today />} />
           <Route path="/credits" element={<Credits />} />
           {/* Old Stage 1 route, kept working */}

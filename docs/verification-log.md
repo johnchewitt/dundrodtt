@@ -2,6 +2,43 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 5 — Drivers, Teams & Legendary Cars — 2026-11-08
+**Passed:** LOCAL HEROES editorial feature (Titterington lead card —
+1955 Ulster Trophy fastest-finisher win and the shared works D-Type with
+Hawthorn; Bobby Baird feature; Joe Kelly woven into the home-challenge
+prose). Searchable driver catalogue (name/place/nationality/context)
+with an honest no-match state. Full profile route /drivers/:personId:
+nationality and home, derived "At Dundrod" year chips, The Dundrod
+record (wins derived from race classifications + a new sourced
+`appearances` register for documented non-winning results and entries),
+documented events, archive photo strip with viewer, circuit-place chips
+(incident-derived only), aggregated source line. New structured data:
+`appearances` on 16 drivers (Parnell 2nd '51, Gerard 2nd '50, Kelly
+4th/'50 3rd/'52, Baird's three meetings, the BRM DNFs, Whitehead's
+piston, 1955 entries, etc., all source-referenced); nationalities;
+localHero flags (exactly the two NI drivers); four new documented
+drivers (Peter Walker, Ken Wharton, Cuth Harrison, Brian Shawe-Taylor).
+Teams expanded 7→12 with kind (works/entrant) and country — Alfa Romeo,
+Maserati, Porsche (1955, R23), DB and the Enrico Platé entry added; no
+team implied beyond its documented years (cards carry only derived
+victory chips). Car collection: verified one-line specs (new R39) and
+archive photographs on the 15 catalogued cars with derived victory
+chips. All person links app-wide (photo viewer, season chips, cards)
+now open full profiles. Relationships module unit-tested (Moss =
+exactly three TT wins; incident→place links; photo↔person symmetry).
+Gates: tsc · oxlint · validator green (34 people, 12 teams) · 28/28
+Vitest · 32/32 Playwright (4 new) · production build · visual review
+at 1440/390 px.
+**Unverified / outstanding:** no licensed portraits — profiles use the
+archive's action/paddock photographs (policy: no web photos of people);
+Shawe-Taylor's 1950 finishing position is not in the register and the
+profile says so; Bira's 1952 participation is recorded as entered +
+photographed (finishing position unverified); the register keeps Bill
+Smith (May 1955 Champion Trophy) and William Smith (September 1955
+fatality) as the separate records the supplied sources gave — whether
+they are the same William T. Smith needs verification before any merge;
+Porsche's 1955 drivers beyond the Gregory loan are not catalogued.
+
 ## Post-stage QA pass (Stage 4 + refinements) — 2026-11-08
 **Passed — functional & technical:** route-by-route console/network/image
 audit at 1440 px and 390 px: zero broken images on any route (all 44
