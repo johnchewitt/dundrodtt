@@ -2,6 +2,55 @@
 
 Each stage records what passed and what remains unverified.
 
+## Refinement pass (owner testing feedback) — 2026-11-08
+**Passed:** period programme map scan (owner-supplied) saved as evidence
+and served in-app (circuit/period-map.webp/jpg, OSNI/HMSO credit, Crown
+copyright of the era expired) — displayed on Explore the Circuit and as
+the figure in the Story's circuit chapter. Landmark-name audit against
+the scan: all 13 shipped names confirmed period-correct (Deer's Leap and
+Tornagrough are not labelled on this map but are documented period names
+from the 1955 race sources); added a 14th landmark, Start & Finish and
+the Pits, placed on the Quarry–Rushyhill straight per the map
+(provisional like the rest), and renumbered the guided lap to begin at
+the start line. Corner-by-corner driver's-eye stories written for all 14
+places from researched sources (Motor Sport 1955 report and Oct 2000
+feature, Maurice Hamilton, Bob Montgomery/Irish Times, RacingCircuits,
+modern riders' accounts hedged as such) — sources R23–R38 registered.
+Ards chapter renamed "The Ards TT" and expanded (1928–1936, Harry
+Ferguson, Caracciola/Nuvolari, the 5 September 1936 accident told
+without graphic detail, 2024 memorial; Ards/Dundrod distinction kept).
+Story chapters now each carry imagery where the pack or the period map
+provides it (the Ards chapter honestly has none). Nine new driver
+profiles (Baird, Parnell, Gerard, Kelly, Allard, Bira, Rolt, Macklin,
+Rosier) + enriched existing ones; photos.json personIds re-resolved
+(28→42 links); every profile card now shows a curated archive photograph
+(register-ID badge). Race records gained verified dates (1951 UT 2 June,
+1951 TT 15 Sept, 1953 UT 16 May, 1953 TT 5 Sept, 1954 TT 11 Sept, 1955
+TT 17 Sept) and podium/pole/fastest-lap notes rendered on the result
+cards. Winterbottom's 1951 accident location added as reported
+(Wheeler's Corner, hedged, R28) — giving 1951 a circuit link chip.
+Archive photography is now the full 44-photo gallery (responsive 2–3
+columns, captions below; the 1950 rarities keep a roomier two-across
+section); Film tab links out to the BFI Player's free 1955 Ulster Trophy
+film (external link, not embedded; Film.status 'external' added).
+CLAUDE.md amended on the owner's instruction: web supplementation
+allowed with register entries; corrections register still wins (7:03:11
+kept over Wikipedia's 7:03:12). Gates: validator green (30 people, 14
+locations), tsc clean, 21/21 Vitest, 26/26 Playwright e2e (5 new),
+visual review of Archive/Drivers/Circuit/Story.
+**Unverified / outstanding:** start/finish landmark position is
+provisional (placed ~45% along the Quarry→Rushyhill straight to match
+the map's label; survey-grade confirmation outstanding like all
+landmarks); 1955 Ulster Trophy exact date still month-only; Winterbottom
+location is a reported attribution (Wikipedia fatalities list), hedged
+in copy; no internet photographs of the corners added this pass — the
+desktop-app bridge (used previously to fetch imagery through the
+owner's browser) was offline, and the workspace proxy blocks image
+hosts; licensed modern corner photography (e.g. CC BY-SA Geograph) can
+be added with per-image credits when the owner reconnects or supplies
+files. No photographs of drivers will be downloaded from the web, per
+policy.
+
 ## Stage 4 — Six Racing Seasons interactive timeline — 2026-11-08
 **Passed:** horizontal 1950–1955 timeline strip (sticky, scrollable; one
 station per year with chapter title and a dot per scheduled meeting —

@@ -49,7 +49,10 @@ test('story chapters render from content with working season links', async ({
   page,
 }) => {
   await page.goto('#/story');
-  await expect(page.getByText(/The race that stopped/)).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'The Ards TT' }),
+  ).toBeVisible();
+  await expect(page.getByText(/not a Dundrod event/)).toBeVisible();
   await expect(page.getByText(/Forty thousand pounds of road/)).toBeVisible();
   await page.getByRole('link', { name: 'The 1955 season in full' }).click();
   await expect
@@ -318,5 +321,49 @@ test('season chapter chips deep-link a documented circuit place', async ({
   ).toBeVisible();
   await expect(
     page.locator('.location-panel').getByText(/Deer's Leap/).first(),
+  ).toBeVisible();
+});
+
+/* ---------- Refinement pass: period names, gallery, profiles, films ---------- */
+
+test('archive shows the full 44-photo gallery with captions', async ({ page }) => {
+  await page.goto('#/archive');
+  await expect(page.locator('.gallery-grid .plate')).toHaveCount(44);
+  await expect(
+    page.getByRole('heading', { name: 'The full archive, 1951–1955' }),
+  ).toBeVisible();
+});
+
+test('film tab links out to the BFI film without embedding', async ({ page }) => {
+  await page.goto('#/archive?section=film');
+  const link = page.getByRole('link', { name: /Ulster Trophy, Dundrod \(1955\)/ });
+  await expect(link).toBeVisible();
+  await expect(link).toHaveAttribute('href', /player\.bfi\.org\.uk/);
+  await expect(page.locator('iframe')).toHaveCount(0);
+});
+
+test('driver cards carry archive photographs and new profiles', async ({ page }) => {
+  await page.goto('#/drivers');
+  await expect(page.locator('.driver-photo img').first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Bobby Baird' })).toBeVisible();
+  await expect(page.getByText(/Belfast Telegraph/).first()).toBeVisible();
+});
+
+test('circuit page shows the period programme map with OSNI credit', async ({ page }) => {
+  await page.goto('#/circuit');
+  await expect(
+    page.getByRole('heading', { name: 'The circuit as the programmes drew it' }),
+  ).toBeVisible();
+  await expect(page.getByText(/H\.M\. Stationery Office/)).toBeVisible();
+});
+
+test('the lap now begins at the start and finish line', async ({ page }) => {
+  await page.goto('#/circuit');
+  await expect(
+    page.getByRole('button', { name: 'Start & Finish and the Pits' }),
+  ).toBeVisible();
+  await page.getByRole('button', { name: 'Start & Finish and the Pits' }).click();
+  await expect(
+    page.locator('.location-panel').getByText(/grandstands/).first(),
   ).toBeVisible();
 });

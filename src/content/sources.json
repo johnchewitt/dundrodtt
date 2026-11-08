@@ -1,26 +1,224 @@
 [
-  { "id": "S-GALLERY", "title": "Dundrod_Photo_Gallery_Content.xlsx (supplied gallery spreadsheet)", "kind": "supplied" },
-  { "id": "S-PHOTOS", "title": "All Photos.zip (supplied photograph collection)", "kind": "supplied" },
-  { "id": "R01", "title": "Dundrod TT Summary (supplied Word document)", "note": "Starting notes and claims checked in the context document.", "kind": "supplied" },
-  { "id": "R02", "title": "History of the Ulster Automobile Club (supplied PDF)", "note": "Club background and Ards / Dundrod context. Not yet supplied to the workspace.", "kind": "supplied" },
-  { "id": "R03", "title": "Belfast Telegraph, 12 August 1950, page 5 (supplied scan)", "note": "Contemporary opening-day report and race coverage.", "kind": "supplied" },
-  { "id": "R04", "title": "Club News, May 1949 — Dundrod Circuit Approved", "note": "Contemporary report of the Council road scheme and estimates.", "kind": "verified-web" },
-  { "id": "R05", "title": "Jaguars' Sweeping Victory in the Dundrod T.T., October 1950", "kind": "verified-web" },
-  { "id": "R06", "title": "Inside Revolution — Ulster Automobile Club 100 not out", "kind": "verified-web" },
-  { "id": "R07", "title": "Stirling Moss Wins the TT for Jaguar at Record Speed, October 1951", "kind": "verified-web" },
-  { "id": "R08", "title": "Ulster Trophy, Dundrod, 7 June 1952", "kind": "verified-web" },
-  { "id": "R09", "title": "1954 Tourist Trophy scratch result", "kind": "verified-web" },
-  { "id": "R10", "title": "The RAC Tourist Trophy was once Britain's greatest motor race", "kind": "verified-web" },
-  { "id": "R11", "title": "Death, fire and Stirling Moss — the end of car racing at Dundrod", "kind": "verified-web" },
-  { "id": "R12", "title": "Ards and North Down Borough Council memorial article", "note": "Eight spectators killed in the 1936 Ards TT.", "kind": "verified-web" },
-  { "id": "R13", "title": "Dundrod circuit history and layout", "kind": "verified-web" },
-  { "id": "R14", "title": "RAC International Dundrod TT 1953 Race — programme and course map", "note": "Period map labels and the 7 miles 732 yards course length.", "kind": "verified-web" },
-  { "id": "R15", "title": "1955 World Sportscar Championship results", "kind": "verified-web" },
-  { "id": "R16", "title": "Ulster Trophy — Dundrod, Northern Ireland Screen archive", "kind": "verified-web" },
-  { "id": "R17", "title": "RAC Tourist Trophy 1950 results", "kind": "verified-web" },
-  { "id": "R18", "title": "Dundrod, 12 August 1950 — OldRacingCars", "kind": "verified-web" },
-  { "id": "R19", "title": "1950 Ulster Trophy handicap — Racing Sports Cars", "kind": "verified-web" },
-  { "id": "R20", "title": "Making Ulster the Tourist's Mecca — Queen's University Belfast", "kind": "verified-web" },
-  { "id": "R21", "title": "Ulster Trophy at Dundrod, May 1953 — Motor Sport", "kind": "verified-web" },
-  { "id": "R22", "title": "Novice Wins Ulster Trophy, Autosport, 20 May 1955", "kind": "verified-web" }
+  {
+    "id": "S-GALLERY",
+    "title": "Dundrod_Photo_Gallery_Content.xlsx (supplied gallery spreadsheet)",
+    "kind": "supplied"
+  },
+  {
+    "id": "S-PHOTOS",
+    "title": "All Photos.zip (supplied photograph collection)",
+    "kind": "supplied"
+  },
+  {
+    "id": "R01",
+    "title": "Dundrod TT Summary (supplied Word document)",
+    "note": "Starting notes and claims checked in the context document.",
+    "kind": "supplied"
+  },
+  {
+    "id": "R02",
+    "title": "History of the Ulster Automobile Club (supplied PDF)",
+    "note": "Club background and Ards / Dundrod context. Not yet supplied to the workspace.",
+    "kind": "supplied"
+  },
+  {
+    "id": "R03",
+    "title": "Belfast Telegraph, 12 August 1950, page 5 (supplied scan)",
+    "note": "Contemporary opening-day report and race coverage.",
+    "kind": "supplied"
+  },
+  {
+    "id": "R04",
+    "title": "Club News, May 1949 — Dundrod Circuit Approved",
+    "note": "Contemporary report of the Council road scheme and estimates.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R05",
+    "title": "Jaguars' Sweeping Victory in the Dundrod T.T., October 1950",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R06",
+    "title": "Inside Revolution — Ulster Automobile Club 100 not out",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R07",
+    "title": "Stirling Moss Wins the TT for Jaguar at Record Speed, October 1951",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R08",
+    "title": "Ulster Trophy, Dundrod, 7 June 1952",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R09",
+    "title": "1954 Tourist Trophy scratch result",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R10",
+    "title": "The RAC Tourist Trophy was once Britain's greatest motor race",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R11",
+    "title": "Death, fire and Stirling Moss — the end of car racing at Dundrod",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R12",
+    "title": "Ards and North Down Borough Council memorial article",
+    "note": "Eight spectators killed in the 1936 Ards TT.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R13",
+    "title": "Dundrod circuit history and layout",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R14",
+    "title": "RAC International Dundrod TT 1953 Race — programme and course map",
+    "note": "Period map labels and the 7 miles 732 yards course length.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R15",
+    "title": "1955 World Sportscar Championship results",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R16",
+    "title": "Ulster Trophy — Dundrod, Northern Ireland Screen archive",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R17",
+    "title": "RAC Tourist Trophy 1950 results",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R18",
+    "title": "Dundrod, 12 August 1950 — OldRacingCars",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R19",
+    "title": "1950 Ulster Trophy handicap — Racing Sports Cars",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R20",
+    "title": "Making Ulster the Tourist's Mecca — Queen's University Belfast",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R21",
+    "title": "Ulster Trophy at Dundrod, May 1953 — Motor Sport",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R22",
+    "title": "Novice Wins Ulster Trophy, Autosport, 20 May 1955",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R23",
+    "title": "The 1955 Ulster Tourist Trophy — Motor Sport, October 1955",
+    "note": "Race report: entry lists, the Deer's Leap flag signal, Gendebien's Wheeler's Corner crash.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R24",
+    "title": "Dundrod — Motor Sport circuit database",
+    "note": "Circuit character: earth banks, blind corners, weather, UAC finances; TT lap record.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R25",
+    "title": "Dundrod — Maurice Hamilton, grandprix.com",
+    "note": "Grass banks, whitewashed stone posts, telegraph poles; Deer's Leap and Cochranstown.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R26",
+    "title": "Dundrod — RacingCircuits.info",
+    "note": "B38/B101/B153 road layout; cambered drainage roads; circuit history.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R27",
+    "title": "In the path of Giants — Bob Montgomery, The Irish Times",
+    "note": "Driving the circuit today: the sweeping mile to Leathemstown, Ireland's Corner to Wheeler's.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R28",
+    "title": "List of Dundrod Circuit fatalities — Wikipedia",
+    "note": "Reported accident locations, 1951 and 1955 Tourist Trophies.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R29",
+    "title": "Ulster Trophy results 1950 and 1951 — OldRacingCars.com",
+    "note": "Full finishing order, retirements and car notes.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R30",
+    "title": "Dundrod: Northern Ireland's high-speed thrill-ride — Motor Sport, October 2000",
+    "note": "Course character and 1950–1955 race facts: Moss 1950, Farina's record, 1954 handicap margin.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R31",
+    "title": "Bobby Baird — historicracing.com driver profile",
+    "note": "Belfast Telegraph family; Ards debut 1933; Ferraris; Snetterton, July 1953.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R32",
+    "title": "Ulster Trophy 1950–1953 — Wikipedia race pages",
+    "note": "Poles, fastest laps and podiums for each running.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R33",
+    "title": "The Ards TT and the 1936 accident — Ards Circuit (Wikipedia); Newtownards pictorial history; Belfast News Letter and Ards & North Down Borough Council memorial reports",
+    "note": "1928–1936 history; 5 September 1936; Jack Chambers; eight spectators killed; memorial plaque 2024.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R34",
+    "title": "Ulster Grand Prix course guide — Devitt Insurance",
+    "note": "Modern riders' accounts of Jordan's Cross, Wheeler's and Tournagrough on today's circuit.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R35",
+    "title": "Ulster Trophy, Dundrod (1955) — BFI Player",
+    "note": "Seven-minute film of the May 1955 meeting, free to view on the BFI's own player.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R36",
+    "title": "Divine Province — Motor Sport, June 2005",
+    "note": "1951 Ulster Trophy: Whitehead's piston, the expected Parnell–Farina duel, Rosier's 4.5-litre Ferrari.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R37",
+    "title": "RAC Tourist Trophy 1954 — programme course map (Racing Sports Cars cover scan)",
+    "note": "11 September 1954; period map evidence used for the 1950s hairpin.",
+    "kind": "verified-web"
+  },
+  {
+    "id": "R38",
+    "title": "1950s race programme circuit map (owner-supplied scan)",
+    "note": "Period course map: corner names, county-named grandstands and enclosures, start/finish and pits. Based upon the Ordnance Survey of Northern Ireland by sanction of HMSO; Crown copyright of the era has expired.",
+    "kind": "supplied"
+  }
 ]

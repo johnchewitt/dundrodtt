@@ -1238,3 +1238,78 @@ img { max-width: 100%; height: auto; display: block; }
 @media (min-width: 60rem) {
   .seasons-page .chapter[id] { scroll-margin-top: 11.5rem; }
 }
+
+/* ---------- Refinements: archive gallery grid ---------- */
+
+.gallery-grid {
+  list-style: none;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 40rem) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 64rem) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.gallery-grid .plate { margin: 0; }
+.gallery-grid .plate-mount img { width: 100%; }
+/* the rare 1950 photographs keep a roomier two-across presentation */
+@media (min-width: 64rem) {
+  .gallery-special { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Refinements: driver profile photographs ---------- */
+
+.driver-photo {
+  position: relative;
+  margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-2);
+  overflow: hidden;
+}
+.driver-photo img {
+  display: block;
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  filter: sepia(0.12) contrast(1.02);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.driver-card:hover .driver-photo img { filter: sepia(0) contrast(1.03) brightness(1.04); }
+.driver-photo-id {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.4rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+  background: color-mix(in srgb, var(--midnight) 72%, transparent);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+/* ---------- Refinements: film links, figure credits, race extras ---------- */
+
+.film-links { list-style: none; margin: 0 0 var(--space-4); padding: 0; }
+.film-links li { margin-bottom: var(--space-2); }
+.film-links a { color: var(--gold); }
+
+.figure-credit { color: var(--text-on-dark-soft); font-size: 0.78rem; }
+.story-page .paper .figure-credit { color: var(--ink-soft); }
+
+.race-extra {
+  border-top: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  padding-top: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--text-on-dark-soft);
+}
+
+.period-map { margin-top: var(--space-5); }
+.period-map p { max-width: var(--measure); }
+.driver-photo { border-radius: var(--radius-panel) var(--radius-panel) 0 0; }
+.period-map .plate-mount img,
+.story-figure .plate-mount img { width: 100%; }

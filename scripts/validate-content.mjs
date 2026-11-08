@@ -80,8 +80,11 @@ for (const l of locations)
   (l.incidentIds ?? []).forEach((i) => refCheck(l.id, i, incidentIds, 'incident'));
 
 for (const f of films)
-  check(f.status !== 'authorised' || !!f.url,
-    `${f.id}: authorised film needs a url`);
+  check((f.status !== 'authorised' && f.status !== 'external') || !!f.url,
+    `${f.id}: authorised/external film needs a url`);
+
+for (const p of people)
+  if (p.photoId) refCheck(p.id, p.photoId, photoIds, 'photo');
 
 for (const a of acknowledgements)
   check(a.visibility === 'visible' || a.name === null || true, '');

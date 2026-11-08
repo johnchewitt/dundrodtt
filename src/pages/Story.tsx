@@ -27,6 +27,32 @@ function Chapter({ chapter }: { chapter: StoryChapter }) {
       {photos.map((p) => (
         <PhotoPlate key={p.id} photo={p} contained />
       ))}
+      {chapter.figure && (
+        <figure className="plate plate-contained story-figure">
+          <div className="plate-mount">
+            <picture>
+              {chapter.figure.webp && (
+                <source srcSet={`${import.meta.env.BASE_URL}${chapter.figure.webp}`} type="image/webp" />
+              )}
+              <img
+                src={`${import.meta.env.BASE_URL}${chapter.figure.src}`}
+                alt={chapter.figure.alt}
+                loading="lazy"
+                width={chapter.figure.width}
+                height={chapter.figure.height}
+                style={{ aspectRatio: `${chapter.figure.width} / ${chapter.figure.height}` }}
+                data-loaded
+              />
+            </picture>
+          </div>
+          <figcaption>
+            {chapter.figure.caption}
+            {chapter.figure.credit && (
+              <span className="figure-credit"> {chapter.figure.credit}</span>
+            )}
+          </figcaption>
+        </figure>
+      )}
       {chapter.link && (
         <p>
           <Link to={chapter.link.to}>{chapter.link.label}</Link>

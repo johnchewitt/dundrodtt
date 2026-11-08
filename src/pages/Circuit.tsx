@@ -35,6 +35,47 @@ export default function Circuit() {
         <LandmarkCatalogue />
         <LocationPanel />
       </div>
+
+      <section className="period-map" aria-labelledby="period-map-h">
+        <h2 id="period-map-h">The circuit as the programmes drew it</h2>
+        <p>
+          A 1950s race programme map of the course, drawn from the Ordnance
+          Survey of Northern Ireland. It names the corners the drivers knew —
+          and the spectator grandstands and enclosures, each named for a
+          county or hill of Ulster: Londonderry, Belfast and Ulster stands at
+          the start and pits, Down and Mourne at the Hairpin, Fermanagh at
+          Leathemstown Corner, Slemish at Wheeler&apos;s, the Erne enclosure
+          inside Leathemstown. The red, blue and yellow routes guided
+          spectators&apos; cars in from Belfast and beyond.
+        </p>
+        <figure className="plate plate-contained">
+          <div className="plate-mount">
+            <picture>
+              <source
+                srcSet={`${import.meta.env.BASE_URL}circuit/period-map.webp`}
+                type="image/webp"
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}circuit/period-map.jpg`}
+                alt="A 1950s race programme map of the Dundrod circuit showing corner names, the start/finish and pits, and county-named grandstands and spectator enclosures."
+                loading="lazy"
+                width={1600}
+                height={978}
+                style={{ aspectRatio: '1600 / 978' }}
+                data-loaded
+              />
+            </picture>
+          </div>
+          <figcaption>
+            Period race programme course map.
+            <span className="figure-credit">
+              {' '}
+              Based upon the Ordnance Survey of Northern Ireland by sanction
+              of H.M. Stationery Office.
+            </span>
+          </figcaption>
+        </figure>
+      </section>
     </div>
   );
 }

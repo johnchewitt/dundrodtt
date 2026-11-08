@@ -1,23 +1,327 @@
 [
-  { "id": "p-stirling-moss", "name": "Stirling Moss", "role": "driver", "context": "TT winner at Dundrod in 1950, 1951 and 1955. His first win came in Tommy Wisdom's XK120 on the eve of his twenty-first birthday; the last came with John Fitch in Mercedes-Benz's 300 SLR.", "sourceRefs": ["R05", "R06", "R15", "R17"] },
-  { "id": "p-peter-whitehead", "name": "Peter Whitehead", "role": "driver", "context": "Won the 1950 Ulster Trophy in a Ferrari 125 — the first race meeting on the new circuit.", "sourceRefs": ["R18"] },
-  { "id": "p-anthony-powys-lybbe", "name": "Anthony Powys-Lybbe", "role": "driver", "context": "Won the handicap contest at the opening August 1950 meeting in an Alfa Romeo P3.", "sourceRefs": ["R03", "R19"] },
-  { "id": "p-giuseppe-farina", "name": "Giuseppe Farina", "role": "driver", "context": "The reigning Formula One World Champion won the 1951 Ulster Trophy in an Alfa Romeo 159 and set a 4:44 lap record.", "sourceRefs": ["R06", "R07"] },
-  { "id": "p-piero-taruffi", "name": "Piero Taruffi", "role": "driver", "context": "Won the 1952 Ulster Trophy in a Vandervell-entered Ferrari 375.", "sourceRefs": ["R08"] },
-  { "id": "p-mike-hawthorn", "name": "Mike Hawthorn", "role": "driver", "context": "Second in the 1952 Ulster Trophy in a Cooper-Bristol; won the 1953 Ulster Trophy and the 1954 TT scratch result; shared Jaguar's works D-Type with Titterington in 1955 and set the 4:42 lap record.", "sourceRefs": ["R08", "R09", "R10", "R21"] },
-  { "id": "p-juan-manuel-fangio", "name": "Juan Manuel Fangio", "role": "driver", "context": "Appeared with Moss in the experimental V16 BRM at the 1952 Ulster Trophy; neither finished.", "sourceRefs": ["R13"] },
-  { "id": "p-peter-collins", "name": "Peter Collins", "role": "driver", "context": "Won the 1953 RAC TT with Pat Griffith in an Aston Martin DB3S.", "sourceRefs": ["R06", "R21"] },
-  { "id": "p-pat-griffith", "name": "Pat Griffith", "role": "driver", "context": "Won the 1953 RAC TT with Peter Collins in an Aston Martin DB3S.", "sourceRefs": ["R06", "R21"] },
-  { "id": "p-maurice-trintignant", "name": "Maurice Trintignant", "role": "driver", "context": "Shared the 1954 TT scratch and championship result with Mike Hawthorn in a Ferrari 750 Monza.", "sourceRefs": ["R09"] },
-  { "id": "p-gerard-laureau", "name": "Gérard Laureau", "role": "driver", "context": "With Paul Armagnac, took the 1954 Tourist Trophy under the handicap classification in a small DB-Panhard.", "sourceRefs": ["R10"] },
-  { "id": "p-paul-armagnac", "name": "Paul Armagnac", "role": "driver", "context": "With Gérard Laureau, took the 1954 Tourist Trophy under the handicap classification in a small DB-Panhard.", "sourceRefs": ["R10"] },
-  { "id": "p-desmond-titterington", "name": "Desmond Titterington", "role": "driver", "homePlace": "Holywood", "context": "Local driver from Holywood. Fastest finisher in the 1955 Ulster Trophy handicap, and shared the factory Jaguar D-Type with Hawthorn in the 1955 TT.", "sourceRefs": ["R16", "R22", "R06"] },
-  { "id": "p-bill-smith", "name": "Bill Smith", "role": "driver", "context": "Won the handicap Champion Trophy at the May 1955 Ulster Trophy meeting in a Jaguar C-Type.", "sourceRefs": ["R22"] },
-  { "id": "p-john-fitch", "name": "John Fitch", "role": "driver", "context": "Shared Moss's winning Mercedes-Benz 300 SLR in the 1955 TT.", "sourceRefs": ["R15"] },
-  { "id": "p-jim-mayers", "name": "Jim Mayers", "role": "driver", "context": "Died in the multi-car crash at Deer's Leap on the second lap of the 1955 TT.", "sourceRefs": ["R10", "R11"] },
-  { "id": "p-william-smith", "name": "William Smith", "role": "driver", "context": "Died in the multi-car crash at Deer's Leap on the second lap of the 1955 TT.", "sourceRefs": ["R10", "R11"] },
-  { "id": "p-richard-mainwaring", "name": "Richard Mainwaring", "role": "driver", "context": "Died when his Elva crashed at Tornagrough during the 1955 TT.", "sourceRefs": ["R11"] },
-  { "id": "p-eric-winterbottom", "name": "Eric Winterbottom", "role": "driver", "context": "Died in a first-lap crash at the 1951 Tourist Trophy.", "sourceRefs": ["R06"] },
-  { "id": "p-raymond-mays", "name": "Raymond Mays", "role": "team-figure", "context": "Pictured with the BRM team around the V16 at the 1952 Ulster Trophy.", "sourceRefs": ["S-GALLERY"] },
-  { "id": "p-alfred-neubauer", "name": "Alfred Neubauer", "role": "team-figure", "context": "Mercedes team manager, pictured with Stirling Moss at Dundrod in 1955.", "sourceRefs": ["S-GALLERY"] }
+  {
+    "id": "p-stirling-moss",
+    "name": "Stirling Moss",
+    "role": "driver",
+    "context": "TT winner at Dundrod in 1950, 1951 and 1955 — the first of his record seven Tourist Trophy wins came in Tommy Wisdom's XK120 in heavy rain, on the eve of his twenty-first birthday; the last came with John Fitch in Mercedes-Benz's 300 SLR.",
+    "sourceRefs": [
+      "R05",
+      "R06",
+      "R15",
+      "R17",
+      "R29",
+      "R30",
+      "R32"
+    ],
+    "photoId": "DU-1950-05"
+  },
+  {
+    "id": "p-peter-whitehead",
+    "name": "Peter Whitehead",
+    "role": "driver",
+    "context": "Won the 1950 Ulster Trophy in a Ferrari 125 — the first race meeting on the new circuit — setting fastest lap at 5:06.6. Defending the trophy in 1951, his Ferrari blew a piston on the warm-up.",
+    "sourceRefs": [
+      "R18",
+      "R29",
+      "R30",
+      "R32"
+    ],
+    "photoId": "DU-1955-02"
+  },
+  {
+    "id": "p-anthony-powys-lybbe",
+    "name": "Anthony Powys-Lybbe",
+    "role": "driver",
+    "context": "Won the handicap contest at the opening August 1950 meeting in an Alfa Romeo P3.",
+    "sourceRefs": [
+      "R03",
+      "R19"
+    ]
+  },
+  {
+    "id": "p-giuseppe-farina",
+    "name": "Giuseppe Farina",
+    "role": "driver",
+    "context": "The reigning Formula One World Champion won the 1951 Ulster Trophy in an Alfa Romeo 159 from pole position, setting a 4:44 lap record that stood for four years.",
+    "sourceRefs": [
+      "R06",
+      "R07",
+      "R29",
+      "R30",
+      "R32"
+    ],
+    "photoId": "DU-1951-04"
+  },
+  {
+    "id": "p-piero-taruffi",
+    "name": "Piero Taruffi",
+    "role": "driver",
+    "context": "Won the 1952 Ulster Trophy in a Vandervell-entered Ferrari 375.",
+    "sourceRefs": [
+      "R08"
+    ]
+  },
+  {
+    "id": "p-mike-hawthorn",
+    "name": "Mike Hawthorn",
+    "role": "driver",
+    "context": "Second in the 1952 Ulster Trophy in a Cooper-Bristol; won the 1953 Ulster Trophy and the 1954 TT scratch result; shared Jaguar's works D-Type with Titterington in 1955 and set the 4:42 lap record. He won the 1953 Ulster Trophy from pole, and in the 1955 TT set the sports-car lap record that stands forever at Dundrod: 4 minutes 42 seconds, 94.67 mph.",
+    "sourceRefs": [
+      "R08",
+      "R09",
+      "R10",
+      "R21",
+      "R24",
+      "R32"
+    ],
+    "photoId": "DU-1952-03"
+  },
+  {
+    "id": "p-juan-manuel-fangio",
+    "name": "Juan Manuel Fangio",
+    "role": "driver",
+    "context": "Appeared with Moss in the experimental V16 BRM at the 1952 Ulster Trophy; neither finished.",
+    "sourceRefs": [
+      "R13"
+    ],
+    "photoId": "DU-1952-11"
+  },
+  {
+    "id": "p-peter-collins",
+    "name": "Peter Collins",
+    "role": "driver",
+    "context": "Won the 1953 RAC TT with Pat Griffith in an Aston Martin DB3S.",
+    "sourceRefs": [
+      "R06",
+      "R21"
+    ]
+  },
+  {
+    "id": "p-pat-griffith",
+    "name": "Pat Griffith",
+    "role": "driver",
+    "context": "Won the 1953 RAC TT with Peter Collins in an Aston Martin DB3S.",
+    "sourceRefs": [
+      "R06",
+      "R21"
+    ]
+  },
+  {
+    "id": "p-maurice-trintignant",
+    "name": "Maurice Trintignant",
+    "role": "driver",
+    "context": "Shared the 1954 TT scratch and championship result with Mike Hawthorn in a Ferrari 750 Monza.",
+    "sourceRefs": [
+      "R09"
+    ]
+  },
+  {
+    "id": "p-gerard-laureau",
+    "name": "Gérard Laureau",
+    "role": "driver",
+    "context": "With Paul Armagnac, took the 1954 Tourist Trophy under the handicap classification in a small DB-Panhard.",
+    "sourceRefs": [
+      "R10"
+    ]
+  },
+  {
+    "id": "p-paul-armagnac",
+    "name": "Paul Armagnac",
+    "role": "driver",
+    "context": "With Gérard Laureau, took the 1954 Tourist Trophy under the handicap classification in a small DB-Panhard.",
+    "sourceRefs": [
+      "R10"
+    ]
+  },
+  {
+    "id": "p-desmond-titterington",
+    "name": "Desmond Titterington",
+    "role": "driver",
+    "homePlace": "Holywood",
+    "context": "Local driver from Holywood. Fastest finisher in the 1955 Ulster Trophy handicap, and shared the factory Jaguar D-Type with Hawthorn in the 1955 TT. Within a year of his Ulster Trophy win he was racing in Grand Prix company.",
+    "sourceRefs": [
+      "R06",
+      "R16",
+      "R22",
+      "R35"
+    ],
+    "photoId": "DU-1954-02"
+  },
+  {
+    "id": "p-bill-smith",
+    "name": "Bill Smith",
+    "role": "driver",
+    "context": "Won the handicap Champion Trophy at the May 1955 Ulster Trophy meeting in a Jaguar C-Type.",
+    "sourceRefs": [
+      "R22"
+    ]
+  },
+  {
+    "id": "p-john-fitch",
+    "name": "John Fitch",
+    "role": "driver",
+    "context": "Shared Moss's winning Mercedes-Benz 300 SLR in the 1955 TT.",
+    "sourceRefs": [
+      "R15"
+    ],
+    "photoId": "DU-1955-03"
+  },
+  {
+    "id": "p-jim-mayers",
+    "name": "Jim Mayers",
+    "role": "driver",
+    "context": "Died in the multi-car crash at Deer's Leap on the second lap of the 1955 TT.",
+    "sourceRefs": [
+      "R10",
+      "R11"
+    ]
+  },
+  {
+    "id": "p-william-smith",
+    "name": "William Smith",
+    "role": "driver",
+    "context": "Died in the multi-car crash at Deer's Leap on the second lap of the 1955 TT.",
+    "sourceRefs": [
+      "R10",
+      "R11"
+    ]
+  },
+  {
+    "id": "p-richard-mainwaring",
+    "name": "Richard Mainwaring",
+    "role": "driver",
+    "context": "Died when his Elva crashed at Tornagrough during the 1955 TT.",
+    "sourceRefs": [
+      "R11"
+    ]
+  },
+  {
+    "id": "p-eric-winterbottom",
+    "name": "Eric Winterbottom",
+    "role": "driver",
+    "context": "Died in a first-lap crash at the 1951 Tourist Trophy.",
+    "sourceRefs": [
+      "R06"
+    ]
+  },
+  {
+    "id": "p-raymond-mays",
+    "name": "Raymond Mays",
+    "role": "team-figure",
+    "context": "Pictured with the BRM team around the V16 at the 1952 Ulster Trophy.",
+    "sourceRefs": [
+      "S-GALLERY"
+    ],
+    "photoId": "DU-1952-13"
+  },
+  {
+    "id": "p-alfred-neubauer",
+    "name": "Alfred Neubauer",
+    "role": "team-figure",
+    "context": "Mercedes team manager, pictured with Stirling Moss at Dundrod in 1955.",
+    "sourceRefs": [
+      "S-GALLERY"
+    ],
+    "photoId": "DU-1955-08"
+  },
+  {
+    "id": "p-bob-gerard",
+    "name": "Bob Gerard",
+    "role": "driver",
+    "context": "Second in the opening 1950 Ulster Trophy, bringing his pre-war ERA home sixteen seconds behind Whitehead's Ferrari.",
+    "sourceRefs": [
+      "R29",
+      "R32"
+    ],
+    "photoId": "DU-1950-03"
+  },
+  {
+    "id": "p-bobby-baird",
+    "name": "Bobby Baird",
+    "role": "driver",
+    "homePlace": "Belfast",
+    "context": "Belfast newspaper proprietor — his family founded the Belfast Telegraph — and Ulster's own Ferrari entrant. He crashed his MG-based special at the very first 1950 meeting, built the Maserati-engined Baird-Griffon, and took third in the 1953 Ulster Trophy in a Ferrari 500. He was killed at Snetterton in July 1953; the 1953 TT programme carried the Ulster Automobile Club's tribute to him.",
+    "sourceRefs": [
+      "R31",
+      "R29",
+      "R32"
+    ],
+    "photoId": "DU-1951-06"
+  },
+  {
+    "id": "p-reg-parnell",
+    "name": "Reg Parnell",
+    "role": "driver",
+    "context": "Rated the top British driver of the day, he split the works Alfa Romeos to finish second to Farina in the 1951 Ulster Trophy, and appears in the archive in the Thinwall Special Ferrari.",
+    "sourceRefs": [
+      "R32",
+      "R36"
+    ],
+    "photoId": "DU-1951-03"
+  },
+  {
+    "id": "p-joe-kelly",
+    "name": "Joe Kelly",
+    "role": "driver",
+    "homePlace": "Dublin",
+    "context": "Irish privateer in his Alta: fourth in the first Ulster Trophy of 1950 and third behind Taruffi and Hawthorn in 1952.",
+    "sourceRefs": [
+      "R29",
+      "R32"
+    ],
+    "photoId": "DU-1952-12"
+  },
+  {
+    "id": "p-sydney-allard",
+    "name": "Sydney Allard",
+    "role": "driver",
+    "context": "Founder of the Allard marque, he brought the Steyr-engined Allard special to the opening 1950 Ulster Trophy, retiring with a gasket failure after nine laps.",
+    "sourceRefs": [
+      "R29"
+    ],
+    "photoId": "DU-1950-06"
+  },
+  {
+    "id": "p-prince-bira",
+    "name": "Prince Bira",
+    "role": "driver",
+    "context": "The Siamese prince entered the 1952 Ulster Trophy with his 4.5-litre OSCA-engined car — photographed in the Dundrod pits that June.",
+    "sourceRefs": [
+      "R32",
+      "S-GALLERY"
+    ],
+    "photoId": "DU-1952-04"
+  },
+  {
+    "id": "p-tony-rolt",
+    "name": "Tony Rolt",
+    "role": "driver",
+    "context": "Le Mans winner of 1953 for Jaguar, photographed in a C-Type at Dundrod the same season — the TT in which the Jaguars were slowed by transmission trouble.",
+    "sourceRefs": [
+      "R30",
+      "S-GALLERY"
+    ],
+    "photoId": "DU-1953-03"
+  },
+  {
+    "id": "p-lance-macklin",
+    "name": "Lance Macklin",
+    "role": "driver",
+    "context": "Austin-Healey works driver, photographed sharing a 100S with John Dalton in the 1955 Tourist Trophy.",
+    "sourceRefs": [
+      "S-GALLERY"
+    ],
+    "photoId": "DU-1955-01"
+  },
+  {
+    "id": "p-louis-rosier",
+    "name": "Louis Rosier",
+    "role": "driver",
+    "context": "The French veteran and 1950 Le Mans winner brought his 4.5-litre Ferrari to the 1951 Ulster Trophy, and appears in the 1952 paddock photographs.",
+    "sourceRefs": [
+      "R36",
+      "S-GALLERY"
+    ],
+    "photoId": "DU-1952-10"
+  }
 ]

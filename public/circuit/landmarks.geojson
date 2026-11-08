@@ -3,6 +3,21 @@
  "features": [
   {
    "type": "Feature",
+   "properties": {
+    "locId": "loc-start-finish",
+    "name": "Start & Finish and the Pits",
+    "seq": 1
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.088629,
+     54.581662
+    ]
+   }
+  },
+  {
+   "type": "Feature",
    "geometry": {
     "type": "Point",
     "coordinates": [
@@ -13,7 +28,7 @@
    "properties": {
     "locId": "loc-rushyhill",
     "name": "Rushyhill",
-    "seq": 1
+    "seq": 2
    }
   },
   {
@@ -28,7 +43,7 @@
    "properties": {
     "locId": "loc-leathemstown-corner",
     "name": "Leathemstown Corner",
-    "seq": 2
+    "seq": 3
    }
   },
   {
@@ -43,7 +58,7 @@
    "properties": {
     "locId": "loc-leathemstown-bridge",
     "name": "Leathemstown Bridge",
-    "seq": 3
+    "seq": 4
    }
   },
   {
@@ -58,7 +73,7 @@
    "properties": {
     "locId": "loc-deers-leap",
     "name": "Deer's Leap",
-    "seq": 4
+    "seq": 5
    }
   },
   {
@@ -73,7 +88,7 @@
    "properties": {
     "locId": "loc-cochranstown",
     "name": "Cochranstown",
-    "seq": 5
+    "seq": 6
    }
   },
   {
@@ -88,7 +103,7 @@
    "properties": {
     "locId": "loc-quarterland",
     "name": "Quarterland",
-    "seq": 6
+    "seq": 7
    }
   },
   {
@@ -103,7 +118,7 @@
    "properties": {
     "locId": "loc-irelands-corner",
     "name": "Ireland's Corner",
-    "seq": 7
+    "seq": 8
    }
   },
   {
@@ -118,7 +133,7 @@
    "properties": {
     "locId": "loc-budore",
     "name": "Budore",
-    "seq": 8
+    "seq": 9
    }
   },
   {
@@ -133,7 +148,7 @@
    "properties": {
     "locId": "loc-jordans-cross",
     "name": "Jordan's Cross",
-    "seq": 9
+    "seq": 10
    }
   },
   {
@@ -148,7 +163,7 @@
    "properties": {
     "locId": "loc-wheelers-corner",
     "name": "Wheeler's Corner",
-    "seq": 10
+    "seq": 11
    }
   },
   {
@@ -163,7 +178,7 @@
    "properties": {
     "locId": "loc-tornagrough",
     "name": "Tornagrough",
-    "seq": 11
+    "seq": 12
    }
   },
   {
@@ -178,7 +193,7 @@
    "properties": {
     "locId": "loc-1950s-hairpin",
     "name": "The 1950s hairpin",
-    "seq": 12
+    "seq": 13
    }
   },
   {
@@ -193,7 +208,7 @@
    "properties": {
     "locId": "loc-the-quarry",
     "name": "The Quarry",
-    "seq": 13
+    "seq": 14
    }
   }
  ],

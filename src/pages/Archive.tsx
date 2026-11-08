@@ -14,6 +14,9 @@ export default function Archive() {
 
   const special = archivePhotos.filter((p) => p.special1950);
   const authorised = films.filter((f) => f.status === 'authorised');
+  const external = films.filter((f) => f.status === 'external');
+
+  const indexOf = (id: string) => archivePhotos.findIndex((p) => p.id === id);
 
   return (
     <div className="page">
@@ -61,24 +64,22 @@ export default function Archive() {
         <div id="panel-photography" role="tabpanel" aria-labelledby="tab-photography">
           <p className="muted">
             Forty-four photographs, kindly contributed by Neville Armstrong.
-            The full searchable archive — browsing by year, event, driver,
-            team, car and location — arrives with the archive build stage.
+            Select any photograph to view it full screen.
           </p>
           <h2>The 1950 photographs</h2>
           <p>
             Previously unseen images from the circuit&apos;s opening season:
             the August Ulster Trophy meeting and the September Tourist Trophy
-            that made twenty-year-old Stirling Moss&apos;s name. Select a
-            photograph to view it full screen.{' '}
+            that made twenty-year-old Stirling Moss&apos;s name.{' '}
             <Link to="/seasons#y1950">Read the 1950 story</Link>.
           </p>
-          <ul className="viewer-list">
-            {special.map((p, i) => (
+          <ul className="gallery-grid gallery-special">
+            {special.map((p) => (
               <li key={p.id}>
                 <button
                   type="button"
                   className="plate-button"
-                  onClick={() => setViewerIndex(i)}
+                  onClick={() => setViewerIndex(indexOf(p.id))}
                   aria-label={`View full screen: ${p.imageTitle ?? p.id}`}
                 >
                   <PhotoPlate photo={p} contained />
@@ -86,8 +87,25 @@ export default function Archive() {
               </li>
             ))}
           </ul>
+          <h2>The full archive, 1951–1955</h2>
+          <ul className="gallery-grid">
+            {archivePhotos
+              .filter((p) => !p.special1950)
+              .map((p) => (
+                <li key={p.id}>
+                  <button
+                    type="button"
+                    className="plate-button"
+                    onClick={() => setViewerIndex(indexOf(p.id))}
+                    aria-label={`View full screen: ${p.imageTitle ?? p.id}`}
+                  >
+                    <PhotoPlate photo={p} contained />
+                  </button>
+                </li>
+              ))}
+          </ul>
           <PhotoViewer
-            photos={special}
+            photos={archivePhotos}
             index={viewerIndex}
             onClose={() => setViewerIndex(null)}
             onNavigate={setViewerIndex}
@@ -95,6 +113,27 @@ export default function Archive() {
         </div>
       ) : (
         <div id="panel-film" role="tabpanel" aria-labelledby="tab-film">
+          {external.length > 0 && (
+            <>
+              <h2>Watch elsewhere</h2>
+              <p className="muted">
+                Period footage held by national archives, viewed on their own
+                players — linked here, not embedded.
+              </p>
+              <ul className="film-links">
+                {external.map((f) => (
+                  <li key={f.id}>
+                    <a href={f.url} target="_blank" rel="noreferrer">
+                      {f.title}
+                    </a>
+                    {f.authorisationNote && (
+                      <span className="muted"> — {f.authorisationNote}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {authorised.length === 0 ? (
             <Unavailable title="No authorised footage yet">
               British Pathé and Northern Ireland Screen material will appear

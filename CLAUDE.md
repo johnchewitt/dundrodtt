@@ -19,8 +19,13 @@ won the 1951 Ulster Trophy; Moss and Fangio appeared in the V16 BRM in
 1952; the Ulster Trophy was usually a single-seater race.)
 
 ## Fundamental historical rules
-- Use only the supplied sources for historical copy (context docx, gallery
-  spreadsheet, supplied notes, UAC material, 1950 Belfast Telegraph scan).
+- Historical copy rests on the supplied sources (context docx, gallery
+  spreadsheet, supplied notes, UAC material, 1950 Belfast Telegraph scan,
+  owner-supplied period programme map scan). Owner authorisation
+  (2026-11-08): reputable web sources may supplement them — every
+  supplementary fact carries a sources.json register entry (R23+), and
+  where a web figure conflicts with the corrections register or supplied
+  sources, the register wins (e.g. 1955 TT time stays 7:03:11).
   Never fabricate photographs, results, locations, events, quotations,
   drivers, cars, teams, dates or attributions. Preserve source references
   and identification uncertainties — hedged wording stays hedged.
@@ -78,7 +83,12 @@ won the 1951 Ulster Trophy; Moss and Fangio appeared in the V16 BRM in
   use or embedding has been authorised; otherwise honest unavailable
   states. The Belfast Telegraph scan displays only with its credit line,
   pending owner confirmation.
-- No AI-generated historical imagery. No third-party image downloads.
+- No AI-generated historical imagery. No downloading photographs of
+  people from the web. Non-photographic period material whose copyright
+  has expired (the programme course map, served as
+  circuit/period-map.{webp,jpg} with its OSNI/HMSO credit line) and
+  properly licensed landscape imagery the owner approves may be added,
+  each with its credit; otherwise no third-party image downloads.
 - 44 of the 46 supplied images are under 800 px wide (median 640 px);
   only two 1955 PNGs are large. Never upscale beyond light responsive
   scaling; achieve the cinematic feel through art direction (mattes,

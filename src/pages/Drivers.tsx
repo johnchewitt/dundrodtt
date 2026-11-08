@@ -12,8 +12,8 @@ export default function Drivers() {
         none more prominent than Desmond Titterington of Holywood.
       </p>
       <p className="muted">
-        Full profiles, cross-linked to seasons and photographs, arrive with
-        the drivers build stage. The verified records are already here.
+        Each profile carries a photograph from the archive where one exists.
+        Select a photograph anywhere in the app to jump to the people in it.
       </p>
       <div className="card-grid">
         {drivers.map((p) => (

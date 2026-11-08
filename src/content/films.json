@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "film-1955-ut-bfi",
+    "title": "Ulster Trophy, Dundrod (1955)",
+    "status": "external",
+    "provider": "other",
+    "url": "https://player.bfi.org.uk/free/film/watch-ulster-trophy-dundrod-1955-online",
+    "date": "1955-05",
+    "yearId": "y1955",
+    "sourceRef": "R35",
+    "authorisationNote": "Viewed on the BFI's own free player — linked out, not embedded here."
+  }
+]
