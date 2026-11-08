@@ -238,3 +238,85 @@ test('circuit page: explorer live with provisional landmarks', async ({
     await expect(page.getByText(/could not load/)).toBeVisible();
   }
 });
+
+/* ---------- Stage 4: Six Racing Seasons timeline ---------- */
+
+test('season timeline strip shows six stations with honest meeting dots', async ({
+  page,
+}) => {
+  await page.goto('#/seasons');
+  const strip = page.locator('.season-timeline');
+  await expect(strip).toBeVisible();
+  await expect(strip.locator('li')).toHaveCount(6);
+  // 12 scheduled meetings, two of which did not run (1952 TT, 1954 UT).
+  await expect(strip.locator('.tl-dot')).toHaveCount(12);
+  await expect(strip.locator('.tl-dot[data-held]')).toHaveCount(10);
+  await expect(strip.getByText('The Final Chapter')).toBeVisible();
+});
+
+test('1954 chapter keeps the two result systems distinct', async ({ page }) => {
+  await page.goto('#/seasons#y1954');
+  const chapter = page.locator('#y1954');
+  await expect(
+    chapter.getByText('Scratch / championship result', { exact: false }),
+  ).toBeVisible();
+  await expect(
+    chapter.getByText('Handicap result', { exact: false }),
+  ).toBeVisible();
+  await expect(chapter.getByText(/Laureau/).first()).toBeVisible();
+});
+
+test('chapter photo strip opens the viewer scoped to its year', async ({
+  page,
+}) => {
+  await page.goto('#/seasons#y1950');
+  const strip = page.locator('#y1950 .photo-strip button');
+  await strip.first().scrollIntoViewIfNeeded();
+  await strip.first().click();
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  await expect(viewer.locator('.plate-id')).toHaveText(/DU-1950/);
+  await page.keyboard.press('Escape');
+  await expect(viewer).toBeHidden();
+});
+
+test('photograph viewer links to driver profiles', async ({ page }) => {
+  await page.goto('#/seasons#y1952');
+  const hero = page.locator('#y1952 .chapter-hero');
+  await hero.scrollIntoViewIfNeeded();
+  await hero.click();
+  const viewer = page.locator('.photo-viewer');
+  await expect(viewer).toBeVisible();
+  const link = viewer.getByRole('link', { name: 'Juan Manuel Fangio' });
+  await expect(link).toBeVisible();
+  await link.click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Drivers & Teams' }),
+  ).toBeVisible();
+  await expect
+    .poll(async () => {
+      const top = await page.evaluate(
+        () =>
+          document
+            .getElementById('p-juan-manuel-fangio')
+            ?.getBoundingClientRect().top,
+      );
+      return top !== undefined && top >= 0 && top < 400;
+    })
+    .toBe(true);
+});
+
+test('season chapter chips deep-link a documented circuit place', async ({
+  page,
+}) => {
+  await page.goto('#/seasons#y1955');
+  const chip = page.getByRole('link', { name: /Deer's Leap on the circuit/ });
+  await chip.scrollIntoViewIfNeeded();
+  await chip.click();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Explore the Circuit' }),
+  ).toBeVisible();
+  await expect(
+    page.locator('.location-panel').getByText(/Deer's Leap/).first(),
+  ).toBeVisible();
+});

@@ -6,6 +6,16 @@ functionality, uses verified historical data, includes tests, passes
 docs/verification-log.md, and ends in a stable Git commit (branch + PR
 where practical). **No stage starts without the owner's go-ahead.**
 
+**Delivery status (the owner's prompt pack numbers stages in its own
+order; this roadmap tracks the work itself):** foundation + content
+spine ✅ · cinematic home/story ✅ · circuit explorer with provisional
+1950s geometry, landmarks and guided lap ✅ (owner's Stage 3 prompt) ·
+six-seasons interactive timeline ✅ (owner's Stage 4 prompt, 2026-11-08) ·
+photographic archive: browse/viewer shipped in the foundation, faceted
+search and shareable filters still to come · drivers & teams: profile
+cards + deep-link anchors shipped, full profiles to come · film archive,
+Dundrod Today, final QA: not started.
+
 ## Stage 1 — Foundation, identity and content spine
 Scaffold (React+TS+Vite, GitHub Pages-ready base/routing), design system
 from the master palette (racing green `#092B24`, midnight charcoal

@@ -55,6 +55,20 @@ for (const r of races) {
   (r.incidentIds ?? []).forEach((i) => refCheck(r.id, i, incidentIds, 'incident'));
 }
 
+for (const y of years) {
+  check(typeof y.chapterTitle === 'string' && y.chapterTitle.length > 0,
+    `${y.id}: missing chapterTitle`);
+  refCheck(y.id, y.heroPhotoId, photoIds, 'photo');
+  const hero = photos.find((p) => p.id === y.heroPhotoId);
+  if (hero) {
+    check(hero.include !== false, `${y.id}: hero photo ${y.heroPhotoId} is excluded from the archive`);
+    check(hero.year === y.year, `${y.id}: hero photo ${y.heroPhotoId} is catalogued as ${hero.year}, not ${y.year}`);
+  }
+}
+
+for (const p of photos)
+  (p.personIds ?? []).forEach((pid) => refCheck(p.id, pid, personIds, 'person'));
+
 for (const i of incidents) {
   refCheck(i.id, i.yearId, yearIds, 'year');
   if (i.raceId) refCheck(i.id, i.raceId, raceIds, 'race');

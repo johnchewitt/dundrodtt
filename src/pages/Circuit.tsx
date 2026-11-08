@@ -1,8 +1,22 @@
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import CircuitMapSeam from '../components/map/CircuitMapSeam';
 import LandmarkCatalogue from '../components/circuit/LandmarkCatalogue';
 import LocationPanel from '../components/circuit/LocationPanel';
+import { locationById } from '../model/content';
+import { useUiStore } from '../store/uiStore';
 
 export default function Circuit() {
+  const [params] = useSearchParams();
+  const selectLocation = useUiStore((s) => s.selectLocation);
+
+  // Season chapters deep-link documented places: /circuit?loc=<id>
+  // opens that place's story panel on arrival.
+  useEffect(() => {
+    const loc = params.get('loc');
+    if (loc && locationById.has(loc)) selectLocation(loc);
+  }, [params, selectLocation]);
+
   return (
     <div className="page circuit-page">
       <h1>Explore the Circuit</h1>

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { photoUrl, type Photo } from '../model/content';
+import { Link } from 'react-router-dom';
+import { personById, photoUrl, type Photo } from '../model/content';
 
 interface PhotoViewerProps {
   photos: Photo[];
@@ -69,6 +70,22 @@ export default function PhotoViewer({
               {' '}
               · {index! + 1} of {photos.length}
             </span>
+            {photo.personIds.length > 0 && (
+              <span className="viewer-people">
+                {photo.personIds.map((pid) => {
+                  const person = personById.get(pid);
+                  return person ? (
+                    <Link
+                      key={pid}
+                      to={`/drivers#${pid}`}
+                      onClick={() => ref.current?.close()}
+                    >
+                      {person.name}
+                    </Link>
+                  ) : null;
+                })}
+              </span>
+            )}
           </figcaption>
           <div className="viewer-controls">
             <button

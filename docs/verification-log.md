@@ -2,6 +2,45 @@
 
 Each stage records what passed and what remains unverified.
 
+## Stage 4 — Six Racing Seasons interactive timeline — 2026-11-08
+**Passed:** horizontal 1950–1955 timeline strip (sticky, scrollable; one
+station per year with chapter title and a dot per scheduled meeting —
+filled when held, hollow for the 1952 TT and 1954 Ulster Trophy, so the
+strip itself stays historically honest); six cinematic story chapters
+built entirely from the verified catalogue — chapter kicker (roman
+numeral + ghost year numeral), prompt-supplied chapter titles, storyCue
+standfirst, verified summary, hero photograph per year (1955's large PNG
+gets the wide treatment; all others stay within native-size rules),
+race-result panels unchanged in their classification distinctions,
+documented events kept inside their year (no standalone remembrance),
+clickable photo strip per year opening the full-screen viewer scoped to
+that season, and connected link chips (race winners and documented-event
+people → driver-profile anchors; documented places → `/circuit?loc=`
+deep link that opens the location story panel). Photo viewer now links
+catalogued people in the image to their profiles; `photos.json` gained
+`personIds` (28 resolved, exact-name matches only — uncatalogued names
+stay as text, hedged names keep their hedge); `years.json` gained
+`chapterTitle` + `heroPhotoId`; validator extended (hero resolves, is in
+the archive, matches its year; personIds resolve). Driver cards carry
+`id` anchors. Gates: `tsc --noEmit` clean, build + validator green,
+21/21 Vitest (3 new Stage 4 content tests), 21/21 Playwright e2e (5 new:
+timeline dots honest, 1954 two-result-system distinction, year-scoped
+viewer, viewer→driver deep link, chapter→circuit place deep link).
+Visual review at 1440 px and 390 px via screenshots.
+**Fixed en route (latent regressions exposed when the ArcGIS CDN became
+reachable in the test sandbox):** the desktop-nav rule
+`.menu-button { display:none }` at ≥60rem was hiding every toolbar that
+reuses the class — circuit map-mode/lap buttons and the photo viewer's
+Previous/Close/Next on desktop. Now scoped to the masthead menu and its
+drawer. Chapter anchors also gained scroll-margin so deep links clear
+the sticky timeline.
+**Unverified / outstanding:** no photograph has a verified circuit
+location, so no photo→map jumps were added (prompt allows them only if
+verified); per-image contributor credits deliberately not added to the
+viewer — the collection-level Armstrong credit remains the only credit,
+per the permanent photo rules; plus the standing outstanding items
+below.
+
 ## Merge & first deployment — 2026-11-08
 **Passed:** PRs #1–#3 merged to main (stage branches left in place — the
 environment's safety rules block branch deletion; owner can tidy).

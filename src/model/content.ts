@@ -31,6 +31,10 @@ export interface Year {
   year: number;
   summary: string;
   storyCue?: string;
+  /** Stage 4 chapter heading, e.g. "Racing Comes to Dundrod". */
+  chapterTitle: string;
+  /** Photo register ID used as the chapter hero plate. */
+  heroPhotoId: string;
   sourceRefs: string[];
 }
 
@@ -92,6 +96,8 @@ export interface Photo {
   yearBasis: string | null;
   event: string | null;
   peopleNames: string[];
+  /** IDs of catalogued people unambiguously matched from peopleNames (hedged names keep their hedge in display). */
+  personIds: string[];
   carSubject: string | null;
   raceNumber: string | null;
   caption: string | null;

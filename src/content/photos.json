@@ -34,7 +34,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-01.jpeg"
+    "assetPath": "photos/1950/DU-1950-01.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1950-02",
@@ -62,7 +63,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-02.jpeg"
+    "assetPath": "photos/1950/DU-1950-02.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1950-03",
@@ -93,7 +95,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-03.jpeg"
+    "assetPath": "photos/1950/DU-1950-03.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1950-04",
@@ -124,7 +127,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-04.jpeg"
+    "assetPath": "photos/1950/DU-1950-04.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1950-05",
@@ -155,7 +159,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-05.jpeg"
+    "assetPath": "photos/1950/DU-1950-05.jpeg",
+    "personIds": [
+      "p-stirling-moss"
+    ]
   },
   {
     "id": "DU-1950-06",
@@ -186,7 +193,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-06.jpeg"
+    "assetPath": "photos/1950/DU-1950-06.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1950-07",
@@ -215,7 +223,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1950/DU-1950-07.jpeg"
+    "assetPath": "photos/1950/DU-1950-07.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1951-01",
@@ -247,7 +256,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-01.jpeg"
+    "assetPath": "photos/1951/DU-1951-01.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1951-02",
@@ -278,7 +288,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-02.jpeg"
+    "assetPath": "photos/1951/DU-1951-02.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1951-03",
@@ -309,7 +320,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-03.jpg"
+    "assetPath": "photos/1951/DU-1951-03.jpg",
+    "personIds": []
   },
   {
     "id": "DU-1951-04",
@@ -339,7 +351,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-04.jpeg"
+    "assetPath": "photos/1951/DU-1951-04.jpeg",
+    "personIds": [
+      "p-giuseppe-farina"
+    ]
   },
   {
     "id": "DU-1951-05",
@@ -370,7 +385,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-05.jpeg"
+    "assetPath": "photos/1951/DU-1951-05.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1951-06",
@@ -401,7 +417,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-06.jpeg"
+    "assetPath": "photos/1951/DU-1951-06.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1951-07",
@@ -429,7 +446,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-07.jpeg"
+    "assetPath": "photos/1951/DU-1951-07.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1951-08",
@@ -460,7 +478,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-08.jpeg"
+    "assetPath": "photos/1951/DU-1951-08.jpeg",
+    "personIds": [
+      "p-stirling-moss"
+    ]
   },
   {
     "id": "DU-1951-09",
@@ -491,7 +512,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1951/DU-1951-09.jpeg"
+    "assetPath": "photos/1951/DU-1951-09.jpeg",
+    "personIds": [
+      "p-stirling-moss"
+    ]
   },
   {
     "id": "DU-1952-01",
@@ -522,7 +546,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-01.jpeg"
+    "assetPath": "photos/1952/DU-1952-01.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1952-02",
@@ -553,7 +578,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-02.jpeg"
+    "assetPath": "photos/1952/DU-1952-02.jpeg",
+    "personIds": [
+      "p-juan-manuel-fangio"
+    ]
   },
   {
     "id": "DU-1952-03",
@@ -584,7 +612,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-03.jpeg"
+    "assetPath": "photos/1952/DU-1952-03.jpeg",
+    "personIds": [
+      "p-mike-hawthorn"
+    ]
   },
   {
     "id": "DU-1952-04",
@@ -616,7 +647,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-04.jpeg"
+    "assetPath": "photos/1952/DU-1952-04.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1952-05",
@@ -647,7 +679,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-05.jpeg"
+    "assetPath": "photos/1952/DU-1952-05.jpeg",
+    "personIds": [
+      "p-piero-taruffi"
+    ]
   },
   {
     "id": "DU-1952-06",
@@ -678,7 +713,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-06.jpeg"
+    "assetPath": "photos/1952/DU-1952-06.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1952-07",
@@ -709,7 +745,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-07.jpg"
+    "assetPath": "photos/1952/DU-1952-07.jpg",
+    "personIds": []
   },
   {
     "id": "DU-1952-08",
@@ -740,7 +777,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-08.jpeg"
+    "assetPath": "photos/1952/DU-1952-08.jpeg",
+    "personIds": [
+      "p-juan-manuel-fangio"
+    ]
   },
   {
     "id": "DU-1952-09",
@@ -772,7 +812,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-09.jpeg"
+    "assetPath": "photos/1952/DU-1952-09.jpeg",
+    "personIds": [
+      "p-juan-manuel-fangio"
+    ]
   },
   {
     "id": "DU-1952-10",
@@ -805,7 +848,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-10.jpeg"
+    "assetPath": "photos/1952/DU-1952-10.jpeg",
+    "personIds": [
+      "p-juan-manuel-fangio"
+    ]
   },
   {
     "id": "DU-1952-11",
@@ -836,7 +882,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-11.jpeg"
+    "assetPath": "photos/1952/DU-1952-11.jpeg",
+    "personIds": [
+      "p-juan-manuel-fangio"
+    ]
   },
   {
     "id": "DU-1952-12",
@@ -868,7 +917,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-12.jpeg"
+    "assetPath": "photos/1952/DU-1952-12.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1952-13",
@@ -900,7 +950,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1952/DU-1952-13.jpeg"
+    "assetPath": "photos/1952/DU-1952-13.jpeg",
+    "personIds": [
+      "p-raymond-mays"
+    ]
   },
   {
     "id": "DU-1953-01",
@@ -928,7 +981,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1953/DU-1953-01.jpeg"
+    "assetPath": "photos/1953/DU-1953-01.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1953-02",
@@ -959,7 +1013,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1953/DU-1953-02.jpeg"
+    "assetPath": "photos/1953/DU-1953-02.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1953-03",
@@ -990,7 +1045,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1953/DU-1953-03.jpeg"
+    "assetPath": "photos/1953/DU-1953-03.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1953-04",
@@ -1022,7 +1078,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1953/DU-1953-04.jpeg"
+    "assetPath": "photos/1953/DU-1953-04.jpeg",
+    "personIds": [
+      "p-stirling-moss"
+    ]
   },
   {
     "id": "DU-1954-01",
@@ -1053,7 +1112,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1954/DU-1954-01.jpeg"
+    "assetPath": "photos/1954/DU-1954-01.jpeg",
+    "personIds": [
+      "p-mike-hawthorn"
+    ]
   },
   {
     "id": "DU-1954-02",
@@ -1084,7 +1146,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1954/DU-1954-02.jpeg"
+    "assetPath": "photos/1954/DU-1954-02.jpeg",
+    "personIds": [
+      "p-desmond-titterington"
+    ]
   },
   {
     "id": "DU-1955-01",
@@ -1117,7 +1182,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-01.jpeg"
+    "assetPath": "photos/1955/DU-1955-01.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1955-02",
@@ -1153,7 +1219,12 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-02.jpeg"
+    "assetPath": "photos/1955/DU-1955-02.jpeg",
+    "personIds": [
+      "p-peter-whitehead",
+      "p-mike-hawthorn",
+      "p-desmond-titterington"
+    ]
   },
   {
     "id": "DU-1955-03",
@@ -1189,7 +1260,11 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-03.png"
+    "assetPath": "photos/1955/DU-1955-03.png",
+    "personIds": [
+      "p-stirling-moss",
+      "p-john-fitch"
+    ]
   },
   {
     "id": "DU-1955-04-DUP",
@@ -1222,7 +1297,11 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-04-DUP.jpeg"
+    "assetPath": "photos/1955/DU-1955-04-DUP.jpeg",
+    "personIds": [
+      "p-stirling-moss",
+      "p-john-fitch"
+    ]
   },
   {
     "id": "DU-1955-05",
@@ -1254,7 +1333,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-05.png"
+    "assetPath": "photos/1955/DU-1955-05.png",
+    "personIds": [
+      "p-stirling-moss"
+    ]
   },
   {
     "id": "DU-1955-06",
@@ -1283,7 +1365,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-06.jpeg"
+    "assetPath": "photos/1955/DU-1955-06.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-1955-07",
@@ -1316,7 +1399,11 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-07.jpeg"
+    "assetPath": "photos/1955/DU-1955-07.jpeg",
+    "personIds": [
+      "p-mike-hawthorn",
+      "p-desmond-titterington"
+    ]
   },
   {
     "id": "DU-1955-08",
@@ -1349,7 +1436,11 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-08.jpeg"
+    "assetPath": "photos/1955/DU-1955-08.jpeg",
+    "personIds": [
+      "p-stirling-moss",
+      "p-alfred-neubauer"
+    ]
   },
   {
     "id": "DU-1955-09",
@@ -1380,7 +1471,10 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-09.jpeg"
+    "assetPath": "photos/1955/DU-1955-09.jpeg",
+    "personIds": [
+      "p-stirling-moss"
+    ]
   },
   {
     "id": "DU-1955-10",
@@ -1411,7 +1505,8 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/1955/DU-1955-10.jpeg"
+    "assetPath": "photos/1955/DU-1955-10.jpeg",
+    "personIds": []
   },
   {
     "id": "DU-ACK-01",
@@ -1439,6 +1534,7 @@
       "S-GALLERY",
       "S-PHOTOS"
     ],
-    "assetPath": "photos/DU-ACK-01.jpeg"
+    "assetPath": "photos/DU-ACK-01.jpeg",
+    "personIds": []
   }
 ]

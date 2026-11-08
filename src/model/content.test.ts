@@ -4,8 +4,10 @@ import {
   locations,
   archivePhotos,
   personById,
+  photoById,
   photos,
   races,
+  years,
 } from './content';
 
 describe('photo catalogue', () => {
@@ -82,5 +84,36 @@ describe('landmarks layer', () => {
     expect(new Set(seqs).size).toBe(data.features.length);
     expect(Math.min(...seqs)).toBe(1);
     expect(Math.max(...seqs)).toBe(data.features.length);
+  });
+});
+
+describe('six seasons timeline (Stage 4)', () => {
+  it('every year has a chapter title and a hero photograph from that year', () => {
+    for (const y of years) {
+      expect(y.chapterTitle.length).toBeGreaterThan(0);
+      const hero = photoById.get(y.heroPhotoId)!;
+      expect(hero).toBeDefined();
+      expect(hero.include).toBe(true);
+      expect(hero.year).toBe(y.year);
+    }
+  });
+
+  it('photo person links resolve to catalogued people only', () => {
+    for (const p of photos) {
+      for (const pid of p.personIds) {
+        expect(personById.has(pid)).toBe(true);
+      }
+      // A link never exists without a named person behind it.
+      expect(p.personIds.length).toBeLessThanOrEqual(p.peopleNames.length);
+    }
+  });
+
+  it('keeps 1952 honest: Ulster Trophy held, TT not held', () => {
+    const ut = races.find((r) => r.id === 'race-1952-ut')!;
+    const tt = races.find((r) => r.id === 'race-1952-tt')!;
+    expect(ut.status).toBe('held');
+    expect(tt.status).toBe('not-held');
+    const winner = ut.classifications![0].winnerPersonIds[0];
+    expect(personById.get(winner)?.name).toBe('Piero Taruffi');
   });
 });
