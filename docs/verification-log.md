@@ -2,6 +2,18 @@
 
 Each stage records what passed and what remains unverified.
 
+## Second deployment — Stages 4 & 5 live — 2026-11-08
+**Passed:** PR #4 (Stage 4 seasons timeline + owner-feedback refinements
++ QA) and PR #5 (Stage 5 drivers, teams & cars + QA) merged to main in
+order; GitHub Pages workflow run 42521445184 fully green (npm ci →
+build with type-check and content validator → 28/28 Vitest → deploy).
+Live at https://johnchewitt.github.io/dundrodtt/.
+**Unverified / outstanding:** in-browser spot-check of the live ArcGIS
+map and new pages not performed this session — the desktop-app browser
+bridge was offline and the workspace cannot reach github.io directly;
+recommend a quick look at /#/seasons, a driver profile and the circuit
+map on first visit. Stage branches left undeleted as before.
+
 ## Post-stage QA pass (Stage 5) — 2026-11-08
 **Passed — functional & technical:** route-wide console/network/image
 audit at 1440 px and 390 px covering every experience plus four driver
